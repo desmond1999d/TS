@@ -1,0 +1,32 @@
+.clock {
+  filter: invert(1);
+  max-height: 24px;
+}
+
+.contacts {
+  max-height: 24px;
+}
+
+@media (max-width: 991px) {
+  .contact-pr-4 {
+    display: none;
+  }
+}
+
+@media (max-width: 791px) {
+  .contact-pr-3 {
+    display: none;
+  }
+}
+
+@media (max-width: 591px) {
+  .contact-pr-2 {
+    display: none;
+  }
+}
+
+@media (max-width: 441px) {
+  .contact-pr-1 {
+    font-size: 11px;
+  }
+}
