@@ -1,64 +1,52 @@
-<!--<div class="container">-->
-<!--<nav class="m-auto navbar navbar-expand-sm navbar-light navbar-fixed-top">-->
-<!--<div class="navbar-header">-->
-<!--<a class="navbar-brand">-->
-<!--<img src="../../../../assets/icons/favicon.ico" class="nav-icon">-->
-<!--</a>-->
-
-<!--<button type="button" class="navbar-toggle btn btn-outline-success my-2 my-sm-0"-->
-<!--(click)="isCollapsed = !isCollapsed;"-->
-<!--[attr.aria-expanded]="!isCollapsed" aria-controls="collapseEvent">-->
-<!--<span class="navbar-toggler-icon"></span>-->
-<!--</button>-->
-<!--</div>-->
-
-<!--<div class="collapse navbar-collapse" id="navbarSupportedContent" [collapse]="!isCollapsed">-->
-<!--<ul class="navbar-nav mr-auto">-->
-<!--<li class="nav-item m-2 navbar-link nv-item transit-color"><a>О нас</a></li>-->
-<!--<li class="nav-item m-2 navbar-link nv-item transit-color"><a>Услуги</a></li>-->
-<!--<li class="nav-item m-2 navbar-link nv-item transit-color"><a>Клиенты</a></li>-->
-<!--<li class="nav-item m-2 navbar-link nv-item transit-color"><a>Новинки</a></li>-->
-<!--<li class="nav-item m-2 navbar-link nv-item transit-color"><a>Контакты</a></li>-->
-<!--</ul>-->
-
-<!--<form class="form-inline mr-auto row">-->
-<!--<input #searchRequest class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--<button type="button" routerLink="/subscriptions" (click)="search(searchRequest.value); searchRequest.value=''"-->
-<!--class="btn btn-outline-success my-2 my-sm-0">Search-->
-<!--</button>-->
-<!--</form>-->
-<!--</div>-->
-
-<!--</nav>-->
-<!--</div>-->
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<div class="topnav" id="myTopnav">
-  <a class="navbar-link nv-item transit-color">
-    <img src="../../../../assets/icons/favicon.ico" class="nav-icon">
-  </a>
-  <li class="nv-item navbar-link transit-color">О нас</li>
-  <li class="nv-item">
-    <div class="dropdown" style="position: relative">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li class="dropdown-item" href="#">Action</li>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </ul>
-    </div>
-  </li>
-  <li class="navbar-link nv-item transit-color">Клиенты</li>
-  <li class="navbar-link nv-item transit-color">Новинки</li>
-  <li class="navbar-link nv-item transit-color">Контакты</li>
-  <div class="nv-item icon" (click)="myFunction()">
-    <i class="fa fa-bars navbar-link transit-color" style=""></i>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top m-0 p-0">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <div class="menu-btn__burger"></div>
   </div>
-</div>
-<div class="fuck"></div>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+          Услуги
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a href="#" *ngFor="let productType of productTypeHierarchy" class="dropdown-item">
+            <div *ngIf="productType.getChildren().length === 0">{{productType.getName()}}</div>
+            <div *ngIf="productType.getChildren().length !== 0" class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdownChild" role="button" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                {{productType.getName()}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownChild">
+                <a href="#" *ngFor="let productTypeChild of productType.getChildren()" class="dropdown-item">{{productTypeChild.getName()}}</a>
+              </div>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Клиенты</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" tabindex="-1">Новинки</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" tabindex="-1">Контакты</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  $('#navbarDropdown').on('hide.bs.dropdown', function (e) {
+    var target = $(e.target);
+    return !(target.hasClass("keepopen") || target.parents(".keepopen").length);
+  });
+</script>
