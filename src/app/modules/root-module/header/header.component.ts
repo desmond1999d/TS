@@ -21,13 +21,14 @@ export class HeaderComponent implements OnInit {
     this.productTypeHierarchy = this.productTypeService.getServiceHierarchy();
   }
 
-  public myFunction() {
-    const x = document.getElementById('myTopnav');
-    if (x.className === 'topnav') {
-      x.className += ' responsive';
-    } else {
-      x.className = 'topnav';
-    }
+  public openSideBar(event) {
+    event.stopPropagation();
+    document.getElementById('secondaryMenu').classList.add('show');
+  }
+
+  public closeSideBar(event) {
+    event.stopPropagation();
+    document.getElementById('secondaryMenu').classList.remove('show');
   }
 
 }

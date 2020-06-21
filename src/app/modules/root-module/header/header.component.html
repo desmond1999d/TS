@@ -12,19 +12,21 @@
         <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
            aria-expanded="false">
           Услуги
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown">
           <a href="#" *ngFor="let productType of productTypeHierarchy" class="dropdown-item">
-            <div *ngIf="productType.getChildren().length === 0">{{productType.getName()}}</div>
-            <div *ngIf="productType.getChildren().length !== 0" class="nav-item dropdown">
-              <a class="nav-link" href="#" id="navbarDropdownChild" role="button" data-toggle="dropdown"
+            <div *ngIf="productType.getChildren().length === 0">
+              {{productType.getName()}}
+            </div>
+            <div *ngIf="productType.getChildren().length !== 0" class="dropright">
+              <div id="navbarDropdownChild" class="navbar-dropdown-child dropdown-toggle" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                 {{productType.getName()}}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownChild">
+              </div>
+              <div class="dropdown-menu" id="secondaryMenu" aria-labelledby="navbarDropdownChild">
                 <a href="#" *ngFor="let productTypeChild of productType.getChildren()" class="dropdown-item">{{productTypeChild.getName()}}</a>
               </div>
             </div>
@@ -45,8 +47,7 @@
 </nav>
 
 <script>
-  $('#navbarDropdown').on('hide.bs.dropdown', function (e) {
-    var target = $(e.target);
-    return !(target.hasClass("keepopen") || target.parents(".keepopen").length);
+  $('.dropdown-item').on('click', function(e) {
+    e.stopPropagation();
   });
 </script>
