@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {ProductType} from '../../../shared/ProductType';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-header',
@@ -22,13 +23,38 @@ export class HeaderComponent implements OnInit {
   }
 
   public openSideBar(event) {
-    event.stopPropagation();
-    document.getElementById('secondaryMenu').classList.add('show');
+    if (document.documentElement.clientWidth > 991) {
+      event.stopPropagation();
+      document.getElementById(event.target.id + '_sub').classList.add('show');
+    }
   }
 
   public closeSideBar(event) {
-    event.stopPropagation();
-    document.getElementById('secondaryMenu').classList.remove('show');
+    if (document.documentElement.clientWidth > 991) {
+      event.stopPropagation();
+      document.getElementById(event.target.id + '_sub').classList.remove('show');
+    }
   }
 
+  public selfShow(event) {
+      if (document.documentElement.clientWidth > 991) {
+        event.target.classList.add('show');
+      }
+  }
+
+  public selfHide(event) {
+    if (document.documentElement.clientWidth > 991) {
+      event.target.classList.remove('show');
+    }
+  }
+
+  public sideBarClickEventHandler(event) {
+    event.stopPropagation();
+    let element = document.getElementById(event.target.id + '_sub');
+    if (element.classList.contains('show')) {
+      element.classList.remove('show');
+    } else {
+      document.getElementById(event.target.id + '_sub').classList.add('show');
+    }
+  }
 }

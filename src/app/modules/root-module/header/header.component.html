@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top m-0 p-0">
   <a class="navbar-brand" href="#">Navbar</a>
-  <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <!--<span class="navbar-toggler-icon"></span>-->
     <div class="menu-btn__burger"></div>
@@ -18,16 +18,16 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown">
           <a href="#" *ngFor="let productType of productTypeHierarchy" class="dropdown-item">
-            <div *ngIf="productType.getChildren().length === 0">
+            <div *ngIf="productType.getChildren().length === 0" class="navbar-dropdown-child sub-nav-link">
               {{productType.getName()}}
             </div>
-            <div *ngIf="productType.getChildren().length !== 0" class="dropright">
-              <div id="navbarDropdownChild" class="navbar-dropdown-child dropdown-toggle" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
+            <div *ngIf="productType.getChildren().length !== 0" class="dropright sub-nav-link">
+              <div id="{{productType.getName()}}" class="navbar-dropdown-child dropdown-toggle" role="button" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)" (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)">
                 {{productType.getName()}}
               </div>
-              <div class="dropdown-menu" id="secondaryMenu" aria-labelledby="navbarDropdownChild">
-                <a href="#" *ngFor="let productTypeChild of productType.getChildren()" class="dropdown-item">{{productTypeChild.getName()}}</a>
+              <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)" (mouseleave)="selfHide($event)" id="{{productType.getName() + '_sub'}}" aria-labelledby="navbarDropdownChild">
+                <a href="#" *ngFor="let productTypeChild of productType.getChildren()" class="dropdown-item dropdown-item-child">{{productTypeChild.getName()}}</a>
               </div>
             </div>
           </a>
