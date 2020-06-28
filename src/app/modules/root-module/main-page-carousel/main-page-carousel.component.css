@@ -1,0 +1,110 @@
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -moz-user-select: none; /* Mozilla Firefox */
+  -ms-user-select: none; /* Internet Explorer (не поддерживается) */
+  -webkit-user-select: none; /* Google Chrome, Opera Next, Safari */
+}
+
+.main-page-carousel-container {
+  height: 440px;
+  overflow: hidden;
+}
+
+.carousel {
+  height: inherit;
+}
+
+.carousel-inner {
+  height: inherit;
+}
+
+.carousel-item {
+  height: inherit;
+}
+
+@media (max-width: 400px) {
+
+  .main-page-carousel-container {
+    height: 200px;
+  }
+
+  img {
+    height: 200px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 991px) {
+  .main-page-carousel-container {
+    height: 225px;
+  }
+
+  .btn-lg {
+    display: none;
+  }
+
+  .carousel-header {
+    font-size: 20pt;
+    font-weight: 400;
+  }
+
+  .carousel-text {
+    font-size: 20pt;
+    font-weight: 300;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .carousel-header {
+    font-size: 32pt;
+    font-weight: 400;
+  }
+
+  .carousel-text {
+    font-size: 32pt;
+    font-weight: 400;
+    padding-bottom: 5%;
+  }
+}
+
+.btn-lg {
+  background-color: white;
+  border-color: white;
+  border-width: medium;
+  color: orange;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.btn-lg:hover {
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.carousel-caption {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  width: 80%;
+  padding-left: 5%;
+  height: 75%;
+}
+
+.carousel-header {
+  text-align: left;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.carousel-text {
+  text-align: left;
+  line-height: 1;
+  cursor: default;
+}

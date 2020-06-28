@@ -26,7 +26,7 @@
 
 .navbar-toggle {
   /* (60px - button height 34px) / 2 = 13px */
-  margin-top: 13px;
+  margin-top: 23px;
   padding: 9px 10px !important;
 }
 
@@ -34,8 +34,8 @@
 @media (min-width: 992px) {
   .navbar-nav > li > a {
     /* (60px - line-height of 27px) / 2 = 16.5px */
-    padding-top: 16.5px;
-    padding-bottom: 16.5px;
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
     line-height: 27px;
   }
 

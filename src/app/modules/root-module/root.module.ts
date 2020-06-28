@@ -5,11 +5,12 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ContactsHeaderComponent } from './contacts-header/contacts-header.component';
 import {ProductTypeService} from '../../services/ProductTypeService';
+import { MainPageCarouselComponent } from './main-page-carousel/main-page-carousel.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, ContactsHeaderComponent],
+  declarations: [HeaderComponent, ContactsHeaderComponent, MainPageCarouselComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
@@ -17,7 +18,8 @@ import {ProductTypeService} from '../../services/ProductTypeService';
   ],
   exports: [
     HeaderComponent,
-    ContactsHeaderComponent
+    ContactsHeaderComponent,
+    MainPageCarouselComponent
   ]
 })
 export class RootModule {
