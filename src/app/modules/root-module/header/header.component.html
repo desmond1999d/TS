@@ -1,36 +1,47 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top m-0 p-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top mr-auto ml-auto p-0">
   <a class="navbar-brand" href="#">Navbar</a>
   <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <!--<span class="navbar-toggler-icon"></span>-->
     <div class="menu-btn__burger"></div>
   </div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%;">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true"
            aria-expanded="false">
           Услуги
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown">
-          <a href="#" *ngFor="let productType of productTypeHierarchy" class="dropdown-item">
-            <div *ngIf="productType.getChildren().length === 0" class="navbar-dropdown-child sub-nav-link">
-              {{productType.getName()}}
-            </div>
-            <div *ngIf="productType.getChildren().length !== 0" class="dropright sub-nav-link">
-              <div id="{{productType.getName()}}" class="navbar-dropdown-child dropdown-toggle" role="button" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)" (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)">
+          <div class="li-container">
+            <a href="#" *ngFor="let productType of productTypeHierarchy"
+               class="dropdown-item d-flex align-items-center">
+              <div *ngIf="productType.getChildren().length === 0" class="navbar-dropdown-child sub-nav-link">
                 {{productType.getName()}}
               </div>
-              <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)" (mouseleave)="selfHide($event)" id="{{productType.getName() + '_sub'}}" aria-labelledby="navbarDropdownChild">
-                <a href="#" *ngFor="let productTypeChild of productType.getChildren()" class="dropdown-item dropdown-item-child">{{productTypeChild.getName()}}</a>
+              <div *ngIf="productType.getChildren().length !== 0" class="dropright sub-nav-link">
+                <div id="{{productType.getName()}}" class="navbar-dropdown-child dropdown-toggle" role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
+                     (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)">
+                  {{productType.getName()}}
+                </div>
+                <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
+                     (mouseleave)="selfHide($event)" id="{{productType.getName() + '_sub'}}"
+                     aria-labelledby="navbarDropdownChild">
+                  <div class="li-container-child">
+                    <a href="#" *ngFor="let productTypeChild of productType.getChildren()"
+                       class="dropdown-item dropdown-item-child d-flex align-items-center">{{productTypeChild.getName()}}</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </li>
       <li class="nav-item">
@@ -45,9 +56,3 @@
     </ul>
   </div>
 </nav>
-
-<script>
-  $('.dropdown-item').on('click', function(e) {
-    e.stopPropagation();
-  });
-</script>
