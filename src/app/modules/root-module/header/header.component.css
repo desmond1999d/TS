@@ -15,27 +15,27 @@
 }
 
 .navbar {
-  min-height: 80px;
+  min-height: 60px;
 }
 
 .navbar-brand {
   padding: 0 15px;
-  height: 80px;
-  line-height: 80px;
+  height: 60px;
+  line-height: 60px;
 }
 
 .navbar-toggle {
-  /* (80px - button height 34px) / 2 = 23px */
-  margin-top: 23px;
+  /* (60px - button height 34px) / 2 = 13px */
+  margin-top: 13px;
   padding: 9px 10px !important;
 }
 
 /*non collapsed*/
 @media (min-width: 992px) {
   .navbar-nav > li > a {
-    /* (80px - line-height of 27px) / 2 = 26.5px */
-    padding-top: 26.5px;
-    padding-bottom: 26.5px;
+    /* (60px - line-height of 27px) / 2 = 16.5px */
+    padding-top: 16.5px;
+    padding-bottom: 16.5px;
     line-height: 27px;
   }
 
@@ -107,6 +107,10 @@
 @media (max-width: 991px) {
   .navbar-nav .nav-link {
     padding-left: 15px;
+  }
+
+  .navbar {
+    width: 90%;
   }
 
   .nav-item {
