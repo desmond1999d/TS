@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
+
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -moz-user-select: none; /* Mozilla Firefox */
@@ -6,12 +8,7 @@
 }
 
 .main-page-carousel-container {
-  height: 440px;
   overflow: hidden;
-}
-
-.carousel {
-  height: inherit;
 }
 
 .carousel-inner {
@@ -22,14 +19,70 @@
   height: inherit;
 }
 
+h1.carousel-header {
+  display: none;
+}
+
 @media (max-width: 400px) {
 
   .main-page-carousel-container {
-    height: 200px;
+    height: 500px;
   }
 
   img {
-    height: 200px;
+    height: 300px;
+  }
+
+  .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: black;
+  }
+
+  .carousel-indicators {
+    bottom: -60px;
+  }
+
+  .carousel-details {
+    bottom: -100px;
+    position: absolute;
+    background-color: transparent;
+    border-color: orange;
+    border-width: .5mm;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+  }
+
+  .carousel-details:hover {
+    background-color: orange;
+    color: white;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  .carousel-item-details {
+    display: none;
+  }
+
+  .carousel-text {
+    display: none;
+  }
+
+  .carousel-inner {
+    overflow: visible;
+  }
+
+  h1.carousel-header {
+    display: block;
+    margin: 4% auto;
+    font-family: 'Comfortaa', cursive;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 30px;
+    color: #333333;
   }
 }
 
@@ -38,11 +91,11 @@
     height: 225px;
   }
 
-  .btn-lg {
+  .carousel-item-details {
     display: none;
   }
 
-  .carousel-header {
+  .carousel-item-header {
     font-size: 20pt;
     font-weight: 400;
   }
@@ -51,11 +104,23 @@
     font-size: 20pt;
     font-weight: 300;
   }
+
+  .carousel {
+    height: inherit;
+  }
+
+  .carousel-details {
+    display: none;
+  }
 }
 
 @media (min-width: 992px) {
 
-  .carousel-header {
+  .main-page-carousel-container {
+    height: 440px;
+  }
+
+  .carousel-item-header {
     font-size: 32pt;
     font-weight: 400;
   }
@@ -65,18 +130,29 @@
     font-weight: 400;
     padding-bottom: 5%;
   }
+
+  .carousel {
+    height: inherit;
+  }
+
+  .carousel-details {
+    display: none;
+  }
 }
 
-.btn-lg {
-  background-color: white;
-  border-color: white;
-  border-width: medium;
+.carousel-item-details, .carousel-details {
   color: orange;
   text-transform: uppercase;
   border-radius: 0;
 }
 
-.btn-lg:hover {
+.carousel-item-details {
+  background-color: white;
+  border-color: white;
+  border-width: medium;
+}
+
+.carousel-item-details:hover {
   background-color: transparent;
   color: white;
   transition: background-color 0.5s ease, color 0.5s ease;
@@ -96,7 +172,7 @@
   height: 75%;
 }
 
-.carousel-header {
+.carousel-item-header {
   text-align: left;
   line-height: 1.2;
   text-transform: uppercase;
