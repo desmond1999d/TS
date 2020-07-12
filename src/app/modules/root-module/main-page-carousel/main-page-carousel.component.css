@@ -7,6 +7,11 @@
   -webkit-user-select: none; /* Google Chrome, Opera Next, Safari */
 }
 
+.slides-container {
+  overflow: hidden;
+  height: inherit;
+}
+
 .main-page-carousel-container {
   overflow: hidden;
 }
@@ -25,8 +30,14 @@ h1.carousel-header {
 
 @media (max-width: 400px) {
 
+  .slides-container {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+
   .main-page-carousel-container {
-    height: 500px;
+    height: 550px;
   }
 
   img {
@@ -83,6 +94,27 @@ h1.carousel-header {
     letter-spacing: 2px;
     line-height: 30px;
     color: #333333;
+  }
+
+  .carousel-item-content {
+    display: block;
+    flex-direction: column;
+    background-color: white;
+  }
+
+  .carousel-caption {
+    position: relative;
+    color: #333333;
+    padding: 0 !important;
+    margin: auto auto;
+    height: 60px !important;
+    justify-content: center !important;
+  }
+
+  .carousel-item-header {
+    margin: 0 auto;
+    font-size: 20px;
+    text-align: center !important;
   }
 }
 
