@@ -1,0 +1,104 @@
+<footer class="page-footer font-small blue bg-dark">
+
+  <!--Contacts-->
+  <div class="text-md-left pt-4 pb-4">
+    <div class="row footer-contancts">
+      <div class="row col-md-4">
+        <div class="col-2 mt-auto mb-auto">
+          <img class="contact-logo" src="../../../../assets/icons/clock.png">
+        </div>
+        <div class="col-10 mt-auto mb-auto">
+          <div class="contact-header">
+            <a href="#">+375 (29) 780-00-23</a>
+          </div>
+          <div class="comment">Позвоните нам</div>
+        </div>
+      </div>
+      <div class="row col-md-4">
+        <div class="col-2 mt-auto mb-auto">
+          <img class="contact-logo" src="../../../../assets/icons/clock.png">
+        </div>
+        <div class="col-10 mt-auto mb-auto">
+          <div class="contact-header">
+            <a href="#">ton-service@mail.ru</a>
+          </div>
+          <div class="comment">Напишите нам</div>
+        </div>
+      </div>
+      <div class="row col-md-4">
+        <div class="col-2 mt-auto mb-auto">
+          <img class="contact-logo" src="../../../../assets/icons/clock.png">
+        </div>
+        <div class="col-10 mt-auto mb-auto">
+          <div class="contact-header">
+            <a href="#">Офис в центре Гродно</a>
+          </div>
+          <div class="comment">Получите бесплатную консультацию</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-contancts-mobile">
+      <div class="row col-md-11 mr-auto ml-auto">
+        <div class="col-2 mt-auto mb-auto">
+          <img class="contact-logo" src="../../../../assets/icons/clock.png">
+        </div>
+        <div class="col-10 mt-auto mb-auto">
+          <div class="contact-header">
+            <a href="#">+375 (29) 780-00-23</a>
+          </div>
+          <div class="comment">Позвоните нам</div>
+        </div>
+      </div>
+      <div class="row col-md-11 mr-auto ml-auto">
+        <div class="col-2 mt-auto mb-auto">
+          <img class="contact-logo" src="../../../../assets/icons/clock.png">
+        </div>
+        <div class="col-10 mt-auto mb-auto">
+          <div class="contact-header">
+            <a href="#">ton-service@mail.ru</a>
+          </div>
+          <div class="comment">Напишите нам</div>
+        </div>
+      </div>
+      <div class="row col-md-11 mr-auto ml-auto">
+        <div class="col-2 mt-auto mb-auto">
+          <img class="contact-logo" src="../../../../assets/icons/clock.png">
+        </div>
+        <div class="col-10 mt-auto mb-auto">
+          <div class="contact-header">
+            <a href="#">Офис в центре Гродно</a>
+          </div>
+          <div class="comment">Получите бесплатную консультацию</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Offers-->
+  <div class="container-fluid text-center text-md-left">
+    <div class="row footer-navs pb-3 pt-3">
+      <div class="col-md-8">
+        <h5 class="text-uppercase">Услуги</h5>
+        <div class="footer-nav-item-container">
+          <div class="col-md-4 pl-0" *ngFor="let i of [0, 1, 2]">
+            <div *ngFor="let productTypeName of productTypeNames;  let j = index">
+              <div class="footer-nav-item" *ngIf="j % 3 === i">{{productTypeName}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <!-- Content -->
+        <h5 class="text-uppercase">Footer Content</h5>
+        <p class="contacts-muted">г.Гродно, ул. Октябрьская, дом 4,<br>Время работы: ПН-ПТ 09:00-17:00<br>(029) 7800023
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--CopyRight-->
+  <div class="footer-copyright text-center py-2">
+    © 2020 Copyright: Тон-сервис
+  </div>
+</footer>

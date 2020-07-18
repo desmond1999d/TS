@@ -6,11 +6,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ContactsHeaderComponent } from './contacts-header/contacts-header.component';
 import {ProductTypeService} from '../../services/ProductTypeService';
 import { MainPageCarouselComponent } from './main-page-carousel/main-page-carousel.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, ContactsHeaderComponent, MainPageCarouselComponent],
+  declarations: [HeaderComponent, ContactsHeaderComponent, MainPageCarouselComponent, FooterComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
@@ -19,7 +20,8 @@ import { MainPageCarouselComponent } from './main-page-carousel/main-page-carous
   exports: [
     HeaderComponent,
     ContactsHeaderComponent,
-    MainPageCarouselComponent
+    MainPageCarouselComponent,
+    FooterComponent
   ]
 })
 export class RootModule {
