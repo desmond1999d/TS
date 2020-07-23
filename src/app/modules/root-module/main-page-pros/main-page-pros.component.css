@@ -1,0 +1,64 @@
+.container {
+  margin-bottom: 40px;
+  margin-top: 20px;
+  padding: 0 15px;
+}
+
+@media (max-width: 400px) {
+  .container {
+    display: none;
+  }
+}
+
+.pros {
+  margin-top: 40px;
+  min-width: 240px;
+}
+
+.main-page-pros-header {
+  text-transform: uppercase;
+  font-size: 32pt;
+  font-weight: 300;
+}
+
+.pros-header {
+  text-align: center;
+  margin-bottom: 15px;
+  height: 50px;
+  font-size: 16pt;
+}
+
+.pros-description {
+  text-align: center;
+  font-size: 13pt;
+}
+
+.pros-icon {
+  margin-bottom: 35px;
+  width: 100%;
+  background: transparent center top no-repeat scroll;
+  height: 80px;
+}
+
+@media (min-width: 991px) {
+  .col-md-3 {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+}
+
+.pros-icon-1 {
+  background-image: url("https://www.actived.ru/local/templates/actived.new/images/block-b-1.png");
+}
+
+.pros-icon-2 {
+  background-image: url("https://www.actived.ru/local/templates/actived.new/images/block-b-2.png");
+}
+
+.pros-icon-3 {
+  background-image: url("https://www.actived.ru/local/templates/actived.new/images/block-b-3.png");
+}
+
+.pros-icon-4 {
+  background-image: url("https://www.actived.ru/local/templates/actived.new/images/block-b-4.png");
+}

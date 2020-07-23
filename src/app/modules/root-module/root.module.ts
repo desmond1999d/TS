@@ -7,11 +7,12 @@ import { ContactsHeaderComponent } from './contacts-header/contacts-header.compo
 import {ProductTypeService} from '../../services/ProductTypeService';
 import { MainPageCarouselComponent } from './main-page-carousel/main-page-carousel.component';
 import { FooterComponent } from './footer/footer.component';
+import { MainPageProsComponent } from './main-page-pros/main-page-pros.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, ContactsHeaderComponent, MainPageCarouselComponent, FooterComponent],
+  declarations: [HeaderComponent, ContactsHeaderComponent, MainPageCarouselComponent, FooterComponent, MainPageProsComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
@@ -21,7 +22,8 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     ContactsHeaderComponent,
     MainPageCarouselComponent,
-    FooterComponent
+    FooterComponent,
+    MainPageProsComponent
   ]
 })
 export class RootModule {
