@@ -47,6 +47,13 @@
   }
 }
 
+@media (max-width: 990px) {
+  .col-md-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 .pros-icon-1 {
   background-image: url("https://www.actived.ru/local/templates/actived.new/images/block-b-1.png");
 }
