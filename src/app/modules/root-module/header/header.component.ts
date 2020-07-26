@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {ProductType} from '../../../shared/ProductType';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import {element} from 'protractor';
 
 @Component({
   selector: 'app-header',

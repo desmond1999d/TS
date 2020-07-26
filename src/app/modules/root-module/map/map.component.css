@@ -1,0 +1,42 @@
+.contact-header {
+  font-size: 20pt;
+  font-weight: 400;
+  margin-bottom: 50px;
+}
+
+.map-address::before, .map-email::before, .map-phone::before, .map-timetable::before {
+  width: 17px;
+  height: 17px;
+  content: "";
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.map-address, .map-email, .map-phone, .map-timetable {
+  margin: 15px 0;
+}
+
+.map-contacts-container {
+  width: auto;
+  float: left;
+  display: inline-block;
+  margin-left: 10%;
+  margin-top: 15%;
+  margin-bottom: 15%;
+}
+
+.map-address::before {
+  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_addr_blue.png") no-repeat;
+}
+
+.map-email::before {
+  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_email_blue.png") no-repeat;
+}
+
+.map-phone::before {
+  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_phone_blue.png") no-repeat;
+}
+
+.map-timetable::before {
+  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_time_blue.png") no-repeat;
+}
