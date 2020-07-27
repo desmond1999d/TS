@@ -10,6 +10,8 @@ import { MainPageProsComponent } from './main-page-pros/main-page-pros.component
 import { MapComponent } from './map/map.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import {RouterModule} from '@angular/router';
+import { MailContactComponent } from './mail-contact/mail-contact.component';
+import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 
 
 
@@ -20,7 +22,9 @@ import {RouterModule} from '@angular/router';
     FooterComponent,
     MainPageProsComponent,
     MapComponent,
-    MainPageComponent],
+    MainPageComponent,
+    MailContactComponent,
+    ContactsPageComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
@@ -34,7 +38,9 @@ import {RouterModule} from '@angular/router';
     FooterComponent,
     MainPageProsComponent,
     MapComponent,
-    MainPageComponent
+    MainPageComponent,
+    MailContactComponent,
+    ContactsPageComponent
   ]
 })
 export class RootModule {

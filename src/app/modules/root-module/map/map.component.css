@@ -40,3 +40,14 @@
 .map-timetable::before {
   background: url("https://www.actived.ru/local/templates/actived.new/images/ico_time_blue.png") no-repeat;
 }
+
+@media (max-width: 767px) {
+  .col-md-6.map {
+    -ms-flex-order:1;
+    order:1;
+  }
+  .col-md-6.map-contacts {
+    -ms-flex-order:0;
+    order:0;
+  }
+}
