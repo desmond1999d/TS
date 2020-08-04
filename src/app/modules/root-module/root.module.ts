@@ -12,6 +12,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import {RouterModule} from '@angular/router';
 import { MailContactComponent } from './mail-contact/mail-contact.component';
 import { ContactsPageComponent } from './contacts-page/contacts-page.component';
+import { TopProductOfferingsComponent } from './top-product-offerings/top-product-offerings.component';
 
 
 
@@ -24,7 +25,8 @@ import { ContactsPageComponent } from './contacts-page/contacts-page.component';
     MapComponent,
     MainPageComponent,
     MailContactComponent,
-    ContactsPageComponent],
+    ContactsPageComponent,
+    TopProductOfferingsComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),

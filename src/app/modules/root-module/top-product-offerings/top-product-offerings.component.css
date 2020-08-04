@@ -1,0 +1,66 @@
+.thumbnail-content > .img-thumbnail {
+  padding: 0 !important;
+  border: none;
+  border-radius: 0;
+}
+
+.thumbnail {
+  background-color: white;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.thumbnail:hover {
+  color: orange;
+  transition: color .3s ease-in-out;
+}
+
+.description-container:hover {
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.product-description {
+  color: white;
+  width: 80%;
+}
+
+.description-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  background: rgba(255, 165, 0, .35);
+  left: 0;
+  top: 0;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.thumbnail-label {
+  font-size: 16pt;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.thumbnail-label-container {
+  line-height: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+@media (min-width: 1261px) {
+  .container-fluid {
+    max-width: 70% !important;
+  }
+}
+
+@media (max-width: 1260px) {
+  .container-fluid {
+    max-width: 100% !important;
+  }
+}
