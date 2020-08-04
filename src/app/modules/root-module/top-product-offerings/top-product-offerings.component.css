@@ -1,3 +1,7 @@
+* {
+  cursor: default !important;
+}
+
 .thumbnail-content > .img-thumbnail {
   padding: 0 !important;
   border: none;
@@ -63,4 +67,9 @@
   .container-fluid {
     max-width: 100% !important;
   }
+}
+
+.product-offers-header {
+  font-size: 26pt;
+  font-weight: 300;
 }
