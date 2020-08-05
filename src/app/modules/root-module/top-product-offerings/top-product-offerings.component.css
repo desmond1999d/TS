@@ -73,3 +73,17 @@
   font-size: 26pt;
   font-weight: 300;
 }
+
+.m-products-slider {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .m-products-slider {
+    display: inline-block;
+  }
+
+  .products-grid {
+    display: none;
+  }
+}

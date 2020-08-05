@@ -1,7 +1,10 @@
-<div class="row justify-content-center">
-  <h1 class="product-offers-header">Наши услуги</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <h1 class="product-offers-header">Наши услуги</h1>
+  </div>
 </div>
-<div class="container-fluid ml-auto mr-auto">
+<div class="products-grid container-fluid ml-auto mr-auto">
   <div class="row row-cols-3">
     <div class="col" *ngFor="let productOffering of productTypeHierarchy">
       <div class="thumbnail mb-3 mt-3" routerLink="#">
@@ -17,6 +20,25 @@
         <div class="thumbnail-label-container">
           <div class="thumbnail-label">{{productOffering.getName()}}</div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="m-products-slider">
+  <div *ngFor="let productOffering of productTypeHierarchy">
+    <div class="thumbnail mb-3 mt-3" routerLink="#">
+      <div class="thumbnail-content position-relative">
+        <img class="img-thumbnail"
+             src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
+        <div class="description-container">
+          <div class="product-description">
+            foifohfiowefhioweh foiehwoif heoiwhf ioweh foiewh iow
+          </div>
+        </div>
+      </div>
+      <div class="thumbnail-label-container">
+        <div class="thumbnail-label">{{productOffering.getName()}}</div>
       </div>
     </div>
   </div>
