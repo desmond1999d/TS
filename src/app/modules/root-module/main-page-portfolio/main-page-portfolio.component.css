@@ -11,7 +11,7 @@
 .thumbnail {
   background-color: white;
   overflow: hidden;
-  border-radius: 3px;
+  border: none;
 }
 
 .thumbnail:hover {
@@ -26,7 +26,6 @@
 
 .product-description {
   color: white;
-  width: 80%;
 }
 
 .description-container {
@@ -57,29 +56,17 @@
   text-align: center;
 }
 
-@media (min-width: 1261px) {
-  .container-fluid {
-    max-width: 70% !important;
-  }
-}
-
-@media (max-width: 1260px) {
-  .container-fluid {
-    max-width: 100% !important;
-  }
-}
-
 .product-offers-header {
   font-size: 26pt;
   font-weight: 300;
 }
 
-#m-products-slider {
+#m-portfolio-slider {
   display: none;
 }
 
 @media (max-width: 991px) {
-  #m-products-slider {
+  #m-portfolio-slider {
     display: inline-block;
   }
 

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
-import { tns } from "../../../../../node_modules/tiny-slider/src/tiny-slider"
+import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
 
 @Component({
-  selector: 'app-top-product-offerings',
-  templateUrl: './top-product-offerings.component.html',
-  styleUrls: ['./top-product-offerings.component.css']
+  selector: 'app-main-page-portfolio',
+  templateUrl: './main-page-portfolio.component.html',
+  styleUrls: ['./main-page-portfolio.component.css']
 })
-export class TopProductOfferingsComponent implements OnInit {
-
+export class MainPagePortfolioComponent implements OnInit {
   public productTypeHierarchy: ProductType[];
 
   constructor(private productTypeService: ProductTypeService) { }
@@ -20,8 +19,7 @@ export class TopProductOfferingsComponent implements OnInit {
 
   ngAfterViewInit() {
     tns({
-      container: '#m-products-slider',
-      items: 1,
+      container: '#m-portfolio-slider',
       mouseDrag: true,
       center: true,
       lazyload: true,

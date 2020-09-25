@@ -13,6 +13,7 @@ import {RouterModule} from '@angular/router';
 import { MailContactComponent } from './mail-contact/mail-contact.component';
 import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 import { TopProductOfferingsComponent } from './top-product-offerings/top-product-offerings.component';
+import { MainPagePortfolioComponent } from './main-page-portfolio/main-page-portfolio.component';
 
 
 
@@ -26,7 +27,8 @@ import { TopProductOfferingsComponent } from './top-product-offerings/top-produc
     MainPageComponent,
     MailContactComponent,
     ContactsPageComponent,
-    TopProductOfferingsComponent],
+    TopProductOfferingsComponent,
+    MainPagePortfolioComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
@@ -42,7 +44,8 @@ import { TopProductOfferingsComponent } from './top-product-offerings/top-produc
     MapComponent,
     MainPageComponent,
     MailContactComponent,
-    ContactsPageComponent
+    ContactsPageComponent,
+    MainPagePortfolioComponent
   ]
 })
 export class RootModule {
