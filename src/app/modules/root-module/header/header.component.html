@@ -21,22 +21,22 @@
           <div class="li-container">
             <a href="#" *ngFor="let productType of productTypeHierarchy"
                class="dropdown-item d-flex align-items-center">
-              <div *ngIf="productType.getChildren().length === 0" class="navbar-dropdown-child sub-nav-link">
-                {{productType.getName()}}
+              <div *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link">
+                {{productType.name}}
               </div>
-              <div *ngIf="productType.getChildren().length !== 0" class="dropright sub-nav-link">
-                <div id="{{productType.getName()}}" class="navbar-dropdown-child dropdown-toggle" role="button"
+              <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
+                <div id="{{productType.name}}" class="navbar-dropdown-child dropdown-toggle" role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
                      (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)">
-                  {{productType.getName()}}
+                  {{productType.name}}
                 </div>
                 <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
-                     (mouseleave)="selfHide($event)" id="{{productType.getName() + '_sub'}}"
+                     (mouseleave)="selfHide($event)" id="{{productType.name + '_sub'}}"
                      aria-labelledby="navbarDropdownChild">
                   <div class="li-container-child">
-                    <a href="#" *ngFor="let productTypeChild of productType.getChildren()"
-                       class="dropdown-item dropdown-item-child d-flex align-items-center">{{productTypeChild.getName()}}</a>
+                    <a href="#" *ngFor="let productTypeChild of productType.children"
+                       class="dropdown-item dropdown-item-child d-flex align-items-center">{{productTypeChild.name}}</a>
                   </div>
                 </div>
               </div>

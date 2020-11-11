@@ -1,24 +1,9 @@
 export class ProductType {
-  private name: string;
-  private children: ProductType[];
-  private description: string;
 
-  constructor(name: string, children: ProductType[], description: string) {
+  constructor(public name: string, public children: ProductType[], public description: string) {
     this.name = name;
     this.children = children;
     this.description = description;
-  }
-
-  public getName() {
-    return this.name;
-  }
-
-  public getChildren() {
-    return this.children;
-  }
-
-  public getDescription() {
-    return this.description;
   }
 
 }
