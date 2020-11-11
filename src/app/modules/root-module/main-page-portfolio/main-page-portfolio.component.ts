@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
@@ -14,7 +14,9 @@ export class MainPagePortfolioComponent implements OnInit {
   constructor(private productTypeService: ProductTypeService) { }
 
   ngOnInit() {
-    this.productTypeHierarchy = this.productTypeService.getServiceHierarchy();
+    this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
+      this.productTypeHierarchy = productTypeHierarchy;
+    });
   }
 
   ngAfterViewInit() {

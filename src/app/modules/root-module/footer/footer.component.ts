@@ -16,14 +16,16 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productTypeHierarchy = this.productTypeService.getServiceHierarchy();
     this.productTypeNames = [];
-    for (let productType of this.productTypeHierarchy) {
-      this.productTypeNames.push(productType.getName());
-      for (let child of productType.getChildren()) {
-        this.productTypeNames.push(child.getName());
+    this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
+      this.productTypeHierarchy = productTypeHierarchy;
+      for (let productType of this.productTypeHierarchy) {
+        this.productTypeNames.push(productType.getName());
+        for (let child of productType.getChildren()) {
+          this.productTypeNames.push(child.getName());
+        }
       }
-    }
+    });
   }
 
 }

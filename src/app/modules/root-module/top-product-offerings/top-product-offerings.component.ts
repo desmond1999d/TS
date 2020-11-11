@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
-import { tns } from "../../../../../node_modules/tiny-slider/src/tiny-slider"
+import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
 
 @Component({
   selector: 'app-top-product-offerings',
@@ -15,7 +15,9 @@ export class TopProductOfferingsComponent implements OnInit {
   constructor(private productTypeService: ProductTypeService) { }
 
   ngOnInit() {
-    this.productTypeHierarchy = this.productTypeService.getServiceHierarchy();
+    this.productTypeService.getTopServiceHierarchy().toPromise().then(productTypeHierarchy => {
+      this.productTypeHierarchy = productTypeHierarchy;
+    });
   }
 
   ngAfterViewInit() {

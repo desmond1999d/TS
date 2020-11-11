@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productTypeHierarchy = this.productTypeService.getServiceHierarchy();
+    this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
+      this.productTypeHierarchy = productTypeHierarchy;
+    });
   }
 
   public openSideBar(event) {
@@ -36,9 +38,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public selfShow(event) {
-      if (document.documentElement.clientWidth > 991) {
-        event.target.classList.add('show');
-      }
+    if (document.documentElement.clientWidth > 991) {
+      event.target.classList.add('show');
+    }
   }
 
   public selfHide(event) {

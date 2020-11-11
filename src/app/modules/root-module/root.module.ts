@@ -14,6 +14,7 @@ import { MailContactComponent } from './mail-contact/mail-contact.component';
 import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 import { TopProductOfferingsComponent } from './top-product-offerings/top-product-offerings.component';
 import { MainPagePortfolioComponent } from './main-page-portfolio/main-page-portfolio.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -33,7 +34,8 @@ import { MainPagePortfolioComponent } from './main-page-portfolio/main-page-port
     CommonModule,
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {RootModule} from './modules/root-module/root.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {ProductTypeService} from './services/ProductTypeService';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpService} from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import {ProductTypeService} from './services/ProductTypeService';
     RootModule
   ],
   providers: [
-    ProductTypeService
+    ProductTypeService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
