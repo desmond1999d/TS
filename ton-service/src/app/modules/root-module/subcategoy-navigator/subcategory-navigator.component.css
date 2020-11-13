@@ -1,0 +1,52 @@
+.subcategory-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+}
+
+@media (min-width: 992px) {
+  .subcategory-container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 991px) {
+  .subcategory-container {
+    width: 90%;
+  }
+}
+
+.subcategory-header {
+  font-size: 20pt;
+  font-weight: 400;
+  color: orange;
+  padding-bottom: 15px;
+}
+
+.subcategory-card {
+  background-color: white;
+  color: orange;
+  padding-left: 17px;
+  padding-right: 17px;
+  line-height: 30px;
+}
+
+.card {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  background-color: inherit;
+  border: none;
+}
+
+.row {
+  padding-left: inherit !important;
+  padding-right: inherit !important;
+}
+
+.subcategory-card:hover {
+  background-color: orange;
+  color: white;
+  transition: background-color .3s ease-in-out;
+}

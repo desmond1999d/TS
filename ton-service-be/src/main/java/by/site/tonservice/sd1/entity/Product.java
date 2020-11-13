@@ -1,6 +1,7 @@
 package by.site.tonservice.sd1.entity;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "products")
@@ -8,7 +9,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private BigInteger id;
     private String name;
     private Long productTypeId;
 
@@ -17,15 +18,15 @@ public class Product {
         this.productTypeId = productTypeId;
     }
 
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
-    public String name {
+    public String getName() {
         return name;
     }
 

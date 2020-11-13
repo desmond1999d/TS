@@ -5,7 +5,10 @@ import by.site.tonservice.sd1.service.ProductTypeService;
 import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public class ProductTypeServiceImpl implements ProductTypeService {
@@ -38,6 +41,21 @@ public class ProductTypeServiceImpl implements ProductTypeService {
                 "");
         ProductType wideformatPrint = new ProductType("Широкоформатная печать", Lists.<ProductType>emptyList(), "");
         ProductType photoWallpaper = new ProductType("Фотообои", Lists.<ProductType>emptyList(), "");
-        return Lists.list(exterierAds, interierAds, auto, tinting, wideformatPrint, photoWallpaper);
+        List<ProductType> productTypes = Lists.list(exterierAds, interierAds, auto, tinting, wideformatPrint, photoWallpaper);
+        for (int i = 0; i < productTypes.size(); i++) {
+            productTypes.get(i).setId(BigInteger.valueOf(i + 1));
+            for (int j = 0; j < productTypes.get(i).getChildren().size(); j++) {
+                productTypes.get(i).getChildren().get(j).setId(BigInteger.valueOf(j + 1));
+            }
+        }
+        return productTypes;
+    }
+
+    public List<ProductType> getAllHorizontalRefs(final BigInteger parentProductTypeId) {
+        if (parentProductTypeId != null) {
+            Optional<ProductType> first = getAllProductTypes().stream().filter(parentProductType -> parentProductTypeId.equals(parentProductType.getId())).findFirst();
+            return first.map(ProductType::getChildren).orElse(null);
+        }
+        return null;
     }
 }

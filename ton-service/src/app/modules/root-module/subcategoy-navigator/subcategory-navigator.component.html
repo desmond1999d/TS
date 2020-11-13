@@ -1,0 +1,12 @@
+<div class="subcategory-container"
+     *ngIf="horizontalReferenceSubcategories != undefined && selectedSubcategory != undefined">
+  <h1 class="subcategory-header">{{selectedSubcategory.name}}</h1>
+  <div class="row">
+    <div *ngFor="let horizontalSubcategory of horizontalReferenceSubcategories" class="card">
+      <a class="subcategory-card" [ngClass]="{'active': horizontalSubcategory.id === subcategoryId}"
+         [routerLink]="['/category', categoryId, 'subcategory', horizontalSubcategory.id]">
+        {{horizontalSubcategory.name}}
+      </a>
+    </div>
+  </div>
+</div>

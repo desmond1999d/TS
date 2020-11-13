@@ -21,7 +21,7 @@
           <div class="li-container">
             <a href="#" *ngFor="let productType of productTypeHierarchy"
                class="dropdown-item d-flex align-items-center">
-              <div *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link">
+              <div *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link" [routerLink]="['/category', productType.id]">
                 {{productType.name}}
               </div>
               <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
@@ -35,8 +35,9 @@
                      (mouseleave)="selfHide($event)" id="{{productType.name + '_sub'}}"
                      aria-labelledby="navbarDropdownChild">
                   <div class="li-container-child">
-                    <a href="#" *ngFor="let productTypeChild of productType.children"
-                       class="dropdown-item dropdown-item-child d-flex align-items-center">{{productTypeChild.name}}</a>
+                    <a *ngFor="let productTypeChild of productType.children"
+                       class="dropdown-item dropdown-item-child d-flex align-items-center"
+                       [routerLink]="['/category', productType.id, 'subcategory', productTypeChild.id]">{{productTypeChild.name}}</a>
                   </div>
                 </div>
               </div>

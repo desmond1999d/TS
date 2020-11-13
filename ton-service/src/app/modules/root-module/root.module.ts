@@ -15,6 +15,7 @@ import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 import { TopProductOfferingsComponent } from './top-product-offerings/top-product-offerings.component';
 import { MainPagePortfolioComponent } from './main-page-portfolio/main-page-portfolio.component';
 import {HttpClientModule} from '@angular/common/http';
+import { SubcategoryNavigatorComponent } from './subcategoy-navigator/subcategory-navigator.component';
 
 
 
@@ -29,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
     MailContactComponent,
     ContactsPageComponent,
     TopProductOfferingsComponent,
-    MainPagePortfolioComponent],
+    MainPagePortfolioComponent,
+    SubcategoryNavigatorComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
