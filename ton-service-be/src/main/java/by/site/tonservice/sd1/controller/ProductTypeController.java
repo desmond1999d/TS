@@ -19,7 +19,7 @@ public class ProductTypeController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<ProductType> getAll() {
-        return productTypeService.getAllProductTypes();
+        return productTypeService.getAllTopLevelProductTypes();
     }
 
     @RequestMapping(value = "/horizontal-reference", method = RequestMethod.GET)

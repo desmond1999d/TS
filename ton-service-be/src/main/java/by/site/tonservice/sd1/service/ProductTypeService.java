@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductTypeService {
 
-    List<ProductType> getAllProductTypes();
+    List<ProductType> getAllTopLevelProductTypes();
 
     List<ProductType> getAllHorizontalRefs(BigInteger parentProductTypeId);
 }
