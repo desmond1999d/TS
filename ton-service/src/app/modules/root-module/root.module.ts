@@ -16,6 +16,7 @@ import { TopProductOfferingsComponent } from './top-product-offerings/top-produc
 import { MainPagePortfolioComponent } from './main-page-portfolio/main-page-portfolio.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SubcategoryNavigatorComponent } from './subcategoy-navigator/subcategory-navigator.component';
+import { SubcategoryExamplesComponent } from './subcategory-examples/subcategory-examples.component';
 
 
 
@@ -31,7 +32,8 @@ import { SubcategoryNavigatorComponent } from './subcategoy-navigator/subcategor
     ContactsPageComponent,
     TopProductOfferingsComponent,
     MainPagePortfolioComponent,
-    SubcategoryNavigatorComponent],
+    SubcategoryNavigatorComponent,
+    SubcategoryExamplesComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
