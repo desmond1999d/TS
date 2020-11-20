@@ -6,7 +6,7 @@ import {ProductExample} from "../../../shared/ProductExample";
 @Component({
   selector: 'app-subcategory-examples',
   templateUrl: './subcategory-examples.component.html',
-  styleUrls: ['./subcategory-examples.component.css']
+  styleUrls: ['./subcategory-examples.component.scss']
 })
 export class SubcategoryExamplesComponent implements OnInit {
 
