@@ -1,0 +1,23 @@
+<div class="overflow-hidden" style="background-image: linear-gradient(to right, #ff4700 20%, orange 90%);">
+  <div class="row pt-4 pb-4 ml-0 mr-0 text-center order-pane">
+    <div class="col-md-6 align-self-center order-col">
+      <div class="order-label">Выбрали интересующую услугу?</div>
+    </div>
+    <div class="col-md-6 order-col">
+      <div class="btn btn-default btn-lg order-button" data-toggle="modal" data-target="#requestModal">Оставить заявку
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="requestModal" tabindex="-1" role="form" aria-hidden="true">
+  <div class="modal-dialog" role="form">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container-fluid mt-3 mb-3">
+          <app-mail-contact></app-mail-contact>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

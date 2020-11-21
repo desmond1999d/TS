@@ -89,27 +89,3 @@ img.contact-logo {
 .footer-contancts-mobile {
   display: none;
 }
-
-.order-pane {
-  background-image: linear-gradient(to right, #ff4700 20%, orange 90%);
-  width: 100%;
-}
-
-.order-button {
-  background-color: white;
-  border-color: white;
-  border-width: medium;
-  color: orange;
-}
-
-.order-button:hover {
-  background-color: transparent;
-  color: white;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.order-label {
-  font-size: 20pt;
-  font-weight: 300;
-  color: white;
-}
