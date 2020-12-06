@@ -1,19 +1,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
-<div class="container-fluid">
+<div class="container-fluid pt-4">
   <div class="row justify-content-center">
     <h1 class="product-offers-header">Наши услуги</h1>
   </div>
 </div>
 <div class="products-grid container-fluid ml-auto mr-auto">
   <div class="row row-cols-3">
-    <div class="col" *ngFor="let productOffering of productTypeHierarchy">
-      <div class="thumbnail mb-3 mt-3" routerLink="#">
+    <div class="col" *ngFor="let productOffering of productTypeHierarchy; let size = index;">
+      <div *ngIf="size < maxItemsCount" class="thumbnail mb-3 mt-3 show-animation" routerLink="#">
         <div class="thumbnail-content position-relative">
           <img class="img-thumbnail"
                src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
           <div class="description-container">
             <div class="product-description">
-              {{productOffering.name}}
+              {{productOffering.description}}
             </div>
           </div>
         </div>
@@ -21,6 +21,12 @@
           <div class="thumbnail-label">{{productOffering.name}}</div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="ml-auto mr-auto">
+      <div class="btn show-btn hide-show-btn" (click)="showMore()">Больше</div>
+      <div class="btn hide-btn hide-show-btn" (click)="showLess()">Меньше</div>
     </div>
   </div>
 </div>

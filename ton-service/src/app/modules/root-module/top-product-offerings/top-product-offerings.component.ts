@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
+import * as $ from "jquery";
 import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
 
 @Component({
@@ -8,13 +9,18 @@ import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
   templateUrl: './top-product-offerings.component.html',
   styleUrls: ['./top-product-offerings.component.css']
 })
-export class TopProductOfferingsComponent implements OnInit {
+export class TopProductOfferingsComponent implements OnInit, AfterViewInit {
 
   public productTypeHierarchy: ProductType[];
+  public maxItemsCount : number;
+  public static MAX_ITEMS_DEFAULT = 6;
 
-  constructor(private productTypeService: ProductTypeService) { }
+  constructor(private productTypeService: ProductTypeService) {
+    this.maxItemsCount = TopProductOfferingsComponent.MAX_ITEMS_DEFAULT;
+  }
 
   ngOnInit() {
+    $(".hide-btn").hide();
     this.productTypeService.getTopServiceHierarchy().toPromise().then(productTypeHierarchy => {
       this.productTypeHierarchy = productTypeHierarchy;
     });
@@ -46,6 +52,18 @@ export class TopProductOfferingsComponent implements OnInit {
         }
       }
     });
+  }
+
+  showMore() {
+    this.maxItemsCount = this.productTypeHierarchy.length;
+    $(".show-btn").hide();
+    $(".hide-btn").show();
+  }
+
+  showLess() {
+    this.maxItemsCount = TopProductOfferingsComponent.MAX_ITEMS_DEFAULT;
+    $(".hide-btn").hide();
+    $(".show-btn").show();
   }
 
 }
