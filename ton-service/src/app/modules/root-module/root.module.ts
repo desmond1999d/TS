@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { SubcategoryNavigatorComponent } from './subcategoy-navigator/subcategory-navigator.component';
 import { SubcategoryExamplesComponent } from './subcategory-examples/subcategory-examples.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { CategoryComponent } from './category/category.component';
 
 
 
@@ -35,7 +36,8 @@ import { LeaveRequestComponent } from './leave-request/leave-request.component';
     MainPagePortfolioComponent,
     SubcategoryNavigatorComponent,
     SubcategoryExamplesComponent,
-    LeaveRequestComponent],
+    LeaveRequestComponent,
+    CategoryComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),

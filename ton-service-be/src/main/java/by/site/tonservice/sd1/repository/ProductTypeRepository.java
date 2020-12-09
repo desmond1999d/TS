@@ -11,4 +11,6 @@ import java.util.List;
 public interface ProductTypeRepository extends CrudRepository<ProductType, BigInteger> {
 
     List<ProductType> findAllByParentId(BigInteger parentId);
+
+    List<ProductType> findAllByParentIdIsNull();
 }

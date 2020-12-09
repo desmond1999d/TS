@@ -1,6 +1,6 @@
 <div class="subcategory-container"
-     *ngIf="horizontalReferenceSubcategories != undefined && selectedSubcategory != undefined">
-  <h1 class="subcategory-header">{{selectedSubcategory.name}}</h1>
+     *ngIf="horizontalReferenceSubcategories != undefined && (selectedSubcategory != undefined || selectedCategory != undefined)">
+  <h1 class="subcategory-header">{{selectedSubcategory ? selectedSubcategory.name : selectedCategory.name}}</h1>
   <div class="row">
     <div *ngFor="let horizontalSubcategory of horizontalReferenceSubcategories" class="card">
       <a class="subcategory-card" [ngClass]="{'active': horizontalSubcategory.id === subcategoryId}"

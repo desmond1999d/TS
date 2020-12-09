@@ -22,6 +22,11 @@ public class ProductTypeController {
         return productTypeService.getAllTopLevelProductTypes();
     }
 
+    @RequestMapping(value = "/by-id", method = RequestMethod.GET)
+    public ProductType getById(@RequestParam BigInteger productTypeId) {
+        return productTypeService.getProductTypeById(productTypeId);
+    }
+
     @RequestMapping(value = "/horizontal-reference", method = RequestMethod.GET)
     public List<ProductType> getHorizontalReferences(@RequestParam BigInteger productTypeId) {
         return productTypeService.getAllHorizontalRefs(productTypeId);

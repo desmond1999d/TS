@@ -14,6 +14,7 @@ export class SubcategoryNavigatorComponent implements OnInit {
   public subcategoryId: number;
   public horizontalReferenceSubcategories: ProductType[];
   public selectedSubcategory: ProductType;
+  public selectedCategory: ProductType;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +30,9 @@ export class SubcategoryNavigatorComponent implements OnInit {
           this.horizontalReferenceSubcategories = horizontalReferenceSubcategories;
           this.selectedSubcategory = horizontalReferenceSubcategories.find(subcategory => subcategory.id === this.subcategoryId);
         }
+      );
+      this.productTypeService.getCategoryById(this.categoryId).subscribe(
+        category => this.selectedCategory = category
       );
     });
   }

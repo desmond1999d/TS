@@ -10,4 +10,6 @@ public interface ProductTypeService {
     List<ProductType> getAllTopLevelProductTypes();
 
     List<ProductType> getAllHorizontalRefs(BigInteger parentProductTypeId);
+
+    ProductType getProductTypeById(BigInteger productTypeId);
 }

@@ -63,11 +63,6 @@
     border: 0;
   }
 
-  .dropdown-item:hover {
-    background-color: orange;
-    transition: background-color 0.3s ease-in-out;
-  }
-
   .dropdown-item.dropdown-item-child {
     padding-left: 5%;
     padding-right: 5%;
@@ -260,6 +255,15 @@ a.dropdown-item {
   padding-right: 5%;
   margin: auto 0;
   min-height: inherit;
+  color: #212529;
+  background-color: #ece9ec;
+  text-decoration: none;
+}
+
+.navbar-dropdown-child:hover {
+  color: orange;
+  background-color: #DCD9DC;
+  transition: all 0.3s ease-in-out;
 }
 
 .dropdown:hover > .dropdown-menu {

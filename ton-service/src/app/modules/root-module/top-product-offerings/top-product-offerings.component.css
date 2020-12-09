@@ -49,6 +49,7 @@
   font-size: 16pt;
   display: inline-block;
   vertical-align: middle;
+  text-decoration: none;
 }
 
 .thumbnail-label-container {

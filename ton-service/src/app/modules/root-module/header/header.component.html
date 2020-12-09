@@ -21,16 +21,17 @@
           <div class="li-container">
             <a href="#" *ngFor="let productType of productTypeHierarchy"
                class="dropdown-item d-flex align-items-center">
-              <div *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link" [routerLink]="['/category', productType.id]">
+              <a *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link" [routerLink]="['/category', productType.id]">
                 {{productType.name}}
-              </div>
+              </a>
               <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
-                <div id="{{productType.name}}" class="navbar-dropdown-child dropdown-toggle" role="button"
+                <a id="{{productType.name}}" class="navbar-dropdown-child dropdown-toggle" role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
-                     (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)">
+                     (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)"
+                      [routerLink]="['/category', productType.id]">
                   {{productType.name}}
-                </div>
+                </a>
                 <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
                      (mouseleave)="selfHide($event)" id="{{productType.name + '_sub'}}"
                      aria-labelledby="navbarDropdownChild">
