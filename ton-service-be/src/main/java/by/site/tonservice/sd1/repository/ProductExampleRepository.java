@@ -11,4 +11,8 @@ import java.util.List;
 public interface ProductExampleRepository extends CrudRepository<ProductExample, BigInteger> {
 
     List<ProductExample> getAllByProductTypeId(BigInteger productTypeId);
+
+    List<ProductExample> getAllByProductTypeIdAndDisplayOrderLessThan(BigInteger productType, int displayOrder);
+
+    List<ProductExample> getAllByProductTypeIdInAndDisplayOrderLessThan(List<BigInteger> subcategoryIds, int maxDisplayPriority);
 }

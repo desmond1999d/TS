@@ -1,0 +1,37 @@
+// Use Bootstrap breakpoints for consistency.
+$bootstrap-sm: 576px;
+$bootstrap-md: 768px;
+$bootstrap-lg: 992px;
+$bootstrap-xl: 1200px;
+ ,
+
+.carousel-item {
+  img {
+    height: 40vw;
+    object-fit: scale-down;
+
+    @media (max-width: $bootstrap-sm) {
+      height: 350px;
+    }
+  }
+}
+
+.carousel-item.active {
+  background-color: transparent !important;
+}
+
+.modal-body {
+  background-color: transparent !important;
+}
+
+.modal-content {
+  background-color: transparent !important;
+  border: none;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 1000px;
+    margin: 1.75rem auto;
+  }
+}

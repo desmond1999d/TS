@@ -15,4 +15,10 @@ export class ProductExampleService {
     let params = new HttpParams().set('productTypeId', productTypeId.toString());
     return this.http.get<ProductExample[]>('api/product-examples', {params: params, headers: HttpService.httpOptions.headers});
   }
+
+  public getProductCategoryPreview(productTypeId: number): Observable<ProductExample[]> {
+    let params = new HttpParams().set('productTypeId', productTypeId.toString());
+    return this.http.get<ProductExample[]>('api/product-examples/category-examples',
+      {params: params, headers: HttpService.httpOptions.headers});
+  }
 }

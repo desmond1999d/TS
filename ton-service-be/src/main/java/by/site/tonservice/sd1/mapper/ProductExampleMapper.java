@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductExampleMapper implements Mapper<ProductExample, ProductExampleDto> {
@@ -18,12 +20,22 @@ public class ProductExampleMapper implements Mapper<ProductExample, ProductExamp
         productExampleDto.setCompanyName(productExample.getCompanyName());
         productExampleDto.setDisplayOrder(productExample.getDisplayOrder());
         try {
+            // TODO: Add cache if possible
             productExampleDto.setImage(FileUtils.readFileToByteArray(new File(productExample.getImgSource())));
         } catch (IOException exception) {
             exception.printStackTrace();
             return null;
         }
         return productExampleDto;
+    }
+
+    @Override
+    public List<ProductExampleDto> map(List<ProductExample> t) {
+        List<ProductExampleDto> result = new ArrayList<>();
+        for (ProductExample productExample : t) {
+            result.add(map(productExample));
+        }
+        return result;
     }
 
 }

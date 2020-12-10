@@ -8,4 +8,6 @@ import java.util.List;
 public interface ProductExampleService {
 
     List<ProductExampleDto> getProductExamplesByProductTypeId(BigInteger productTypeId);
+
+    List<ProductExampleDto> getProductCategoryExamples(BigInteger productCategoryId);
 }

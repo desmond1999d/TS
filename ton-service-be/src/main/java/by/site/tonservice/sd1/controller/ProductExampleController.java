@@ -22,6 +22,11 @@ public class ProductExampleController {
         return productExampleService.getProductExamplesByProductTypeId(productTypeId);
     }
 
+    @RequestMapping(value = "/category-examples", method = RequestMethod.GET)
+    public List<ProductExampleDto> getCategoryPreview(@Param("productTypeId") BigInteger productTypeId) {
+        return productExampleService.getProductCategoryExamples(productTypeId);
+    }
+
     @Autowired
     public void setProductExampleService(ProductExampleService productExampleService) {
         this.productExampleService = productExampleService;
