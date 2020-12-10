@@ -10,19 +10,17 @@ import {ProductTypeService} from '../../../services/ProductTypeService';
 export class FooterComponent implements OnInit {
 
   public productTypeHierarchy: ProductType[];
-  public productTypeNames: string[];
 
   constructor(private productTypeService: ProductTypeService) {
   }
 
   ngOnInit() {
-    this.productTypeNames = [];
+    this.productTypeHierarchy = [];
     this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
-      this.productTypeHierarchy = productTypeHierarchy;
-      for (let productType of this.productTypeHierarchy) {
-        this.productTypeNames.push(productType.name);
+      for (let productType of productTypeHierarchy) {
+        this.productTypeHierarchy.push(productType);
         for (let child of productType.children) {
-          this.productTypeNames.push(child.name);
+          this.productTypeHierarchy.push(child);
         }
       }
     });

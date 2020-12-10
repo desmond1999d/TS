@@ -33,7 +33,7 @@
         </div>
         <div class="col-10 mt-auto mb-auto">
           <div class="contact-header">
-            <a href="/contacts">Офис в центре Гродно</a>
+            <a routerLink="/contacts">Офис в центре Гродно</a>
           </div>
           <div class="comment">Получите бесплатную консультацию</div>
         </div>
@@ -84,8 +84,10 @@
         <h5 class="text-uppercase">Услуги</h5>
         <div class="footer-nav-item-container">
           <div class="col-md-4 pl-0" *ngFor="let i of [0, 1, 2]">
-            <div *ngFor="let productTypeName of productTypeNames;  let j = index">
-              <div class="footer-nav-item" *ngIf="j % 3 === i">{{productTypeName}}</div>
+            <div *ngFor="let productType of productTypeHierarchy;  let j = index">
+              <div class="footer-nav-item" *ngIf="j % 3 === i"
+                   [routerLink]="productType.parentId ? ['/category', productType.parentId, 'subcategory', productType.id]
+                    : ['/category', productType.id]">{{productType.name}}</div>
             </div>
           </div>
         </div>
@@ -93,8 +95,8 @@
       <div class="col-md-3">
         <!-- Content -->
         <h5 class="text-uppercase">Footer Content</h5>
-        <p class="contacts-muted">г.Гродно, ул. Октябрьская, дом 4,<br>Время работы: ПН-ПТ 09:00-17:00<br>(029) 7800023
-        </p>
+        <div class="contacts-muted" routerLink="/contacts">г.Гродно, ул. Октябрьская, дом 4,<br>Время работы: ПН-ПТ 09:00-17:00<br>(029) 7800023
+        </div>
       </div>
     </div>
   </div>
