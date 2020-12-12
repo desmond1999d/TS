@@ -19,8 +19,7 @@ import { SubcategoryNavigatorComponent } from './subcategoy-navigator/subcategor
 import { SubcategoryExamplesComponent } from './subcategory-examples/subcategory-examples.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { CategoryComponent } from './category/category.component';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeaderComponent,
@@ -43,7 +42,9 @@ import { CategoryComponent } from './category/category.component';
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
