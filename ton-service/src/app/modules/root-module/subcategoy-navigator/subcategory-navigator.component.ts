@@ -10,7 +10,7 @@ import {ProductTypeService} from "../../../services/ProductTypeService";
 })
 export class SubcategoryNavigatorComponent implements OnInit {
 
-  private categoryId: number;
+  public categoryId: number;
   public subcategoryId: number;
   public horizontalReferenceSubcategories: ProductType[];
   public selectedSubcategory: ProductType;
