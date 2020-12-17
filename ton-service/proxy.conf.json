@@ -1,7 +1,6 @@
 {
   "/api/*": {
     "target": {
-//      "host": "0.0.0.0",
       "host": "165.22.16.238",
       "protocol": "http:",
       "port": 1739
