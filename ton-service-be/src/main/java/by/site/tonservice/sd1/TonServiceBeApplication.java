@@ -9,6 +9,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class TonServiceBeApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(TonServiceBeApplication.class, args);
-        context.getBean(DbInitializer.class).initProductExamples();
+//        context.getBean(DbInitializer.class).initProductExamples();
     }
 }
