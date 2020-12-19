@@ -7,25 +7,25 @@
 <div class="products-grid container-fluid ml-auto mr-auto">
   <div class="row row-cols-3">
     <div class="col" *ngFor="let productOffering of productTypeHierarchy; let size = index;">
-      <div *ngIf="size < maxItemsCount" class="thumbnail mb-3 mt-3 show-animation" >
+      <div *ngIf="size < maxItemsCount" class="thumbnail mb-3 mt-3 show-animation" [routerLink]="['/category', productOffering.id]">
         <div class="thumbnail-content position-relative">
           <img class="img-thumbnail"
                src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
-          <div class="description-container" [routerLink]="['/category', productOffering.id]">
+          <div class="description-container">
             <div class="product-description">
               {{productOffering.description}}
             </div>
           </div>
         </div>
         <div class="thumbnail-label-container">
-          <div class="thumbnail-label" [routerLink]="['/category', productOffering.id]">{{productOffering.name}}</div>
+          <div class="thumbnail-label">{{productOffering.name}}</div>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="ml-auto mr-auto">
-      <div class="btn show-btn hide-show-btn" (click)="showMore()">Больше</div>
+      <div class="btn show-btn hide-show-btn" *ngIf="productTypeHierarchy && productTypeHierarchy.length !== 0" (click)="showMore()">Больше</div>
       <div class="btn hide-btn hide-show-btn" (click)="showLess()">Меньше</div>
     </div>
   </div>
@@ -33,7 +33,7 @@
 
 <div id="m-products-slider">
   <div *ngFor="let productOffering of productTypeHierarchy">
-    <div class="thumbnail mb-3 mt-3" routerLink="#">
+    <div class="thumbnail mb-3 mt-3" [routerLink]="['/category', productOffering.id]">
       <div class="thumbnail-content position-relative">
         <img class="img-thumbnail"
              src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
