@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {HttpService} from "./http.service";
 
 @Injectable()
 export class ContactUsService {
@@ -15,6 +16,6 @@ export class ContactUsService {
     formData.append('name', name);
     formData.append('email', email);
     formData.append('content', content);
-    return this.http.post('api/contact-us', formData, {});
+    return this.http.post(HttpService.url + '/api/contact-us', formData, {});
   }
 }
