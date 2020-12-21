@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mr-auto ml-auto p-0">
   <a class="navbar-brand" routerLink="">Navbar</a>
   <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+       (click)="closeAllHierarchy($event)">
     <!--<span class="navbar-toggler-icon"></span>-->
     <div class="menu-btn__burger"></div>
   </div>
@@ -14,7 +15,8 @@
       <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true"
-           aria-expanded="false">
+           aria-expanded="false"
+           (click)="closeAllHierarchy($event)">
           Услуги
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown" id="product-types-dropdown">
@@ -25,7 +27,7 @@
                 {{productType.name}}
               </a>
               <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
-                <a id="{{productType.name}}" class="navbar-dropdown-child dropdown-toggle" role="button"
+                <a id="{{productType.id}}" class="navbar-dropdown-child dropdown-toggle" role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
                      (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)"
@@ -33,7 +35,7 @@
                   {{productType.name}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
-                     (mouseleave)="selfHide($event)" id="{{productType.name + '_sub'}}"
+                     (mouseleave)="selfHide($event)" id="{{productType.id + '_sub'}}"
                      aria-labelledby="navbarDropdownChild">
                   <div class="li-container-child">
                     <a *ngFor="let productTypeChild of productType.children"

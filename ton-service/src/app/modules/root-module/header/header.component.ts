@@ -24,13 +24,15 @@ export class HeaderComponent implements OnInit {
   }
 
   public openSideBar(event) {
-      event.stopPropagation();
+    if (document.documentElement.clientWidth > 991) {
       document.getElementById(event.target.id + '_sub').classList.add('show');
+    }
   }
 
   public closeSideBar(event) {
-      event.stopPropagation();
+    if (document.documentElement.clientWidth > 991) {
       document.getElementById(event.target.id + '_sub').classList.remove('show');
+    }
   }
 
   public openDropDown(event) {
@@ -66,6 +68,15 @@ export class HeaderComponent implements OnInit {
       element.classList.remove('show');
     } else {
       document.getElementById(event.target.id + '_sub').classList.add('show');
+    }
+  }
+
+  public closeAllHierarchy(event) {
+    if (document.documentElement.clientWidth <= 991) {
+      let elements = document.getElementsByClassName("dropdown-menu-child");
+      Array.from(elements).forEach(function (element) {
+        element.classList.remove('show');
+      });
     }
   }
 }
