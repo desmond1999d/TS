@@ -15,7 +15,7 @@
 
         <div id="carouselExample" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <div *ngFor="let example of this.examples; let i = index" class="carousel-item active"
+            <div *ngFor="let example of this.examples; let i = index" class="carousel-item"
                  [ngClass]="{'active': i === 0}">
               <img [src]="example.image" class="d-block w-100 active-image">
             </div>

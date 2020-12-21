@@ -17,7 +17,7 @@
           <div class="carousel-inner">
             <div *ngFor="let example of this.examples; let i = index" class="carousel-item active"
                  [ngClass]="{'active': i === 0}">
-              <img [src]="example.image" class="d-block w-100">
+              <img [src]="example.image" class="d-block w-100 active-image">
             </div>
 
             <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">

@@ -24,16 +24,26 @@ export class HeaderComponent implements OnInit {
   }
 
   public openSideBar(event) {
-    if (document.documentElement.clientWidth > 991) {
       event.stopPropagation();
       document.getElementById(event.target.id + '_sub').classList.add('show');
-    }
   }
 
   public closeSideBar(event) {
-    if (document.documentElement.clientWidth > 991) {
       event.stopPropagation();
       document.getElementById(event.target.id + '_sub').classList.remove('show');
+  }
+
+  public openDropDown(event) {
+    if (document.documentElement.clientWidth > 991) {
+      event.stopPropagation();
+      document.getElementById('product-types-dropdown').classList.add('show');
+    }
+  }
+
+  public closeDropDown(event) {
+    if (document.documentElement.clientWidth > 991) {
+      event.stopPropagation();
+      document.getElementById('product-types-dropdown').classList.remove('show');
     }
   }
 

@@ -71,8 +71,8 @@
   }
 
   .dropdown-item.dropdown-item-child:hover {
-    color: orange;
-    background-color: #DCD9DC;
+    color: white;
+    background-color: #518FF5;
     transition: all 0.3s ease-in-out;
   }
 
@@ -155,7 +155,7 @@
   }
 
   .dropdown-item:hover {
-    color: orange;
+    color: white;
     transition: color 0.3s ease-in-out;
   }
 
@@ -177,7 +177,7 @@
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-  color: orange;
+  color: #518FF5;
   transition: color 0.3s ease-in-out;
 }
 
@@ -261,8 +261,8 @@ a.dropdown-item {
 }
 
 .navbar-dropdown-child:hover {
-  color: orange;
-  background-color: #DCD9DC;
+  color: white;
+  background-color: #518FF5;
   transition: all 0.3s ease-in-out;
 }
 
