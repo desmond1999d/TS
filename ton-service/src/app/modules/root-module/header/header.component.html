@@ -38,7 +38,7 @@
                      (mouseleave)="selfHide($event)" id="{{productType.id + '_sub'}}"
                      aria-labelledby="navbarDropdownChild">
                   <div class="li-container-child">
-                    <a *ngFor="let productTypeChild of productType.children"
+                    <a *ngFor="let productTypeChild of productType.children" (click)="closeNavbar($event)"
                        class="dropdown-item dropdown-item-child d-flex align-items-center"
                        [routerLink]="['/category', productType.id, 'subcategory', productTypeChild.id]">{{productTypeChild.name}}</a>
                   </div>

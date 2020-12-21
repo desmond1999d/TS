@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {ProductType} from '../../../shared/ProductType';
 import 'bootstrap/dist/js/bootstrap.bundle';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-header',
@@ -66,6 +67,7 @@ export class HeaderComponent implements OnInit {
     let element = document.getElementById(event.target.id + '_sub');
     if (element.classList.contains('show')) {
       element.classList.remove('show');
+      this.closeAllHierarchy(event);
     } else {
       document.getElementById(event.target.id + '_sub').classList.add('show');
     }
@@ -78,5 +80,9 @@ export class HeaderComponent implements OnInit {
         element.classList.remove('show');
       });
     }
+  }
+
+  public closeNavbar(event) {
+    $('.navbar-collapse').collapse('hide');
   }
 }
