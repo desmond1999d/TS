@@ -19,8 +19,8 @@ export class ProductTypeService {
     return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/horizontal-reference', {params: params, headers: HttpService.httpOptions.headers});
   }
 
-  public getCategoryById(parentProductTypeId: number): Observable<ProductType> {
-    let params = new HttpParams().set('productTypeId', parentProductTypeId.toString());
+  public getCategoryById(productTypeId: number): Observable<ProductType> {
+    let params = new HttpParams().set('productTypeId', productTypeId.toString());
     return this.http.get<ProductType>(HttpService.url + '/api/product-types/by-id', {params: params, headers: HttpService.httpOptions.headers});
   }
 }

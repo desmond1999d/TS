@@ -20,6 +20,7 @@ import { SubcategoryExamplesComponent } from './subcategory-examples/subcategory
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { CategoryComponent } from './category/category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterComponent } from './router/router.component';
 
 @NgModule({
   declarations: [HeaderComponent,
@@ -36,7 +37,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SubcategoryNavigatorComponent,
     SubcategoryExamplesComponent,
     LeaveRequestComponent,
-    CategoryComponent],
+    CategoryComponent,
+    RouterComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
@@ -56,7 +58,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MainPageComponent,
     MailContactComponent,
     ContactsPageComponent,
-    MainPagePortfolioComponent
+    MainPagePortfolioComponent,
+    RouterComponent
   ]
 })
 export class RootModule {
