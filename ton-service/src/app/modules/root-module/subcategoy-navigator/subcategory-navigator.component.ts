@@ -19,22 +19,21 @@ export class SubcategoryNavigatorComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productTypeService: ProductTypeService
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.route.paramMap.subscribe(params => {
       this.categoryId = parseInt(params.get('categoryId'));
       this.subcategoryId = parseInt(params.get('subcategoryId'));
-      this.productTypeService.getHorizontalReferences(this.categoryId).subscribe(
-        horizontalReferenceSubcategories => {
-          this.horizontalReferenceSubcategories = horizontalReferenceSubcategories;
-          this.selectedSubcategory = horizontalReferenceSubcategories.find(subcategory => subcategory.id === this.subcategoryId);
+      this.productTypeService.getCategoryById(this.categoryId).subscribe(
+        category => {
+          this.selectedCategory = category;
+          this.horizontalReferenceSubcategories = this.selectedCategory.children;
+          this.selectedSubcategory = this.horizontalReferenceSubcategories.find(subcategory => subcategory.id === this.subcategoryId);
         }
       );
-      this.productTypeService.getCategoryById(this.categoryId).subscribe(
-        category => this.selectedCategory = category
-      );
     });
+  }
+
+  ngOnInit() {
   }
 
 }

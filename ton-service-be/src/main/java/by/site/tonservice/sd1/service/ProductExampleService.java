@@ -9,5 +9,11 @@ public interface ProductExampleService {
 
     List<ProductExampleDto> getProductExamplesByProductTypeId(BigInteger productTypeId);
 
+    List<ProductExampleDto> getProductExamplesByProductTypeIdWithoutPayload(BigInteger productTypeId);
+
     List<ProductExampleDto> getProductCategoryExamples(BigInteger productCategoryId);
+
+    List<ProductExampleDto> getProductCategoryExamplesWithoutPayload(BigInteger productCategoryId);
+
+    ProductExampleDto getProductCategoryExampleById(BigInteger productExampleId);
 }

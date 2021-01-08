@@ -21,9 +21,16 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.categoryId = parseInt(params.get('categoryId'));
-      this.productExampleService.getProductCategoryPreview(this.categoryId).subscribe(examples => {
+      this.productExampleService.getProductCategoryPreviewNp(this.categoryId).subscribe(examples => {
         this.examples = [];
-        examples.forEach(example => this.examples.push(new ProductExample(example)));
+        examples.forEach(example => {
+          this.productExampleService.getProductExampleById(example.id).subscribe(exampleWithPayload => {
+            this.examples.push(new ProductExample(exampleWithPayload));
+            if (this.examples.length === examples.length) {
+              this.examples.sort((example1, example2) => example1.displayOrder - example2.displayOrder);
+            }
+          });
+        });
       });
     });
   }

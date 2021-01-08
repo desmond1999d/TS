@@ -22,9 +22,24 @@ public class ProductExampleController {
         return productExampleService.getProductExamplesByProductTypeId(productTypeId);
     }
 
+    @RequestMapping(value = "/np", method = RequestMethod.GET)
+    public List<ProductExampleDto> getAllNp(@Param("productTypeId") BigInteger productTypeId) {
+        return productExampleService.getProductExamplesByProductTypeIdWithoutPayload(productTypeId);
+    }
+
     @RequestMapping(value = "/category-examples", method = RequestMethod.GET)
     public List<ProductExampleDto> getCategoryPreview(@Param("productTypeId") BigInteger productTypeId) {
         return productExampleService.getProductCategoryExamples(productTypeId);
+    }
+
+    @RequestMapping(value = "/category-examples-np", method = RequestMethod.GET)
+    public List<ProductExampleDto> getCategoryPreviewNp(@Param("productTypeId") BigInteger productTypeId) {
+        return productExampleService.getProductCategoryExamplesWithoutPayload(productTypeId);
+    }
+
+    @RequestMapping(value = "/by-id", method = RequestMethod.GET)
+    public ProductExampleDto getProductCategoryExampleById(@Param("id") BigInteger id) {
+        return productExampleService.getProductCategoryExampleById(id);
     }
 
     @Autowired

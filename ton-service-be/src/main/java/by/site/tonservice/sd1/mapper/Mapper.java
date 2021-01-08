@@ -7,4 +7,6 @@ public interface Mapper<T, M> {
     M map(T t);
 
     List<M> map(List<T> t);
+
+    List<M> mapWithNoPayload(List<T> t);
 }

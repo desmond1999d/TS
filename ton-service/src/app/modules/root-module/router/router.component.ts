@@ -12,9 +12,9 @@ import {ContactsPageComponent} from "../contacts-page/contacts-page.component";
 })
 export class RouterComponent implements OnInit {
 
-  private category: ProductType;
-  private subcategory: ProductType;
-  private isContacts: boolean;
+  public category: ProductType;
+  public subcategory: ProductType;
+  public isContacts: boolean;
 
   constructor(
     private route: ActivatedRoute,
