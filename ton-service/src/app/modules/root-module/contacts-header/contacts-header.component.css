@@ -27,6 +27,12 @@
 
 @media (max-width: 441px) {
   .contact-pr-1 {
-    font-size: 11px;
+    font-size: 10px !important;
   }
+}
+
+.contact-pr-1 {
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
 }

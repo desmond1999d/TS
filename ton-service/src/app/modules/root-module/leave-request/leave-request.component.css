@@ -1,5 +1,5 @@
 .order-pane {
-  background-image: linear-gradient(to right, #ff4700 20%, orange 90%);
+  background-image: linear-gradient(to right, #ff4700 20%, #FF2400 90%);
   width: 100%;
 }
 
@@ -7,7 +7,7 @@
   background-color: white;
   border-color: white;
   border-width: medium;
-  color: orange;
+  color: #FF2400;
 }
 
 .order-button:hover {

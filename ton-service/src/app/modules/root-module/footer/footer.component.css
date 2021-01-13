@@ -50,6 +50,11 @@
   .order-col{
     padding: 10px 0;
   }
+
+  img.contact-logo {
+    max-height: 30px !important;
+    max-width: 30px !important;
+  }
 }
 
 @media (max-width: 1350px) {
@@ -76,8 +81,8 @@
 }
 
 img.contact-logo {
-  max-height: 50px;
-  max-width: 50px;
+  max-height: 40px;
+  max-width: 40px;
   filter: invert(0.6);
   margin-right: 20px;
 }

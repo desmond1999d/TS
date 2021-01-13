@@ -1,29 +1,29 @@
 .send {
-  color: orange;
+  color: #FF2400;
   text-transform: uppercase;
   border-radius: 0;
 }
 
 .send {
   background-color: white;
-  border-color: orange;
+  border-color: #FF2400;
   border-width: medium;
 }
 
 .send:hover {
-  background-color: orange;
+  background-color: #FF2400;
   color: white;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.outline-orange {
+.outline-#FF2400 {
   border-radius: 0;
   border-color: white;
   border-width: 3px;
 }
 
-.outline-orange:focus {
-  border-color: orange;
+.outline-#FF2400:focus {
+  border-color: #FF2400;
   box-shadow: none;
   outline: 0 none;
 }

@@ -11,12 +11,12 @@ body {
 }
 
 .active {
-  background-color: orange !important;
+  background-color: #FF2400 !important;
   color: white !important;
 }
 
 .hide-show-btn:hover {
-  background-color: orange;
+  background-color: #FF2400;
   color: white;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -24,7 +24,7 @@ body {
 .hide-show-btn {
   background-color: white;
   border: medium white;
-  color: orange;
+  color: #FF2400;
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -41,4 +41,13 @@ body {
 
 .show-animation {
   animation: ShowAnimation 1s;
+}
+
+@font-face {
+  font-family: "baselineFontFamily";
+  src: url("./assets/fonts/GothamPro.ttf");
+}
+
+* {
+  font-family: "baselineFontFamily", sans-serif;
 }

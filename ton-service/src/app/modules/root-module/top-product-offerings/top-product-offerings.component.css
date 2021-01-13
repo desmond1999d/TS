@@ -15,7 +15,7 @@
 }
 
 .thumbnail:hover {
-  color: orange;
+  color: #FF2400;
   transition: color .3s ease-in-out;
 }
 

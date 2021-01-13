@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
 
 * {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -moz-user-select: none; /* Mozilla Firefox */
   -ms-user-select: none; /* Internet Explorer (не поддерживается) */
   -webkit-user-select: none; /* Google Chrome, Opera Next, Safari */
@@ -59,7 +58,7 @@ h1.carousel-header {
     bottom: -100px;
     position: absolute;
     background-color: transparent;
-    border-color: orange;
+    border-color: #FF2400;
     border-width: .5mm;
     width: 200px;
     left: 50%;
@@ -67,7 +66,7 @@ h1.carousel-header {
   }
 
   .carousel-details:hover {
-    background-color: orange;
+    background-color: #FF2400;
     color: white;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
@@ -173,7 +172,7 @@ h1.carousel-header {
 }
 
 .carousel-item-details, .carousel-details {
-  color: orange;
+  color: #FF2400;
   text-transform: uppercase;
   border-radius: 0;
 }
