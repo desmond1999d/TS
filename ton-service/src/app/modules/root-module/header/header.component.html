@@ -1,65 +1,69 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mr-auto ml-auto p-0">
-  <a class="navbar-brand" routerLink="">
-    <img src="../../../../assets/icons/main-logo.png" height="40">
-  </a>
-  <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-       (click)="closeAllHierarchy($event)">
-    <!--<span class="navbar-toggler-icon"></span>-->
-    <div class="menu-btn__burger"></div>
-  </div>
+  <div class="container">
+    <a class="navbar-brand" routerLink="">
+      <img src="../../../../assets/icons/main-logo.png" height="40">
+    </a>
+    <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+         (click)="closeAllHierarchy($event)">
+      <!--<span class="navbar-toggler-icon"></span>-->
+      <div class="menu-btn__burger"></div>
+    </div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%;">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true"
-           aria-expanded="false"
-           (click)="closeAllHierarchy($event)">
-          Услуги
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown" id="product-types-dropdown">
-          <div class="li-container">
-            <a href="#" *ngFor="let productType of productTypeHierarchy"
-               class="dropdown-item d-flex align-items-center">
-              <a *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link" [routerLink]="['/category', productType.id]">
-                {{productType.name}}
-              </a>
-              <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
-                <a id="{{productType.id}}" class="navbar-dropdown-child dropdown-toggle" role="button"
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%;">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true"
+             aria-expanded="false"
+             (click)="closeAllHierarchy($event)">
+            Услуги
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown"
+               id="product-types-dropdown">
+            <div class="li-container">
+              <a href="#" *ngFor="let productType of productTypeHierarchy"
+                 class="dropdown-item d-flex align-items-center">
+                <a *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link"
+                   [routerLink]="['/category', productType.id]">
+                  {{productType.name}}
+                </a>
+                <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
+                  <a id="{{productType.id}}" class="navbar-dropdown-child dropdown-toggle" role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
                      (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)"
-                      [routerLink]="['/category', productType.id]">
-                  {{productType.name}}
-                </a>
-                <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
-                     (mouseleave)="selfHide($event)" id="{{productType.id + '_sub'}}"
-                     aria-labelledby="navbarDropdownChild">
-                  <div class="li-container-child">
-                    <a *ngFor="let productTypeChild of productType.children" (click)="closeNavbar($event)"
-                       class="dropdown-item dropdown-item-child d-flex align-items-center"
-                       [routerLink]="['/category', productType.id, 'subcategory', productTypeChild.id]">{{productTypeChild.name}}</a>
+                     [routerLink]="['/category', productType.id]">
+                    {{productType.name}}
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
+                       (mouseleave)="selfHide($event)" id="{{productType.id + '_sub'}}"
+                       aria-labelledby="navbarDropdownChild">
+                    <div class="li-container-child">
+                      <a *ngFor="let productTypeChild of productType.children" (click)="closeNavbar($event)"
+                         class="dropdown-item dropdown-item-child d-flex align-items-center"
+                         [routerLink]="['/category', productType.id, 'subcategory', productTypeChild.id]">{{productTypeChild.name}}</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </div>
+            <div></div>
           </div>
-        <div></div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Клиенты</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Новинки</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/contacts">Контакты</a>
-      </li>
-    </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Клиенты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Новинки</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacts">Контакты</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
