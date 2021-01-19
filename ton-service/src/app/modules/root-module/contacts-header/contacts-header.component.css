@@ -7,6 +7,13 @@
   max-height: 24px;
 }
 
+@media (min-width: 992px) {
+  .contacts-container {
+    justify-content: space-between;
+    width: 1000px;
+  }
+}
+
 @media (max-width: 991px) {
   .contact-pr-4 {
     display: none;

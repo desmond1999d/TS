@@ -18,8 +18,6 @@
 }
 
 .navbar-brand {
-  padding: 0 15px;
-  height: 60px;
   line-height: 60px;
 }
 
@@ -36,6 +34,10 @@
     padding-top: 26.5px;
     padding-bottom: 26.5px;
     line-height: 27px;
+  }
+
+  .navbar-nav {
+    margin-left: auto;
   }
 
   .dropdown-menu:after {
