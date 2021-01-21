@@ -3,26 +3,10 @@
 }
 
 .router-container {
-  margin-left: auto;
-  margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
   line-height: 48px;
   color: #f6f6f6 !important;
-}
-
-@media (min-width: 992px) {
-  .router-container {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (min-width: 991px) {
-  .router-container {
-    width: 90%;
-  }
 }
 
 a {

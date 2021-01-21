@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mr-auto ml-auto p-0">
-  <div class="container">
+  <div class="container-fluid container-mw">
     <a class="navbar-brand" routerLink="">
       <img src="../../../../assets/icons/main-logo.png" height="40">
     </a>
@@ -15,12 +15,15 @@
         <li class="nav-item">
           <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Услуги</a>
+        </li>
         <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true"
              aria-expanded="false"
              (click)="closeAllHierarchy($event)">
-            Услуги
+            Портфолио
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown"
                id="product-types-dropdown">
@@ -53,9 +56,6 @@
             </div>
             <div></div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Клиенты</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Новинки</a>

@@ -1,7 +1,7 @@
 <app-router></app-router>
 <app-subcategory-navigator></app-subcategory-navigator>
 
-<div class="container pb-2">
+<div class="container-fluid container-mw pb-2">
   <div class="card-columns" data-toggle="modal" data-target="#exampleModal">
     <div *ngFor="let example of this.examples; let i = index" class="pb-2" data-toggle="modal">
       <img [src]="example.image" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i">

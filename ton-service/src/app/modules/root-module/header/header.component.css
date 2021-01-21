@@ -29,6 +29,11 @@
 
 /*non collapsed*/
 @media (min-width: 992px) {
+
+  .navbar {
+    height: 120px !important;
+  }
+
   .navbar-nav > li > a {
     /* (60px - line-height of 27px) / 2 = 16.5px */
     padding-top: 26.5px;
@@ -101,8 +106,8 @@
     padding-left: 15px;
   }
 
-  .navbar {
-    width: 90%;
+  .navbar-brand {
+    margin-left: 15px;
   }
 
   .nav-item {

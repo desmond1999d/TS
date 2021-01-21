@@ -1,10 +1,12 @@
 <div class="overflow-hidden gradient">
-  <div class="row text-center router-container">
-    <a routerLink="">Главная</a>
-    <div class="divider"> / </div>
-    <a *ngIf="isContacts" routerLink="/contacts">Контакты</a>
-    <a *ngIf="category" [routerLink]="['/category', category.id]">{{category.name}}</a>
-    <div *ngIf="!isContacts && subcategory" class="divider"> / </div>
-    <a *ngIf="subcategory" [routerLink]="['/category', category.id, 'subcategory', subcategory.id]" class="disabled">{{subcategory.name}}</a>
+  <div class="container-fluid container-mw">
+    <div class="row text-center router-container">
+      <a routerLink="">Главная</a>
+      <div class="divider"> /</div>
+      <a *ngIf="isContacts" routerLink="/contacts">Контакты</a>
+      <a *ngIf="category" [routerLink]="['/category', category.id]">{{category.name}}</a>
+      <div *ngIf="!isContacts && subcategory" class="divider"> /</div>
+      <a *ngIf="subcategory" [routerLink]="['/category', category.id, 'subcategory', subcategory.id]" class="disabled">{{subcategory.name}}</a>
+    </div>
   </div>
 </div>
