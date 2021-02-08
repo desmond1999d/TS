@@ -3,6 +3,7 @@ export class ProductExample {
   public id: number;
   public productTypeId: number;
   public image: string;
+  public formattedImage: string;
   public companyName: string;
   public displayOrder: number;
 
@@ -11,7 +12,7 @@ export class ProductExample {
     this.productTypeId = dto.productTypeId;
     this.companyName = dto.companyName;
     this.displayOrder = dto.displayOrder;
-    this.image = 'data:image/jpg;base64,' + dto.image;
+    this.formattedImage = 'data:image/jpg;base64,' + dto.image;
   }
 
 }

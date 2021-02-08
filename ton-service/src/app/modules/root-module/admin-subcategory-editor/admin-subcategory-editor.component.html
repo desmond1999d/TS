@@ -1,0 +1,19 @@
+<div class="container pb-2">
+  <div class="card-columns" data-toggle="modal" data-target="#exampleModal">
+    <div *ngFor="let example of this.examples; let i = index" class="pb-2" data-toggle="modal">
+      <img [src]="example.formattedImage" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i">
+      <div class="mt-2">
+        <label>
+          <input [id]="example.id" (change)="changeDisplayOrder($event, example)" [placeholder]="example.displayOrder">
+        </label>
+        <button (click)="remove($event, example)">Удалить</button>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid container-mw pt-4">
+    <input type="file" class="outline-#FF2400"
+           id="attachFile" (change)="uploadFile($event)">
+    <button (click)="addProductExample()">Add</button>
+    <button (click)="submit()">Submit</button>
+  </div>
+</div>

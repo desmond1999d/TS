@@ -21,6 +21,7 @@ import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import { CategoryComponent } from './category/category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterComponent } from './router/router.component';
+import { AdminSubcategoryEditorComponent } from './admin-subcategory-editor/admin-subcategory-editor.component';
 
 @NgModule({
   declarations: [HeaderComponent,
@@ -38,7 +39,8 @@ import { RouterComponent } from './router/router.component';
     SubcategoryExamplesComponent,
     LeaveRequestComponent,
     CategoryComponent,
-    RouterComponent],
+    RouterComponent,
+    AdminSubcategoryEditorComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),

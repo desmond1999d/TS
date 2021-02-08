@@ -15,4 +15,6 @@ public interface ProductExampleRepository extends CrudRepository<ProductExample,
     List<ProductExample> getAllByProductTypeIdAndDisplayOrderLessThan(BigInteger productType, int displayOrder);
 
     List<ProductExample> getAllByProductTypeIdInAndDisplayOrderLessThan(List<BigInteger> subcategoryIds, int maxDisplayPriority);
+
+    List<ProductExample> findByIdIn(List<BigInteger> ids);
 }

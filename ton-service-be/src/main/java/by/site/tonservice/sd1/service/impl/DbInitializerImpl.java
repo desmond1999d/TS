@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class DbInitializerImpl implements DbInitializer {
 
-    private static final String BASE_DIR = "../Examples";
+    public static final String BASE_DIR = "../Examples";
 
     private ProductExampleRepository productExampleRepository;
 

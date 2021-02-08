@@ -1,6 +1,10 @@
 {
   "/api/*": {
-    "target": "http://165.22.16.238:1739",
+    "target": {
+      "host": "localhost",
+      "protocol": "http:",
+      "port": 1739
+    },
     "secure": false,
     "logLevel": "info"
   }

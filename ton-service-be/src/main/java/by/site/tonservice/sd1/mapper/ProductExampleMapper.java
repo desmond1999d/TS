@@ -23,7 +23,17 @@ public class ProductExampleMapper implements Mapper<ProductExample, ProductExamp
         return productExampleDto;
     }
 
-    private ProductExampleDto mapWithNoPayload(ProductExample productExample) {
+    @Override
+    public ProductExample unmap(ProductExampleDto productExampleDto) {
+        ProductExample productExample = new ProductExample();
+        productExample.setId(productExampleDto.getId());
+        productExample.setProductTypeId(productExampleDto.getProductTypeId());
+        productExample.setDisplayOrder(productExampleDto.getDisplayOrder());
+        productExample.setCompanyName(productExampleDto.getCompanyName());
+        return productExample;
+    }
+
+    public ProductExampleDto mapWithNoPayload(ProductExample productExample) {
         ProductExampleDto productExampleDto = new ProductExampleDto();
         productExampleDto.setId(productExample.getId());
         productExampleDto.setProductTypeId(productExample.getProductTypeId());
@@ -35,7 +45,9 @@ public class ProductExampleMapper implements Mapper<ProductExample, ProductExamp
     private void addPayload(ProductExampleDto productExampleDto, ProductExample productExample) {
         try {
             // TODO: Add cache if possible
-            productExampleDto.setImage(FileUtils.readFileToByteArray(new File(productExample.getImgSource())));
+            if (productExample.getImgSource() != null) {
+                productExampleDto.setImage(FileUtils.readFileToByteArray(new File(productExample.getImgSource())));
+            }
         } catch (IOException exception) {
             exception.printStackTrace();
         }

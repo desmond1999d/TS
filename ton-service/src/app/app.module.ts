@@ -9,6 +9,7 @@ import {ProductTypeService} from './services/ProductTypeService';
 import {HttpService} from './services/http.service';
 import {ProductExampleService} from "./services/ProductExampleService";
 import {ContactUsService} from "./services/ContactUsService";
+import {AdminService} from "./services/AdminService";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ContactUsService} from "./services/ContactUsService";
     ProductTypeService,
     ProductExampleService,
     ContactUsService,
-    HttpService
+    HttpService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

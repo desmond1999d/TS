@@ -4,7 +4,7 @@
 <div class="container-fluid container-mw pb-2">
   <div class="card-columns" data-toggle="modal" data-target="#exampleModal">
     <div *ngFor="let example of this.examples; let i = index" class="pb-2" data-toggle="modal">
-      <img [src]="example.image" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i">
+      <img [src]="example.formattedImage" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i">
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
           <div class="carousel-inner">
             <div *ngFor="let example of this.examples; let i = index" class="carousel-item active"
                  [ngClass]="{'active': i === 0}">
-              <img [src]="example.image" class="d-block w-100 active-image">
+              <img [src]="example.formattedImage" class="d-block w-100 active-image">
             </div>
 
             <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">

@@ -19,7 +19,10 @@ public class TonServiceBeApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**").allowedOrigins("http://165.22.16.238");
+                registry
+                        .addMapping("/api/**")
+                        .allowedOrigins("http://165.22.16.238") //, "http://192.168.0.104", "http://localhost:1738")
+                        .allowedMethods("GET", "PUT", "POST", "DELETE", "OPTIONS");
             }
         };
     }
