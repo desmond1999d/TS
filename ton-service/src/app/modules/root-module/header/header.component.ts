@@ -21,6 +21,17 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
       this.productTypeHierarchy = productTypeHierarchy;
+      this.productTypeHierarchy.sort((a, b) => {
+        if (a.children.length <= 1 && b.children.length <= 1) {
+          return b.id - a.id;
+        } else if (a.children.length <= 1) {
+          return 11;
+        } else if (b.children.length <= 1) {
+          return -1;
+        } else {
+          return b.id - a.id;
+        }
+      })
     });
   }
 

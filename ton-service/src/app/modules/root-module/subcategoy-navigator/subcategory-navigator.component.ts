@@ -27,7 +27,9 @@ export class SubcategoryNavigatorComponent implements OnInit {
         category => {
           this.selectedCategory = category;
           this.horizontalReferenceSubcategories = this.selectedCategory.children;
-          this.selectedSubcategory = this.horizontalReferenceSubcategories.find(subcategory => subcategory.id === this.subcategoryId);
+          if (this.horizontalReferenceSubcategories.length > 1) {
+            this.selectedSubcategory = this.horizontalReferenceSubcategories.find(subcategory => subcategory.id === this.subcategoryId);
+          }
         }
       );
     });

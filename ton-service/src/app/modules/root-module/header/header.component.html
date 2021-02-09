@@ -30,11 +30,11 @@
             <div class="li-container">
               <a href="#" *ngFor="let productType of productTypeHierarchy"
                  class="dropdown-item d-flex align-items-center">
-                <a *ngIf="productType.children.length === 0" class="navbar-dropdown-child sub-nav-link"
-                   [routerLink]="['/category', productType.id]">
+                <a *ngIf="productType.children.length === 1" class="navbar-dropdown-child sub-nav-link"
+                   [routerLink]="['/category', productType.id, 'subcategory', productType.children[0].id]">
                   {{productType.name}}
                 </a>
-                <div *ngIf="productType.children.length !== 0" class="dropright sub-nav-link">
+                <div *ngIf="productType.children.length > 1" class="dropright sub-nav-link">
                   <a id="{{productType.id}}" class="navbar-dropdown-child dropdown-toggle" role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
