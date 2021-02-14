@@ -11,7 +11,7 @@ public interface Mapper<T, M> {
 
     T unmap(M m);
 
-    ProductExampleDto mapWithNoPayload(ProductExample productExample);
+    M mapWithNoPayload(T productExample);
 
     List<M> map(List<T> t);
 

@@ -21,8 +21,10 @@ export class TopProductOfferingsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     $(".hide-btn").hide();
-    this.productTypeService.getTopServiceHierarchy().toPromise().then(productTypeHierarchy => {
-      this.productTypeHierarchy = productTypeHierarchy;
+    this.productTypeService.getTopServiceHierarchyWithThumbnails().toPromise().then(productTypeHierarchy => {
+      this.productTypeHierarchy = productTypeHierarchy
+        .filter(productType => productType.thumbnail != null)
+        .map(productType => new ProductType(productType));
     });
   }
 

@@ -10,7 +10,7 @@
       <div *ngIf="size < maxItemsCount" class="thumbnail mb-3 mt-3 show-animation" [routerLink]="['/category', productOffering.id]">
         <div class="thumbnail-content position-relative">
           <img class="img-thumbnail"
-               src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
+               [src]="productOffering.thumbnail">
           <div class="description-container">
             <div class="product-description">
               {{productOffering.description}}
@@ -36,7 +36,7 @@
     <div class="thumbnail mb-3 mt-3" [routerLink]="['/category', productOffering.id]">
       <div class="thumbnail-content position-relative">
         <img class="img-thumbnail"
-             src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
+             [src]="productOffering.thumbnail">
         <div class="description-container">
           <div class="product-description">
             {{productOffering.name}}

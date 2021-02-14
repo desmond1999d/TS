@@ -20,15 +20,17 @@ public class ProductType {
             targetEntity = ProductType.class)
     private List<ProductType> children;
     private BigInteger parentId;
+    private String thumbnail;
 
     public ProductType() {
     }
 
-    public ProductType(String name, String description, List<ProductType> children, BigInteger parentId) {
+    public ProductType(String name, String description, List<ProductType> children, BigInteger parentId, String thumbnail) {
         this.name = name;
         this.description = description;
         this.children = children;
         this.parentId = parentId;
+        this.thumbnail = thumbnail;
     }
 
     public BigInteger getId() {
@@ -69,5 +71,13 @@ public class ProductType {
 
     public void setParentId(BigInteger parentId) {
         this.parentId = parentId;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

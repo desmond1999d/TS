@@ -7,11 +7,13 @@ import by.site.tonservice.sd1.mapper.Mapper;
 import by.site.tonservice.sd1.repository.ProductExampleRepository;
 import by.site.tonservice.sd1.repository.ProductTypeRepository;
 import by.site.tonservice.sd1.service.ProductExampleService;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -148,6 +150,19 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     @Override
     public void deleteProductExample(BigInteger productExampleId) {
         productExampleRepository.deleteById(productExampleId);
+    }
+
+    @Override
+    public byte[] getImage(BigInteger id) {
+        Optional<ProductExample> productExampleOptional = productExampleRepository.findById(id);
+        if (productExampleOptional.isPresent()) {
+            try {
+                return FileUtils.readFileToByteArray(new File(productExampleOptional.get().getImgSource()));
+            } catch (IOException e) {
+                return null;
+            }
+        }
+        return null;
     }
 
     @Autowired

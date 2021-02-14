@@ -1,15 +1,20 @@
+import {HttpService} from "../services/http.service";
+
 export class ProductType {
 
-  constructor(public id: number,
-              public name: string,
-              public children: ProductType[],
-              public description: string,
-              public parentId: number) {
-    this.id = id;
-    this.name = name;
-    this.children = children;
-    this.description = description;
-    this.parentId = parentId;
-  }
+  public id: number;
+  public name: string;
+  public children: ProductType[];
+  public description: string;
+  public parentId: number;
+  public thumbnail: string;
 
+  constructor(dto) {
+    this.id = dto.id;
+    this.name = dto.name;
+    this.children = dto.children;
+    this.description = dto.description;
+    this.parentId = dto.parentId;
+    this.thumbnail = HttpService.url + dto.thumbnail;
+  }
 }

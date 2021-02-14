@@ -88,3 +88,9 @@
     display: none;
   }
 }
+
+.img-thumbnail {
+  width:  40vw;
+  height: 15vw;
+  object-fit: cover;
+}

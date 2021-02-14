@@ -14,8 +14,10 @@ export class MainPagePortfolioComponent implements OnInit {
   constructor(private productTypeService: ProductTypeService) { }
 
   ngOnInit() {
-    this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
-      this.productTypeHierarchy = productTypeHierarchy;
+    this.productTypeService.getTopServiceHierarchyWithExamples().subscribe(productTypeHierarchy => {
+      this.productTypeHierarchy = productTypeHierarchy
+        .filter(productType => productType.thumbnail != null)
+        .map(productType => new ProductType(productType));
     });
   }
 

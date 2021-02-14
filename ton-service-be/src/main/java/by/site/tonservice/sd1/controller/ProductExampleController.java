@@ -4,9 +4,8 @@ import by.site.tonservice.sd1.dto.ProductExampleDto;
 import by.site.tonservice.sd1.service.ProductExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -40,6 +39,12 @@ public class ProductExampleController {
     @RequestMapping(value = "/by-id", method = RequestMethod.GET)
     public ProductExampleDto getProductCategoryExampleById(@Param("id") BigInteger id) {
         return productExampleService.getProductCategoryExampleById(id);
+    }
+
+    @RequestMapping(value = "/image", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody
+    byte[] getImage(@RequestParam BigInteger id) {
+        return productExampleService.getImage(id);
     }
 
     @Autowired

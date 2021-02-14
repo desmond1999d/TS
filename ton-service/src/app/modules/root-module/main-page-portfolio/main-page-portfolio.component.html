@@ -7,10 +7,9 @@
 <div class="products-grid container-fluid p-0">
   <div class="row row-cols-4 mt-0 mr-0 ml-0 mb-4">
     <div class="col p-0" *ngFor="let productOffering of productTypeHierarchy">
-      <div class="thumbnail" routerLink="#">
+      <div class="thumbnail" [routerLink]="['/category', productOffering.id]">
         <div class="thumbnail-content position-relative">
-          <img class="img-thumbnail"
-               src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
+          <img class="img-thumbnail" [src]="productOffering.thumbnail">
           <div class="description-container">
             <div class="product-description">
               {{productOffering.name}}
@@ -24,10 +23,9 @@
 
 <div id="m-portfolio-slider">
   <div class="col" *ngFor="let productOffering of productTypeHierarchy">
-    <div class="thumbnail mb-3 mt-3" routerLink="#">
+    <div class="thumbnail mb-3 mt-3" [routerLink]="['/category', productOffering.id]">
       <div class="thumbnail-content position-relative">
-        <img class="img-thumbnail"
-             src="https://www.actived.ru/upload/iblock/6ae/6ae3466a6f6459e10a268e7fadaee343.jpg">
+        <img class="img-thumbnail" [src]="productOffering.thumbnail">
         <div class="description-container">
           <div class="product-description">
             {{productOffering.name}}

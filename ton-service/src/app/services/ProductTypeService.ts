@@ -14,6 +14,14 @@ export class ProductTypeService {
     return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/', {headers: HttpService.httpOptions.headers});
   }
 
+  public getTopServiceHierarchyWithThumbnails(): Observable<ProductType[]> {
+    return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/thumbnails', {headers: HttpService.httpOptions.headers});
+  }
+
+  public getTopServiceHierarchyWithExamples(): Observable<ProductType[]> {
+    return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/with-example', {headers: HttpService.httpOptions.headers});
+  }
+
   public getHorizontalReferences(parentProductTypeId: number): Observable<ProductType[]> {
     let params = new HttpParams().set('productTypeId', parentProductTypeId.toString());
     return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/horizontal-reference', {params: params, headers: HttpService.httpOptions.headers});
