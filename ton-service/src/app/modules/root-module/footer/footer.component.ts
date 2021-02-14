@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 
@@ -19,8 +19,10 @@ export class FooterComponent implements OnInit {
     this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
       for (let productType of productTypeHierarchy) {
         this.productTypeHierarchy.push(productType);
-        for (let child of productType.children) {
-          this.productTypeHierarchy.push(child);
+        if (productType.children.length > 1) {
+          for (let child of productType.children) {
+            this.productTypeHierarchy.push(child);
+          }
         }
       }
     });
