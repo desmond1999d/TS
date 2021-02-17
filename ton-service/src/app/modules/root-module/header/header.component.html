@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mr-auto ml-auto p-0">
   <div class="container-fluid container-mw">
-    <a class="navbar-brand" routerLink="">
+    <a class="navbar-brand" href="#">
       <img src="../../../../assets/icons/main-logo.png" height="40">
     </a>
     <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -19,22 +19,18 @@
           <a class="nav-link" href="#">Услуги</a>
         </li>
         <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-             aria-haspopup="true"
-             aria-expanded="false"
-             (click)="closeAllHierarchy($event)">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" (click)="closeAllHierarchy($event)">
             Портфолио
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown"
                id="product-types-dropdown">
             <div class="li-container">
-              <a href="#" *ngFor="let productType of productTypeHierarchy"
-                 class="dropdown-item d-flex align-items-center">
-                <a *ngIf="productType.children.length === 1" class="navbar-dropdown-child sub-nav-link"
+              <a *ngFor="let productType of productTypeHierarchy" class="dropdown-item d-flex align-items-center">
+                <a *ngIf="!hasDisplayedChildren(productType)" class="navbar-dropdown-child sub-nav-link"
                    [routerLink]="['/category', productType.id, 'subcategory', productType.children[0].id]">
                   {{productType.name}}
                 </a>
-                <div *ngIf="productType.children.length > 1" class="dropright sub-nav-link">
+                <div *ngIf="hasDisplayedChildren(productType)" class="dropright sub-nav-link">
                   <a id="{{productType.id}}" class="navbar-dropdown-child dropdown-toggle" role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
@@ -54,7 +50,6 @@
                 </div>
               </a>
             </div>
-            <div></div>
           </div>
         </li>
         <li class="nav-item">

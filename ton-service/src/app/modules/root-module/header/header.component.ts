@@ -22,16 +22,16 @@ export class HeaderComponent implements OnInit {
     this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
       this.productTypeHierarchy = productTypeHierarchy;
       this.productTypeHierarchy.sort((a, b) => {
-        if (a.children.length <= 1 && b.children.length <= 1) {
-          return b.id - a.id;
-        } else if (a.children.length <= 1) {
-          return 11;
-        } else if (b.children.length <= 1) {
+        if (a.children.length == 0 && b.children.length == 0) {
+          return a.id - b.id;
+        } else if (b.children.length == 0) {
+          return 1;
+        } else if (a.children.length == 0) {
           return -1;
         } else {
-          return b.id - a.id;
+          return a.id - b.id;
         }
-      })
+      });
     });
   }
 
@@ -95,5 +95,9 @@ export class HeaderComponent implements OnInit {
 
   public closeNavbar(event) {
     $('.navbar-collapse').collapse('hide');
+  }
+
+  public hasDisplayedChildren(productType: ProductType) {
+    return productType.children.filter(a => !a.hideInTree).length > 0;
   }
 }

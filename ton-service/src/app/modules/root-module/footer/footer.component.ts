@@ -19,10 +19,11 @@ export class FooterComponent implements OnInit {
     this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
       for (let productType of productTypeHierarchy) {
         this.productTypeHierarchy.push(productType);
-        if (productType.children.length > 1) {
-          for (let child of productType.children) {
-            this.productTypeHierarchy.push(child);
-          }
+        for (let productType of this.productTypeHierarchy) {
+          productType.children = productType.children.filter(a => !a.hideInTree);
+        }
+        for (let child of productType.children) {
+          this.productTypeHierarchy.push(child);
         }
       }
     });

@@ -21,16 +21,24 @@ public class ProductType {
     private List<ProductType> children;
     private BigInteger parentId;
     private String thumbnail;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "demesne_id")
+    private Demesne demesne;
+    @Column(name = "hide_in_tree")
+    private boolean hideInTree;
 
     public ProductType() {
     }
 
-    public ProductType(String name, String description, List<ProductType> children, BigInteger parentId, String thumbnail) {
+    public ProductType(String name, String description, List<ProductType> children,
+                       BigInteger parentId, String thumbnail, Demesne demesne, boolean hideInTree) {
         this.name = name;
         this.description = description;
         this.children = children;
         this.parentId = parentId;
         this.thumbnail = thumbnail;
+        this.demesne = demesne;
+        this.hideInTree = hideInTree;
     }
 
     public BigInteger getId() {
@@ -79,5 +87,21 @@ public class ProductType {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public boolean isHideInTree() {
+        return hideInTree;
+    }
+
+    public void setHideInTree(boolean hideInTree) {
+        this.hideInTree = hideInTree;
+    }
+
+    public Demesne getDemesne() {
+        return demesne;
+    }
+
+    public void setDemesne(Demesne demesne) {
+        this.demesne = demesne;
     }
 }

@@ -1,3 +1,4 @@
+import {Demesne} from "./Demesne";
 import {HttpService} from "../services/http.service";
 
 export class ProductType {
@@ -8,6 +9,8 @@ export class ProductType {
   public description: string;
   public parentId: number;
   public thumbnail: string;
+  public hideInTree: boolean;
+  public demesne: Demesne;
 
   constructor(dto) {
     this.id = dto.id;
@@ -16,5 +19,7 @@ export class ProductType {
     this.description = dto.description;
     this.parentId = dto.parentId;
     this.thumbnail = HttpService.url + dto.thumbnail;
+    this.hideInTree = dto.hideInTree;
+    this.demesne = dto.demesne;
   }
 }

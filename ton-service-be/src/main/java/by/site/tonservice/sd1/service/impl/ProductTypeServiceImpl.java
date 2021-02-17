@@ -59,7 +59,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public byte[] getImage(BigInteger id) {
         Optional<ProductType> productTypeOptional = productTypeRepository.findById(id);
-        if (productTypeOptional.isPresent()) {
+        if (productTypeOptional.isPresent() && productTypeOptional.get().getThumbnail() != null) {
             try {
                 return FileUtils.readFileToByteArray(new File(productTypeOptional.get().getThumbnail()));
             } catch (IOException e) {
