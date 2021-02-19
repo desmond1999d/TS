@@ -16,17 +16,19 @@
           <a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Услуги</a>
+          <a class="nav-link" routerLink="/demesnes">Услуги</a>
         </li>
         <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" (click)="closeAllHierarchy($event)">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown"
+             (click)="closeAllHierarchy($event)">
             Портфолио
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown"
                id="product-types-dropdown">
-            <div class="li-container">
-              <a *ngFor="let productType of productTypeHierarchy" class="dropdown-item d-flex align-items-center">
-                <a *ngIf="!hasDisplayedChildren(productType)" class="navbar-dropdown-child sub-nav-link"
+            <div *ngFor="let productType of productTypeHierarchy">
+              <a *ngIf="!productType.hideInTree" class="dropdown-item d-flex align-items-center">
+                <a *ngIf="!hasDisplayedChildren(productType)"
+                   class="navbar-dropdown-child sub-nav-link"
                    [routerLink]="['/category', productType.id, 'subcategory', productType.children[0].id]">
                   {{productType.name}}
                 </a>

@@ -1,9 +1,13 @@
+import {ProductType} from "./ProductType";
+
 export class Demesne {
   public id: number;
   public name: string;
+  public productTypes: ProductType[];
 
-  constructor(id: number, name: string) {
-    this.id = id;
-    this.name = name;
+  constructor(dto) {
+    this.id = dto.id;
+    this.name = dto.name;
+    this.productTypes = dto.productTypes;
   }
 }

@@ -2,6 +2,7 @@ package by.site.tonservice.sd1.entity;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Table(name = "demesne")
@@ -11,12 +12,18 @@ public class Demesne {
     @Column(name = "demesne_id", unique = true, nullable = false)
     private BigInteger id;
     private String name;
+    @OneToMany(mappedBy = "demesneId",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            targetEntity = ProductType.class)
+    private List<ProductType> productTypes;
 
     public Demesne() {
     }
 
-    public Demesne(String name) {
+    public Demesne(String name, List<ProductType> productTypes) {
         this.name = name;
+        this.productTypes = productTypes;
     }
 
     public BigInteger getId() {
@@ -33,5 +40,13 @@ public class Demesne {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<ProductType> getProductTypes() {
+        return productTypes;
+    }
+
+    public void setProductTypes(List<ProductType> productTypes) {
+        this.productTypes = productTypes;
     }
 }

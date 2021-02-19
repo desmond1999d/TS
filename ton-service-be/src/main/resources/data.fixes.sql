@@ -45,3 +45,18 @@ INSERT INTO `demesne` VALUES (1,'Реклама'),(2,'Антикоррозийн
 
 INSERT INTO `demesne` VALUES (1,'Реклама'),(2,'Антикоррозийная обработка автомобилей'),(3,'Тонировка');
 INSERT INTO `product_types` VALUES (20,NULL,'Наружная реклама',NULL,NULL,1,_binary '\0'),(21,NULL,'Интерьерная реклама',NULL,NULL,1,_binary '\0'),(22,NULL,'Широкоформатная печать',NULL,NULL,1,_binary '\0'),(23,NULL,'Реклама на транспорте',NULL,NULL,1,_binary '\0'),(24,NULL,'Согласование рекламы',NULL,NULL,1,_binary '\0'),(25,NULL,'Скинали',NULL,NULL,1,_binary '\0'),(26,NULL,'Прочее',NULL,NULL,1,_binary '\0'),(27,NULL,'Защита от коррозии Dinitrol, Mercasol, Noxudol',NULL,NULL,2,_binary '\0'),(28,NULL,'Тонировка окон, стёкол',NULL,NULL,3,_binary '\0'),(29,NULL,'Защитные и противоударные пленки класса A1, A2, A3',NULL,NULL,3,_binary '\0'),(30,20,'Вывески',NULL,NULL,NULL,_binary '\0'),(31,20,'Световые короба, лайтбоксы',NULL,NULL,NULL,_binary '\0'),(32,20,'Бегущая строка электронные табло',NULL,NULL,NULL,_binary '\0'),(33,20,'Кронштейны',NULL,NULL,NULL,_binary '\0'),(34,20,'Оформление витрин',NULL,NULL,NULL,_binary '\0'),(35,20,'Штендеры, стеллы',NULL,NULL,NULL,_binary '\0'),(36,20,'Крышные конструкции',NULL,NULL,NULL,_binary '\0'),(37,20,'Адресные таблички (Аншлаги)',NULL,NULL,NULL,_binary '\0'),(38,21,'Интерьерные вывески',NULL,NULL,NULL,_binary '\0'),(39,21,'Таблички, указатели, навигация',NULL,NULL,NULL,_binary '\0'),(40,21,'Знаки безопасности',NULL,NULL,NULL,_binary '\0'),(41,21,'Стенды, системы карманов',NULL,NULL,NULL,_binary '\0'),(42,21,'Оформление школ и садиков',NULL,NULL,NULL,_binary '\0'),(43,21,'Музеи',NULL,NULL,NULL,_binary '\0'),(44,22,'Баннеры',NULL,NULL,NULL,_binary '\0'),(45,22,'Наклейки',NULL,NULL,NULL,_binary '\0'),(46,22,'Плакаты',NULL,NULL,NULL,_binary '\0'),(47,22,'Фотообои',NULL,NULL,NULL,_binary '\0'),(48,22,'Печать на ткани',NULL,NULL,NULL,_binary '\0'),(49,23,'Реклама на автомобиле',NULL,NULL,NULL,_binary '\0'),(50,23,'Оклейка такси',NULL,NULL,NULL,_binary '\0'),(51,23,'Оклейка спецтранспорта (МВД, МЧС)',NULL,NULL,NULL,_binary '\0'),(52,23,'Наклейки на мотоциклы',NULL,NULL,NULL,_binary '\0'),(53,23,'Наклейки для катеров, гидроскутеров и др.',NULL,NULL,NULL,_binary '\0'),(54,24,'Паспортизация рекламы',NULL,NULL,NULL,_binary '\0'),(55,25,'Стеновые панели из стекла',NULL,NULL,NULL,_binary '\0'),(56,26,'Средства защиты от COVID',NULL,NULL,NULL,_binary '\0'),(57,27,'Защита от коррозии Dinitrol, Mercasol, Noxudol',NULL,NULL,NULL,_binary '\0'),(58,28,'Тонировка окон, стёкол',NULL,NULL,NULL,_binary '\0'),(59,29,'Защитные и противоударные пленки класса A1, A2, A3',NULL,NULL,NULL,_binary '\0');
+
+update product_types set name = 'Согласование рекламы (Паспортизация)' where product_type_id = 24;
+update product_types set hide_in_tree = 1 where product_type_id = 54;
+
+update product_types set name = 'Скинали (Стеновые панели из стекла)' where product_type_id = 25;
+update product_types set hide_in_tree = 1 where product_type_id = 55;
+
+delete from product_types where product_type_id = 56;
+delete from product_types where product_type_id = 26;
+
+insert into product_types(name, demesne_id) values('Дизайн', 1);
+insert into product_types(name, hide_in_tree, demesne_id) values('Тонировка офисных перегородок, лоджий и др.', 1, 3);
+
+insert into product_types(name, parent_id, hide_in_tree) values('Дизайн', 60, 1);
+insert into product_types(name, parent_id, hide_in_tree) values('Тонировка офисных перегородок, лоджий и др.', 61, 1);

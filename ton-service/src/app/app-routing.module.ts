@@ -5,6 +5,7 @@ import {ContactsPageComponent} from './modules/root-module/contacts-page/contact
 import {SubcategoryExamplesComponent} from "./modules/root-module/subcategory-examples/subcategory-examples.component";
 import {CategoryComponent} from "./modules/root-module/category/category.component";
 import {AdminSubcategoryEditorComponent} from "./modules/root-module/admin-subcategory-editor/admin-subcategory-editor.component";
+import {CategoriesOverviewComponent} from "./modules/root-module/categories-overview/categories-overview.component";
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'category/:categoryId/subcategory/:subcategoryId', component: SubcategoryExamplesComponent },
   { path: 'admin/category/:categoryId/subcategory/:subcategoryId', component: AdminSubcategoryEditorComponent },
-  { path: 'category/:categoryId', component: CategoryComponent }
+  { path: 'category/:categoryId', component: CategoryComponent },
+  { path: 'demesnes', component: CategoriesOverviewComponent }
   // { path: '**', component: 404PageComponent }
   // TODO: add 404 page component
 ];

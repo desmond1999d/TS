@@ -86,10 +86,8 @@ h1.carousel-header {
   h1.carousel-header {
     display: block;
     margin: 4% auto;
-    font-family: 'Comfortaa', cursive;
     font-size: 24px;
     font-weight: 400;
-    text-transform: uppercase;
     letter-spacing: 2px;
     line-height: 30px;
     color: #333333;

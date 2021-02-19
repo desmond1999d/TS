@@ -1,0 +1,71 @@
+.tab-header {
+  display: block;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.demesne-header {
+  display: block;
+  font-size: 30px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.demesne-header:before {
+  background: url("../../../../assets/icons/arrows-icon.png") no-repeat center center;
+  background-size: cover;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  content: "";
+}
+
+.category {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.brick {
+  border-width: 1px;
+  border-color: orange;
+  border-style: solid;
+}
+
+@media screen and (max-width: 1200px) {
+  .demesne-header {
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .card-columns {
+    -webkit-column-count: 2 !important;
+    -moz-column-count: 2 !important;
+    column-count: 2 !important;
+  }
+}
+
+.card {
+  border: none;
+  background-color: transparent;
+}
+
+.card-body {
+  padding: 0;
+}
+
+.arrows-alignment {
+  padding-right: 40px; // arrows are 30px + 10px padding right
+}
+
+ul  {
+  padding-left: 0;
+}
+ul li {
+  list-style-position: inside;
+}

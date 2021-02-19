@@ -15,6 +15,11 @@ body {
   color: white !important;
 }
 
+.hoverable:hover {
+  color: #047CFC;
+  transition: color 0.5s ease-in-out;
+}
+
 .hide-show-btn:hover {
   background-color: #FF2400;
   color: white;
