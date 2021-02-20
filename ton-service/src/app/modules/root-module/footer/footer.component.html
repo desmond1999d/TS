@@ -1,36 +1,30 @@
-<footer class="page-footer font-small blue bg-dark">
+<footer class="page-footer font-small blue">
 
   <app-leave-request></app-leave-request>
 
   <!--Contacts-->
-  <div class="text-md-left pt-4 pb-4">
-    <div class="row footer-contancts justify-content-between">
-      <div class="row col-md-4">
-        <div class="col-2 mt-auto mb-auto">
-          <img class="contact-logo" src="../../../../assets/icons/phone-icon.png">
-        </div>
+  <div class="container-fluid container-mw">
+    <div class="row m-auto footer-contacts">
+      <div class="row d-flex flex-fill pb-3 pt-3">
+        <img class="contact-logo mt-auto mb-auto" src="../../../../assets/icons/phone-icon.png">
         <div class="col-10 mt-auto mb-auto">
           <div class="contact-header">
-            <a href="#">+375 (29) 780-00-23</a>
+            <a href="tel:+375297800023">{{contactsConstants.PHONE}}</a>
           </div>
           <div class="comment">Позвоните нам</div>
         </div>
       </div>
-      <div class="row col-md-4">
-        <div class="col-2 mt-auto mb-auto">
-          <img class="contact-logo" src="../../../../assets/icons/mail-icon.png">
-        </div>
+      <div class="row d-flex flex-fill pb-3 pt-3">
+        <img class="contact-logo mt-auto mb-auto" src="../../../../assets/icons/mail-icon.png">
         <div class="col-10 mt-auto mb-auto">
           <div class="contact-header">
-            <a href="#">ton-service@mail.ru</a>
+            <a href="mailto:innagrodno@mail.ru">{{contactsConstants.EMAIL}}</a>
           </div>
           <div class="comment">Напишите нам</div>
         </div>
       </div>
-      <div class="row col-md-4">
-        <div class="col-2 mt-auto mb-auto">
-          <img class="contact-logo" src="../../../../assets/icons/address-icon.png">
-        </div>
+      <div class="row d-flex flex-fill pb-3 pt-3">
+        <img class="contact-logo mt-auto mb-auto" src="../../../../assets/icons/address-icon.png">
         <div class="col-10 mt-auto mb-auto">
           <div class="contact-header">
             <a routerLink="/contacts">Офис в центре Гродно</a>
@@ -40,34 +34,34 @@
       </div>
     </div>
 
-    <div class="footer-contancts-mobile">
-      <div class="row col-md-11 mr-auto ml-auto">
-        <div class="col-2 mt-auto mb-auto">
+    <div class="footer-contacts-mobile pt-2 pb-2">
+      <div class="row col-md-11 m-auto pb-2">
+        <div class="col-2 m-auto">
           <img class="contact-logo" src="../../../../assets/icons/phone-icon.png">
         </div>
-        <div class="col-10 mt-auto mb-auto">
+        <div class="col-10 m-auto">
           <div class="contact-header">
-            <a href="#">+375 (29) 780-00-23</a>
+            <a href="tel:+375297800023">{{contactsConstants.PHONE}}</a>
           </div>
           <div class="comment">Позвоните нам</div>
         </div>
       </div>
-      <div class="row col-md-11 mr-auto ml-auto">
-        <div class="col-2 mt-auto mb-auto">
+      <div class="row col-md-11 m-auto pb-2">
+        <div class="col-2 m-auto">
           <img class="contact-logo" src="../../../../assets/icons/mail-icon.png">
         </div>
-        <div class="col-10 mt-auto mb-auto">
+        <div class="col-10 m-auto pb-2">
           <div class="contact-header">
-            <a href="#">ton-service@mail.ru</a>
+            <a href="mailto:innagrodno@mail.ru">{{contactsConstants.EMAIL}}</a>
           </div>
           <div class="comment">Напишите нам</div>
         </div>
       </div>
-      <div class="row col-md-11 mr-auto ml-auto">
-        <div class="col-2 mt-auto mb-auto">
+      <div class="row col-md-11 m-auto pb-2">
+        <div class="col-2 m-auto">
           <img class="contact-logo" src="../../../../assets/icons/address-icon.png">
         </div>
-        <div class="col-10 mt-auto mb-auto">
+        <div class="col-10 m-auto">
           <div class="contact-header">
             <a routerLink="/contacts">Офис в центре Гродно</a>
           </div>

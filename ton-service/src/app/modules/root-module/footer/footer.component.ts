@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
+import {ContactsConstants} from "../../../shared/ContactsConstants";
 
 @Component({
   selector: 'app-footer',
@@ -10,8 +11,10 @@ import {ProductTypeService} from '../../../services/ProductTypeService';
 export class FooterComponent implements OnInit {
 
   public productTypeHierarchy: ProductType[];
+  public contactsConstants: ContactsConstants;
 
   constructor(private productTypeService: ProductTypeService) {
+    this.contactsConstants = new ContactsConstants();
   }
 
   ngOnInit() {
