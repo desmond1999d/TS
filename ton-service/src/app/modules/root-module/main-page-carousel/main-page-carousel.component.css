@@ -36,7 +36,7 @@ h1.carousel-header {
   }
 
   .main-page-carousel-container {
-    height: 550px;
+    height: 480px;
   }
 
   img {
@@ -113,6 +113,14 @@ h1.carousel-header {
     font-size: 20px;
     text-align: center !important;
   }
+
+  .crop {
+    display: block !important;
+  }
+
+  .full-width {
+    display: none !important;
+  }
 }
 
 @media (min-width: 401px) and (max-width: 991px) {
@@ -141,6 +149,15 @@ h1.carousel-header {
   .carousel-details {
     display: none;
   }
+
+  .carousel-caption {
+    padding-bottom: 40px;
+  }
+
+  .carousel-item-content > img {
+    object-fit: fill;
+    height: 100%;
+  }
 }
 
 @media (min-width: 992px) {
@@ -166,6 +183,11 @@ h1.carousel-header {
 
   .carousel-details {
     display: none;
+  }
+
+  .carousel-item-content > img {
+    object-fit: fill;
+    height: 100%;
   }
 }
 
@@ -198,7 +220,6 @@ h1.carousel-header {
   flex-direction: column;
   width: 80%;
   padding-left: 5%;
-  height: 75%;
 }
 
 .carousel-item-header {
@@ -212,4 +233,12 @@ h1.carousel-header {
   text-align: left;
   line-height: 1;
   cursor: default;
+}
+
+.crop {
+  display: none;
+}
+
+.carousel-item-content {
+  height: 100%;
 }
