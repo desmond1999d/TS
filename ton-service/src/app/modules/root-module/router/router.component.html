@@ -5,6 +5,7 @@
       <div class="divider"> /</div>
       <a *ngIf="isContacts" routerLink="/contacts">Контакты</a>
       <a *ngIf="isDemesnes" routerLink="/demesnes">Услуги</a>
+      <a *ngIf="isAboutUs" routerLink="/demesnes">О нас</a>
       <a *ngIf="category" [routerLink]="['/category', category.id]">{{category.name}}</a>
       <div *ngIf="!isContacts && subcategory" class="divider"> /</div>
       <a *ngIf="subcategory" [routerLink]="['/category', category.id, 'subcategory', subcategory.id]" class="disabled">{{subcategory.name}}</a>

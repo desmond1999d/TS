@@ -1,0 +1,168 @@
+.card-small {
+  height: 400px;
+  overflow: hidden;
+}
+
+.card-big {
+  height: 600px;
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 20px;
+  padding-top: 40px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.card-description {
+  font-size: 15px;
+  padding-top: 30px;
+  color: white;
+}
+
+.card-1 {
+  background-color: #e63434;
+}
+
+.card-2 {
+  background-color: #e53f67;
+}
+
+.card-3 {
+  background-color: #1ed2d1;
+}
+
+.card-4 {
+  background-color: #32dc95;
+}
+
+.card-5 {
+  background-color: #37aee6;
+}
+
+.card-6 {
+  background-color: #e64ec5;
+}
+
+.card-7 {
+  background-color: #e66047;
+}
+
+.card-8 {
+  background-color: #a9dc28;
+}
+
+.left-arrow-1::before {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 30px 40px 0;
+  border-color: transparent #e63434 transparent transparent;
+  position: absolute;
+  left: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.left-arrow-3::before {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 30px 40px 0;
+  border-color: transparent #1ed2d1 transparent transparent;
+  position: absolute;
+  left: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.left-arrow-5::before {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 30px 40px 0;
+  border-color: transparent #37aee6 transparent transparent;
+  position: absolute;
+  left: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.left-arrow-7::before {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 30px 40px 0;
+  border-color: transparent #e66047 transparent transparent;
+  position: absolute;
+  left: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.right-arrow-2::after {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 0 40px 30px;
+  border-color: transparent transparent transparent #e53f67;
+  position: absolute;
+  right: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.right-arrow-4::after {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 0 40px 30px;
+  border-color: transparent transparent transparent #32dc95;
+  position: absolute;
+  right: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.right-arrow-6::after {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 0 40px 30px;
+  border-color: transparent transparent transparent #e64ec5;
+  position: absolute;
+  right: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+.right-arrow-8::after {
+  width: 0;
+  height: 0;
+  content:"";
+  border-style: solid;
+  border-width: 40px 0 40px 30px;
+  border-color: transparent transparent transparent #a9dc28;
+  position: absolute;
+  right: -30px;
+  bottom: 100px;
+  z-index: 1;
+}
+
+img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.col-md-4, .col-md-6 {
+  height: 100%;
+}

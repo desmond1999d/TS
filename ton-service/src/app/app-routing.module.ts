@@ -6,6 +6,7 @@ import {SubcategoryExamplesComponent} from "./modules/root-module/subcategory-ex
 import {CategoryComponent} from "./modules/root-module/category/category.component";
 import {AdminSubcategoryEditorComponent} from "./modules/root-module/admin-subcategory-editor/admin-subcategory-editor.component";
 import {CategoriesOverviewComponent} from "./modules/root-module/categories-overview/categories-overview.component";
+import {AboutUsComponent} from "./modules/root-module/about-us/about-us.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'category/:categoryId/subcategory/:subcategoryId', component: SubcategoryExamplesComponent },
   { path: 'admin/category/:categoryId/subcategory/:subcategoryId', component: AdminSubcategoryEditorComponent },
   { path: 'category/:categoryId', component: CategoryComponent },
-  { path: 'demesnes', component: CategoriesOverviewComponent }
+  { path: 'demesnes', component: CategoriesOverviewComponent },
+  { path: 'about-us', component: AboutUsComponent }
   // { path: '**', component: 404PageComponent }
   // TODO: add 404 page component
 ];

@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterComponent } from './router/router.component';
 import { AdminSubcategoryEditorComponent } from './admin-subcategory-editor/admin-subcategory-editor.component';
 import { CategoriesOverviewComponent } from './categories-overview/categories-overview.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [HeaderComponent,
@@ -42,7 +43,8 @@ import { CategoriesOverviewComponent } from './categories-overview/categories-ov
     CategoryComponent,
     RouterComponent,
     AdminSubcategoryEditorComponent,
-    CategoriesOverviewComponent],
+    CategoriesOverviewComponent,
+    AboutUsComponent],
   imports: [
     CommonModule,
     CollapseModule.forRoot(),
