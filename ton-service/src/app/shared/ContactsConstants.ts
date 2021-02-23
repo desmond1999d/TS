@@ -1,3 +1,6 @@
+import {Injectable} from "@angular/core";
+
+@Injectable()
 export class ContactsConstants {
   public readonly TIMETABLE = 'ПН-ПТ 09:00-17:00';
   public readonly ADDRESS = 'СОДО «Тон-сервис» г.Гродно, ул. Октябрьская 4';

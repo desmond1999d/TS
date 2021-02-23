@@ -11,6 +11,7 @@ import {ProductExampleService} from "./services/ProductExampleService";
 import {ContactUsService} from "./services/ContactUsService";
 import {AdminService} from "./services/AdminService";
 import {DemesneService} from "./services/DemesneService";
+import {ContactsConstants} from "./shared/ContactsConstants";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {DemesneService} from "./services/DemesneService";
     ContactUsService,
     HttpService,
     AdminService,
-    DemesneService
+    DemesneService,
+    ContactsConstants
   ],
   bootstrap: [AppComponent]
 })

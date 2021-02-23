@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductType} from '../../../shared/ProductType';
-import {ProductTypeService} from '../../../services/ProductTypeService';
+import {DemesneService} from "../../../services/DemesneService";
+import {Demesne} from "../../../shared/Demesne";
 import {ContactsConstants} from "../../../shared/ContactsConstants";
 
 @Component({
@@ -10,25 +10,22 @@ import {ContactsConstants} from "../../../shared/ContactsConstants";
 })
 export class FooterComponent implements OnInit {
 
-  public productTypeHierarchy: ProductType[];
-  public contactsConstants: ContactsConstants;
+  public demesnes: Demesne[];
 
-  constructor(private productTypeService: ProductTypeService) {
-    this.contactsConstants = new ContactsConstants();
+  constructor(private demesneService: DemesneService, public contactsConstants: ContactsConstants) {
   }
 
   ngOnInit() {
-    this.productTypeHierarchy = [];
-    this.productTypeService.getTopServiceHierarchy().subscribe(productTypeHierarchy => {
-      for (let productType of productTypeHierarchy) {
-        this.productTypeHierarchy.push(productType);
-        for (let productType of this.productTypeHierarchy) {
-          productType.children = productType.children.filter(a => !a.hideInTree);
+    this.demesneService.getAllDemesnes().subscribe(demesnes => {
+      this.demesnes = demesnes;
+      this.demesnes.sort((a, b) => {
+        if (a.name === 'Антикоррозийная обработка автомобилей') {
+          return 1;
+        } else if (b.name === 'Антикоррозийная обработка автомобилей') {
+          return -1;
         }
-        for (let child of productType.children) {
-          this.productTypeHierarchy.push(child);
-        }
-      }
+        return a.id - b.id;
+      })
     });
   }
 

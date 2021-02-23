@@ -57,7 +57,6 @@
 
   img.contact-logo {
     max-height: 30px !important;
-    max-width: 30px !important;
   }
 }
 
@@ -83,7 +82,6 @@
 
 img.contact-logo {
   max-height: 40px;
-  max-width: 40px;
   margin-right: 20px;
 }
 
@@ -93,4 +91,71 @@ img.contact-logo {
 
 .footer-contacts-mobile {
   display: none;
+}
+
+.demesne-header {
+  display: block;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+}
+
+.demesne-header:before {
+  background: url("../../../../assets/icons/arrows-icon.png") no-repeat center center;
+  background-size: cover;
+  vertical-align: middle;
+  position: absolute;
+  left: -20px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  content: "";
+}
+
+@media (max-width: 767px) {
+  .demesne-header:before {
+    display: none;
+  }
+}
+
+.offers-row {
+  vertical-align: bottom;
+  padding-bottom: 40px;
+}
+
+.bg-dark {
+  background-color: #52525A !important;
+}
+
+.inner-container {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+
+.offers-header {
+  color: white;
+  font-size: 35px;
+}
+
+.product-type-header {
+  color: #ACACB4;
+  padding-bottom: 8px;
+  font-size: 18px;
+}
+
+.big-text {
+  color: white;
+  font-size: 20px;
+}
+
+.small-text {
+  color: white;
+  font-size: 15px;
+}
+
+.text-padding {
+  padding-bottom: 20px;
 }

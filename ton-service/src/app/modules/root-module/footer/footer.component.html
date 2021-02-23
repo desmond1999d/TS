@@ -72,26 +72,31 @@
   </div>
 
   <!--Offers-->
-  <div class="container-fluid text-center text-md-left">
-    <div class="row footer-navs pb-3 pt-3">
-      <div class="col-md-8">
-        <h5 class="text-uppercase">Услуги</h5>
-        <div class="footer-nav-item-container">
-          <div class="col-md-4 pl-0" *ngFor="let i of [0, 1, 2]">
-            <div *ngFor="let productType of productTypeHierarchy;  let j = index">
-              <div class="footer-nav-item" *ngIf="j % 3 === i"
-                   [routerLink]="productType.parentId ? ['/category', productType.parentId, 'subcategory', productType.id]
-                    : ['/category', productType.id]">{{productType.name}}</div>
-            </div>
-          </div>
+  <div class="container-fluid bg-dark">
+    <div class="container-fluid container-mw inner-container">
+      <div class="row offers-row">
+        <div class="col-md-3">
+          <img class="contact-logo" src="../../../../assets/icons/main-logo-grey.png">
+        </div>
+        <div class="col-md-9">
+          <div class="offers-header">Услуги</div>
         </div>
       </div>
-      <div class="col-md-3">
-        <!-- Content -->
-        <div class="mb-2">
-          <img src="../../../../assets/icons/main-logo.png" height="30">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="big-text">СОДО Тон-сервис,</div>
+          <div class="small-text text-padding">г.Гродно, ул. Октябрьская 4</div>
+          <div class="small-text">Время работы:</div>
+          <div class="big-text text-padding">Пн-Пт 9.00-17.00</div>
+          <div class="big-text">+375 29 78-000-23</div>
         </div>
-        <div class="contacts-muted" routerLink="/contacts">г.Гродно, ул. Октябрьская, дом 4,<br>Время работы: ПН-ПТ 09:00-17:00<br>(029) 7800023
+        <div class="col-md-3" *ngFor="let demesne of demesnes">
+          <div class="demesne-header">{{demesne.name}}</div>
+          <div *ngFor="let productType of demesne.productTypes">
+            <div class="product-type-header hoverable" *ngIf="!productType.hideInTree" [routerLink]="['/category', productType.id]">
+              {{productType.name}}
+            </div>
+          </div>
         </div>
       </div>
     </div>

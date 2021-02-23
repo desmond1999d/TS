@@ -1,10 +1,14 @@
 .container-head {
   color: #52525A;
-  font-size: 40px;
+  font-size: 26pt;
 }
 
 @media (max-width: 400px) {
   .container {
+    display: none;
+  }
+
+  .container-head {
     display: none;
   }
 }

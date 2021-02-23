@@ -16,7 +16,7 @@ body {
 }
 
 .hoverable:hover {
-  color: #047CFC;
+  color: #047CFC !important;
   transition: color 0.5s ease-in-out;
 }
 
