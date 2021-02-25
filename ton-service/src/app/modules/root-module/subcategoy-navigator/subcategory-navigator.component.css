@@ -5,13 +5,13 @@
 .subcategory-header {
   font-size: 20pt;
   font-weight: 400;
-  color: #FF2400;
+  color: #047cfc;
   padding-bottom: 15px;
 }
 
 .subcategory-card {
   background-color: white;
-  color: #FF2400;
+  color: #047cfc;
   padding-left: 17px;
   padding-right: 17px;
   line-height: 30px;
@@ -30,7 +30,7 @@
 }
 
 .subcategory-card:hover {
-  background-color: #FF2400;
+  background-color: #047cfc;
   color: white;
   transition: background-color .3s ease-in-out;
 }

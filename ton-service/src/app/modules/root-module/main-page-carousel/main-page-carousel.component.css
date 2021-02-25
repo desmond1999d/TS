@@ -25,6 +25,7 @@
 
 h1.carousel-header {
   display: none;
+  color: #52525A !important;
 }
 
 @media (max-width: 400px) {
@@ -58,7 +59,7 @@ h1.carousel-header {
     bottom: -100px;
     position: absolute;
     background-color: transparent;
-    border-color: #FF2400;
+    border-color: #37aee6;
     border-width: .5mm;
     width: 200px;
     left: 50%;
@@ -66,7 +67,7 @@ h1.carousel-header {
   }
 
   .carousel-details:hover {
-    background-color: #FF2400;
+    background-color: #37aee6;
     color: white;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
@@ -88,9 +89,8 @@ h1.carousel-header {
     margin: 4% auto;
     font-size: 24px;
     font-weight: 400;
-    letter-spacing: 2px;
     line-height: 30px;
-    color: #333333;
+    color: #52525A;
   }
 
   .carousel-item-content {
@@ -101,7 +101,7 @@ h1.carousel-header {
 
   .carousel-caption {
     position: relative;
-    color: #333333;
+    color: #52525A;
     padding: 0 !important;
     margin: auto auto;
     height: 60px !important;
@@ -192,7 +192,7 @@ h1.carousel-header {
 }
 
 .carousel-item-details, .carousel-details {
-  color: #FF2400;
+  color: #37aee6;
   text-transform: uppercase;
   border-radius: 0;
 }

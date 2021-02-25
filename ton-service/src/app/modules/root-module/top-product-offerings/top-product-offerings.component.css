@@ -15,7 +15,7 @@
 }
 
 .thumbnail:hover {
-  color: #FF2400;
+  color: #047CFC;
   transition: color .3s ease-in-out;
 }
 
@@ -36,7 +36,7 @@
   justify-content: center;
   overflow: hidden;
   position: absolute;
-  background: rgba(255, 165, 0, .35);
+  background: rgba(4, 124, 252, .35);
   left: 0;
   top: 0;
   vertical-align: middle;
@@ -73,6 +73,7 @@
 .product-offers-header {
   font-size: 26pt;
   font-weight: 300;
+  color: #52525A !important;
 }
 
 #m-products-slider {

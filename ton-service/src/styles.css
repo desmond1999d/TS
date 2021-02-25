@@ -11,7 +11,7 @@ body {
 }
 
 .active {
-  background-color: #FF2400 !important;
+  background-color: #047cfc !important;
   color: white !important;
 }
 
@@ -21,7 +21,7 @@ body {
 }
 
 .hide-show-btn:hover {
-  background-color: #FF2400;
+  background-color: #047cfc;
   color: white;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -29,7 +29,7 @@ body {
 .hide-show-btn {
   background-color: white;
   border: medium white;
-  color: #FF2400;
+  color: #047cfc;
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;

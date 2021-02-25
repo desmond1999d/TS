@@ -8,6 +8,7 @@
   width: 17px;
   height: 17px;
   content: "";
+  background-size: contain !important;
   display: inline-block;
   margin-right: 20px;
 }
@@ -26,19 +27,19 @@
 }
 
 .map-address::before {
-  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_addr_blue.png") no-repeat;
+  background: url("../../../../assets/icons/map-blue-icon.png") 100% 100% no-repeat;
 }
 
 .map-email::before {
-  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_email_blue.png") no-repeat;
+  background: url("../../../../assets/icons/mail-blue-icon.png") 100% 100% no-repeat;
 }
 
 .map-phone::before {
-  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_phone_blue.png") no-repeat;
+  background: url("../../../../assets/icons/phone-blue-con.png") 100% 100% no-repeat;
 }
 
 .map-timetable::before {
-  background: url("https://www.actived.ru/local/templates/actived.new/images/ico_time_blue.png") no-repeat;
+  background: url("../../../../assets/icons/clock-blue-icon.png") 100% 100% no-repeat;
 }
 
 @media (max-width: 767px) {
