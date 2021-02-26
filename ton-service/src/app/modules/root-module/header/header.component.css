@@ -11,6 +11,7 @@
   border-radius: 0;
   background-color: #ece9ec;
   margin: 0;
+  font-size: 11px;
 }
 
 .navbar {
@@ -29,6 +30,10 @@
 
 /*non collapsed*/
 @media (min-width: 992px) {
+
+  .navbar-dropdown-child {
+    min-height: 40px !important;
+  }
 
   .navbar {
     height: 120px !important;
@@ -190,7 +195,7 @@ a#navbarDropdownChild.nav-link {
 a.dropdown-item {
   min-height: 32px;
   padding: 0;
-  min-width: 300px;
+  min-width: 270px;
   align-content: center;
 }
 
