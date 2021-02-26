@@ -13,7 +13,7 @@ export class TopProductOfferingsComponent implements OnInit, AfterViewInit {
 
   public productTypeHierarchy: ProductType[];
   public maxItemsCount : number;
-  public static MAX_ITEMS_DEFAULT = 6;
+  public static MAX_ITEMS_DEFAULT = 9;
 
   constructor(private productTypeService: ProductTypeService) {
     this.maxItemsCount = TopProductOfferingsComponent.MAX_ITEMS_DEFAULT;
@@ -23,8 +23,9 @@ export class TopProductOfferingsComponent implements OnInit, AfterViewInit {
     $(".hide-btn").hide();
     this.productTypeService.getTopServiceHierarchyWithThumbnails().toPromise().then(productTypeHierarchy => {
       this.productTypeHierarchy = productTypeHierarchy
-        .filter(productType => productType.thumbnail != null)
-        .map(productType => new ProductType(productType));
+        .filter(productType => productType.thumbnail != null && productType.hideInTree !== true)
+        .map(productType => new ProductType(productType))
+        .sort(ProductTypeService.SORT_FUNCTION);
     });
   }
 
@@ -54,18 +55,6 @@ export class TopProductOfferingsComponent implements OnInit, AfterViewInit {
         }
       }
     });
-  }
-
-  showMore() {
-    this.maxItemsCount = this.productTypeHierarchy.length;
-    $(".show-btn").hide();
-    $(".hide-btn").show();
-  }
-
-  showLess() {
-    this.maxItemsCount = TopProductOfferingsComponent.MAX_ITEMS_DEFAULT;
-    $(".hide-btn").hide();
-    $(".show-btn").show();
   }
 
 }

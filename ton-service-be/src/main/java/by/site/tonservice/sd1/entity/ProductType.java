@@ -25,12 +25,14 @@ public class ProductType {
     private BigInteger demesneId;
     @Column(name = "hide_in_tree")
     private boolean hideInTree;
+    @Column(name = "display_order")
+    private BigInteger displayOrder;
 
     public ProductType() {
     }
 
     public ProductType(String name, String description, List<ProductType> children,
-                       BigInteger parentId, String thumbnail, BigInteger demesneId, boolean hideInTree) {
+                       BigInteger parentId, String thumbnail, BigInteger demesneId, boolean hideInTree, BigInteger displayOrder) {
         this.name = name;
         this.description = description;
         this.children = children;
@@ -38,6 +40,7 @@ public class ProductType {
         this.thumbnail = thumbnail;
         this.demesneId = demesneId;
         this.hideInTree = hideInTree;
+        this.displayOrder = displayOrder;
     }
 
     public BigInteger getId() {
@@ -102,5 +105,13 @@ public class ProductType {
 
     public void setDemesneId(BigInteger demesneId) {
         this.demesneId = demesneId;
+    }
+
+    public BigInteger getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(BigInteger displayOrder) {
+        this.displayOrder = displayOrder;
     }
 }

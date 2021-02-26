@@ -41,6 +41,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public List<ProductType> getAllTopLevelProductTypesWithExamples() {
         List<ProductType> topLevelOfferings = productTypeRepository.findAllByParentIdIsNull();
         for (ProductType topLevelOffering : topLevelOfferings) {
+            topLevelOffering.setThumbnail(null);
             BigInteger productTypeId = topLevelOffering.getChildren().iterator().next().getId();
             List<ProductExample> productTypeExamples = productExampleRepository.getAllByProductTypeIdAndDisplayOrderLessThan(productTypeId, 1);
             if (!productTypeExamples.isEmpty()) {

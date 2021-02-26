@@ -10,6 +10,7 @@ export class ProductType {
   public thumbnail: string;
   public hideInTree: boolean;
   public demesneId: number;
+  public displayOrder: number;
 
   constructor(dto) {
     this.id = dto.id;
@@ -20,5 +21,6 @@ export class ProductType {
     this.thumbnail = HttpService.url + dto.thumbnail;
     this.hideInTree = dto.hideInTree;
     this.demesneId = dto.demesneId;
+    this.displayOrder = dto.displayOrder;
   }
 }

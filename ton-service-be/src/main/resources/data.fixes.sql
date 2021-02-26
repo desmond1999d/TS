@@ -60,3 +60,79 @@ insert into product_types(name, hide_in_tree, demesne_id) values('Тониров
 
 insert into product_types(name, parent_id, hide_in_tree) values('Дизайн', 60, 1);
 insert into product_types(name, parent_id, hide_in_tree) values('Тонировка офисных перегородок, лоджий и др.', 61, 1);
+
+update product_types set NAME = 'Бегущая строка (Электронные табло)' where PRODUCT_TYPE_ID = 32;
+update product_types set NAME = 'Оформление школ, садиков, вузов' where PRODUCT_TYPE_ID = 42;
+update product_types set NAME = 'Наклейки на мотоциклы, квадроциклы, скутеры' where PRODUCT_TYPE_ID = 52;
+delete from product_types where PRODUCT_TYPE_ID = 53;
+update product_types set NAME = 'Дизайн рекламы' where PRODUCT_TYPE_ID = 60;
+update product_types set NAME = 'Дизайн рекламы' where PRODUCT_TYPE_ID = 62;
+
+update product_types set NAME = 'Антикоррозийная обработка Dinitrol, Mercasol, Noxudol' where PRODUCT_TYPE_ID = 27;
+update product_types set NAME = 'Антикоррозийная обработка Dinitrol, Mercasol, Noxudol' where PRODUCT_TYPE_ID = 57;
+
+update product_types set NAME = 'Тонировка стёкол' where PRODUCT_TYPE_ID = 28;
+update product_types set NAME = 'Тонировка стёкол' where PRODUCT_TYPE_ID = 58;
+
+update product_types set NAME = 'Защитные пленки A1, A2, A3' where PRODUCT_TYPE_ID = 29;
+update product_types set NAME = 'Защитные пленки A1, A2, A3' where PRODUCT_TYPE_ID = 59;
+
+-- not executed
+
+update product_types set name = 'Тонировка стёкол. Защитные пленки А1, А2, А3' where product_type_id = 28;
+update product_types set name = 'Тонировка стёкол. Защитные пленки А1, А2, А3' where product_type_id = 58;
+
+delete from product_types where product_type_id = 59;
+delete from product_types where product_type_id = 29;
+
+ALTER TABLE `ton_service`.`product_types`
+ADD COLUMN `display_order` INT(11) NOT NULL DEFAULT 0 AFTER `hide_in_tree`;
+
+update product_types set display_order = 1 where product_type_id = 20;
+update product_types set display_order = 2 where product_type_id = 21;
+update product_types set display_order = 3 where product_type_id = 23;
+update product_types set display_order = 4 where product_type_id = 22;
+update product_types set display_order = 6 where product_type_id = 24;
+update product_types set display_order = 5 where product_type_id = 25;
+update product_types set display_order = 7 where product_type_id = 60;
+
+update product_types set display_order = 8 where product_type_id = 27;
+update product_types set display_order = 9 where product_type_id = 28;
+update product_types set display_order = 10 where product_type_id = 61;
+
+update product_types set display_order = 1 where product_type_id = 30;
+update product_types set display_order = 2 where product_type_id = 31;
+update product_types set display_order = 3 where product_type_id = 32;
+update product_types set display_order = 4 where product_type_id = 33;
+update product_types set display_order = 5 where product_type_id = 34;
+update product_types set display_order = 6 where product_type_id = 35;
+update product_types set display_order = 7 where product_type_id = 36;
+update product_types set display_order = 8 where product_type_id = 37;
+
+update product_types set display_order = 1 where product_type_id = 38;
+update product_types set display_order = 3 where product_type_id = 39;
+update product_types set display_order = 4 where product_type_id = 40;
+update product_types set display_order = 2 where product_type_id = 41;
+update product_types set display_order = 5 where product_type_id = 42;
+update product_types set display_order = 6 where product_type_id = 43;
+
+update product_types set display_order = 1 where product_type_id = 44;
+update product_types set display_order = 2 where product_type_id = 45;
+update product_types set display_order = 3 where product_type_id = 46;
+update product_types set display_order = 4 where product_type_id = 47;
+update product_types set display_order = 5 where product_type_id = 48;
+
+update product_types set display_order = 1 where product_type_id = 49;
+update product_types set display_order = 2 where product_type_id = 50;
+update product_types set display_order = 3 where product_type_id = 51;
+update product_types set display_order = 4 where product_type_id = 52;
+
+update product_types set thumbnail = '../Examples/Thumbnails/roof.jpg' where product_type_id = 20;
+update product_types set thumbnail = '../Examples/Thumbnails/interior.jpg' where product_type_id = 21;
+update product_types set thumbnail = '../Examples/Thumbnails/car.jpg' where product_type_id = 23;
+update product_types set thumbnail = '../Examples/Thumbnails/wide.jpg' where product_type_id = 22;
+update product_types set thumbnail = '../Examples/Thumbnails/tales.jpg' where product_type_id = 25;
+update product_types set thumbnail = '../Examples/Thumbnails/pasportization.jpg' where product_type_id = 24;
+update product_types set thumbnail = '../Examples/Thumbnails/anticor.jpg' where product_type_id = 27;
+update product_types set thumbnail = '../Examples/Thumbnails/ton.jpg' where product_type_id = 28;
+update product_types set thumbnail = '../Examples/Thumbnails/design.jpg' where product_type_id = 60;

@@ -7,6 +7,18 @@ import {HttpService} from "./http.service";
 @Injectable()
 export class ProductTypeService {
 
+  public static SORT_FUNCTION = (a, b) => {
+    if (a.children.length == 0 && b.children.length == 0) {
+      return a.displayOrder - b.displayOrder;
+    } else if (a.children.length != 0 && b.children.length == 0) {
+      return -1;
+    } else if (a.children.length == 0 && b.children.length != 0) {
+      return 1;
+    } else {
+      return a.displayOrder - b.displayOrder;
+    }
+  };
+
   constructor(private http: HttpClient) {
   }
 
