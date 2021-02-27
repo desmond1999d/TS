@@ -201,6 +201,7 @@ a.dropdown-item {
 
 .navbar-toggler {
   outline: none;
+  -webkit-appearance: none !important;
 }
 
 .menu-btn__burger {

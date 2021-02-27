@@ -6,6 +6,9 @@
   padding: 0 !important;
   border: none;
   border-radius: 0;
+  width:  40vw;
+  height: 15vw;
+  object-fit: cover;
 }
 
 .thumbnail {
@@ -85,13 +88,12 @@
     display: inline-block;
   }
 
-  .products-grid {
+  .product-offers-header, .products-grid {
     display: none;
   }
-}
 
-.img-thumbnail {
-  width:  40vw;
-  height: 15vw;
-  object-fit: cover;
+  .thumbnail-content > .img-thumbnail {
+    width:  100%;
+    height: auto;
+  }
 }

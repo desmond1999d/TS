@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mr-auto ml-auto p-0">
   <div class="container-fluid container-mw">
     <a class="navbar-brand" href="#">
-      <img src="../../../../assets/icons/main-logo.png" height="40">
+      <img src="../../../../assets/icons/main-logo.png" height="40" alt="">
     </a>
     <div class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 100%;">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/demesnes">Услуги</a>
+          <a class="nav-link" routerLink="/demesnes" (click)="closeNavbar($event)">Услуги</a>
         </li>
         <li class="nav-item dropdown" (mouseenter)="openDropDown($event)" (mouseleave)="closeDropDown($event)">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" routerLink="/demesnes"
@@ -52,13 +52,13 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/about-us">О нас<span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/about-us" (click)="closeNavbar($event)">О нас<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Новинки</a>
+          <a class="nav-link" href="#" (click)="closeNavbar($event)">Новинки</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contacts">Контакты</a>
+          <a class="nav-link" routerLink="/contacts" (click)="closeNavbar($event)">Контакты</a>
         </li>
       </ul>
     </div>
