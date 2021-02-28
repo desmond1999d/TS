@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ContactsHeaderComponent } from './contacts-header/contacts-header.component';
 import { MainPageCarouselComponent } from './main-page-carousel/main-page-carousel.component';
@@ -47,7 +46,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
     AboutUsComponent],
   imports: [
     CommonModule,
-    CollapseModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
