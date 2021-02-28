@@ -36,7 +36,7 @@ export class RouterComponent implements OnInit {
         this.productTypeService.getCategoryById(categoryId).subscribe(category =>
           this.category = category
         );
-        if (this.category.children.length > 1 && subcategoryId) {
+        if (this.category && this.category.children.length > 1 && subcategoryId) {
           this.productTypeService.getCategoryById(subcategoryId).subscribe(subcategory =>
             this.subcategory = subcategory
           )

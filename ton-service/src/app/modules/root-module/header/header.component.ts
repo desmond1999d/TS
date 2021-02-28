@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {ProductType} from '../../../shared/ProductType';
-import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import * as $ from "jquery";
 
 @Component({

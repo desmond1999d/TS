@@ -159,6 +159,7 @@
   .dropdown-item {
     white-space: initial;
     background-color: inherit;
+    min-width: unset !important;
   }
 
   .dropdown-item:hover {
