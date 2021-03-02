@@ -136,3 +136,16 @@ update product_types set thumbnail = '../Examples/Thumbnails/pasportization.jpg'
 update product_types set thumbnail = '../Examples/Thumbnails/anticor.jpg' where product_type_id = 27;
 update product_types set thumbnail = '../Examples/Thumbnails/ton.jpg' where product_type_id = 28;
 update product_types set thumbnail = '../Examples/Thumbnails/design.jpg' where product_type_id = 60;
+
+ALTER TABLE `ton_service`.`product_types`
+CHANGE COLUMN `DESCRIPTION` `DESCRIPTION` VARCHAR(400) NULL DEFAULT NULL ;
+
+UPDATE product_types SET DESCRIPTION = 'Наружная реклама формирует образ вашей компании-продавца и приносит вам прибыль. Мы изготовим любую рекламу для наружного размещения, будь то нестандартный световой короб, большие дизайнерские буквы или отдельно стоящие конструкции.' WHERE PRODUCT_TYPE_ID = 20;
+UPDATE product_types SET DESCRIPTION = 'Предлагаем интерьерные вывески с уникальным дизайном и качественным исполнением, световые и не световые объемные буквы, таблички-ориентиры, уголки клиента. Рекламное оформление ресепшн, зон продаж и отдыха. Всё, чтобы завоевать внимание Ваших  покупателей!' WHERE PRODUCT_TYPE_ID = 21;
+UPDATE product_types SET DESCRIPTION = 'Мы печатаем на: баннере, пленке, сетке, перфорированной пленке, бумаге, ткани, фотообоях, backlight. Для защиты изображения используем широкоформатное ламинирование.' WHERE PRODUCT_TYPE_ID = 22;
+UPDATE product_types SET DESCRIPTION = 'Мы профессионально оклеиваем автомобили рекламой. Мы знаем, как сделать рекламное изображение долговечным и создающим дополнительную защиту кузова. Брендированный автомобиль становится мобильным рекламным носителем корпоративных интересов!' WHERE PRODUCT_TYPE_ID = 23;
+UPDATE product_types SET DESCRIPTION = 'Дизайн, в нашей работе, это увлекательный творческий процесс, который приводит к созданию концептуально оригинального проекта рекламы на основе брифа заказчика и точно в срок.' WHERE PRODUCT_TYPE_ID = 24;
+UPDATE product_types SET DESCRIPTION = 'Скинали — это стеклянная поверхность с нанесенной фотопечатью. Этот вид декоративной отделки «фартука» на кухне и шкафов-купе. Это настенные фотопанно, создающие современный и неповторимый интерьер, Преимущества экологичного материала и простота ухода!' WHERE PRODUCT_TYPE_ID = 25;
+UPDATE product_types SET DESCRIPTION = 'Мы располагаем 20-летним опытом антикоррозийной обработки автомобилей. Для защиты от коррозии, мы используем только качественные материалы: Dinitrol, Mercasol, Noxudol. Бесплатное ежегодное обслуживание!' WHERE PRODUCT_TYPE_ID = 27;
+UPDATE product_types SET DESCRIPTION = 'Тонировка стёкол служит защитой от солнца, украшает фасады, сохраняет приватность. Разнообразие оттенков зеркальных плёнок с односторонней видимостью и матовых пленок. Защитные плёнки класса А1, А2, А3 обезопасят Вас в случае разбитого стекла.' WHERE PRODUCT_TYPE_ID = 28;
+UPDATE product_types SET DESCRIPTION = 'Зная, насколько важно для Вас получить полный комплекс услуг, специалисты Тон-сервис помогут оценить необходимость паспортизации рекламы и правильно оформить весь пакет документов на согласование наружной рекламы, в случаях, предусмотренных законодательством РБ' WHERE PRODUCT_TYPE_ID = 60;
