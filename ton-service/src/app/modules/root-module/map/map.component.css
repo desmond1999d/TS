@@ -4,16 +4,22 @@
   margin-bottom: 50px;
 }
 
-.map-address::before, .map-email::before, .map-phone::before, .map-timetable::before {
+.map-address::before, .map-email::before, .map-phone::before, .map-viber::before, .map-timetable::before {
   width: 17px;
   height: 17px;
   content: "";
   background-size: contain !important;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 60px;
 }
 
-.map-address, .map-email, .map-phone, .map-timetable {
+.map-viber::before {
+  width: 60px;
+  height: 17px;
+  margin-right: 17px; /* 60 - (60 - 17) */
+}
+
+.map-address, .map-email, .map-phone, .map-viber, .map-timetable {
   margin: 15px 0;
 }
 
@@ -38,6 +44,10 @@
   background: url("../../../../assets/icons/phone-blue-con.png") 100% 100% no-repeat;
 }
 
+.map-viber::before {
+  background: url("../../../../assets/icons/viber-blue.png") 100% 100% no-repeat;
+}
+
 .map-timetable::before {
   background: url("../../../../assets/icons/clock-blue-icon.png") 100% 100% no-repeat;
 }
@@ -51,4 +61,9 @@
     -ms-flex-order:0;
     order:0;
   }
+}
+
+a {
+  text-decoration:none;
+  color: black;
 }
