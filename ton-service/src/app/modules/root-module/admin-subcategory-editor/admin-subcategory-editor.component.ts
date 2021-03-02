@@ -90,7 +90,7 @@ export class AdminSubcategoryEditorComponent implements OnInit {
       }
     }
     productExample.productTypeId = this.subcategoryId;
-    productExample.displayOrder = this.examples[this.examples.length - 1].displayOrder + 1;
+    productExample.displayOrder = this.examples.length !== 0 ? this.examples[this.examples.length - 1].displayOrder + 1 : 0;
     this.adminService.createProductExample(productExample)
       .subscribe(data => {
         this.adminService.setFileToProductExample(data, this.file)
