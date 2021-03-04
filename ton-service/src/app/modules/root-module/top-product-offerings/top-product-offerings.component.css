@@ -28,6 +28,7 @@
 }
 
 .product-description {
+  font-size: 10pt;
   color: white;
   width: 80%;
 }
@@ -49,16 +50,17 @@
 }
 
 .thumbnail-label {
-  font-size: 16pt;
+  font-size: 14pt;
   display: inline-block;
-  vertical-align: middle;
   text-decoration: none;
 }
 
 .thumbnail-label-container {
-  line-height: 70px;
   height: 70px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 1261px) {
