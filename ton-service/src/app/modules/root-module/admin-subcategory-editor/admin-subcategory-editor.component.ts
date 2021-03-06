@@ -66,10 +66,9 @@ export class AdminSubcategoryEditorComponent implements OnInit {
     if (newDisplayOrder > maxDisplayOrder) {
       newDisplayOrder = maxDisplayOrder;
     }
-    let exampleId = $event.target.id;
     for (let i = 0; i < this.examples.length; i++) {
       let example = this.examples[i];
-      if (example.displayOrder > targetExample.displayOrder) {
+      if (example.displayOrder >= targetExample.displayOrder) {
         example.displayOrder--;
       }
       if (newDisplayOrder <= example.displayOrder) {
@@ -90,7 +89,7 @@ export class AdminSubcategoryEditorComponent implements OnInit {
       }
     }
     productExample.productTypeId = this.subcategoryId;
-    productExample.displayOrder = this.examples.length !== 0 ? this.examples[this.examples.length - 1].displayOrder + 1 : 0;
+    productExample.displayOrder = this.examples.length !== 0 ? Number(this.examples[this.examples.length - 1].displayOrder) + 1 : 0;
     this.adminService.createProductExample(productExample)
       .subscribe(data => {
         this.adminService.setFileToProductExample(data, this.file)
