@@ -72,8 +72,8 @@
   background-size: contain;
 }
 
-/*.page-block-e {*/
-  /*background: transparent url("https://www.actived.ru/local/templates/actived.new/images/parallax-block-e.jpg") top center no-repeat;*/
-  /*background-attachment: fixed;*/
-  /*background-size: cover;*/
-/*}*/
+.page-block-e {
+  background: transparent url("https://wallpaperaccess.com/full/358836.jpg") top center no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
