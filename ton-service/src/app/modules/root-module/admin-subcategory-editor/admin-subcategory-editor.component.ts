@@ -3,6 +3,7 @@ import {ProductExample} from "../../../shared/ProductExample";
 import {ActivatedRoute} from "@angular/router";
 import {ProductExampleService} from "../../../services/ProductExampleService";
 import {AdminService} from "../../../services/AdminService";
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-admin-subcategory-editor',
@@ -19,11 +20,16 @@ export class AdminSubcategoryEditorComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productExampleService: ProductExampleService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private titleService: Title, private metaService: Meta
   ) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Тон-сервис');
+    this.metaService.addTags([
+      {name: 'robots', content: 'noindex, nofollow'}
+    ]);
     this.examples = [];
     this.route.paramMap.subscribe(params => {
       this.categoryId = parseInt(params.get('categoryId'));
