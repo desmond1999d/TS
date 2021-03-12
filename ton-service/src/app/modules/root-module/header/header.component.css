@@ -196,7 +196,7 @@ a#navbarDropdownChild.nav-link {
 a.dropdown-item {
   min-height: 32px;
   padding: 0;
-  min-width: 270px;
+  min-width: 265px;
   align-content: center;
 }
 
