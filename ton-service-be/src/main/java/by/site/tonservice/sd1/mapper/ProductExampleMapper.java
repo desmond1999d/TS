@@ -43,13 +43,13 @@ public class ProductExampleMapper implements Mapper<ProductExample, ProductExamp
     }
 
     private void addPayload(ProductExampleDto productExampleDto, ProductExample productExample) {
-        try {
-            // TODO: Add cache if possible
-            if (productExample.getImgSource() != null) {
-                productExampleDto.setImage(FileUtils.readFileToByteArray(new File(productExample.getImgSource())));
+        // TODO: Add cache if possible
+        if (productExample.getImgSource() != null) {
+            if (productExample.getImgSource().startsWith("..")) {
+                productExampleDto.setImage(productExample.getImgSource().substring(2));
+            } else {
+                productExampleDto.setImage(productExample.getImgSource());
             }
-        } catch (IOException exception) {
-            exception.printStackTrace();
         }
     }
 

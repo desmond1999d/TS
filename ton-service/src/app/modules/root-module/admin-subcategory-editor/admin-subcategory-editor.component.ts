@@ -34,15 +34,12 @@ export class AdminSubcategoryEditorComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.categoryId = parseInt(params.get('categoryId'));
       this.subcategoryId = parseInt(params.get('subcategoryId'));
-      this.productExampleService.getProductExamplesByTypeIdNp(this.subcategoryId).subscribe(examples => {
+      this.productExampleService.getProductExamplesByTypeId(this.subcategoryId).subscribe(examples => {
+        this.examples = [];
         examples.forEach(example => {
-          this.productExampleService.getProductExampleById(example.id).subscribe(exampleWithPayload => {
-            this.examples.push(new ProductExample(exampleWithPayload));
-            if (this.examples.length === examples.length) {
-              this.examples.sort((example1, example2) => example1.displayOrder - example2.displayOrder);
-            }
-          });
+          this.examples.push(new ProductExample(example));
         });
+        this.examples.sort((example1, example2) => example1.displayOrder - example2.displayOrder);
       });
     });
   }

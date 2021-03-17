@@ -15,7 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class DbInitializerImpl implements DbInitializer {
 
-    public static final String BASE_DIR = "../Examples";
+    public static final String FILE_BASE_DIR = "../../var/www/html/Examples";
+    public static final String URL_BASE_DIR = "/Examples";
 
     private ProductExampleRepository productExampleRepository;
 
@@ -23,7 +24,7 @@ public class DbInitializerImpl implements DbInitializer {
     public void initProductExamples() {
         try {
             AtomicInteger order = new AtomicInteger();
-            Files.walk(Paths.get(BASE_DIR)).forEach(path -> {
+            Files.walk(Paths.get(FILE_BASE_DIR)).forEach(path -> {
                 try {
                     BigInteger productTypeId = new BigInteger(path.getName(path.getNameCount() - 2).toString());
                     ProductExample productExample = new ProductExample(productTypeId, path.toString(), order.getAndAdd(1));

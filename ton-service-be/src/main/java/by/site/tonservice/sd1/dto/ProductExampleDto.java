@@ -1,21 +1,19 @@
 package by.site.tonservice.sd1.dto;
 
-import by.site.tonservice.sd1.entity.ProductExample;
-
 import java.math.BigInteger;
 
 public class ProductExampleDto {
 
     private BigInteger id;
     private BigInteger productTypeId;
-    private byte[] image;
+    private String image;
     private String companyName;
     private int displayOrder;
 
     public ProductExampleDto() {
     }
 
-    public ProductExampleDto(BigInteger id, BigInteger productTypeId, byte[] image, String companyName, int displayOrder) {
+    public ProductExampleDto(BigInteger id, BigInteger productTypeId, String image, String companyName, int displayOrder) {
         this.id = id;
         this.productTypeId = productTypeId;
         this.image = image;
@@ -39,11 +37,11 @@ public class ProductExampleDto {
         this.productTypeId = productTypeId;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

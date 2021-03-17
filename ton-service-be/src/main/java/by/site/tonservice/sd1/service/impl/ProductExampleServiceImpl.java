@@ -25,7 +25,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static by.site.tonservice.sd1.service.impl.DbInitializerImpl.BASE_DIR;
+import static by.site.tonservice.sd1.service.impl.DbInitializerImpl.FILE_BASE_DIR;
+import static by.site.tonservice.sd1.service.impl.DbInitializerImpl.URL_BASE_DIR;
 
 @Service
 public class ProductExampleServiceImpl implements ProductExampleService {
@@ -116,9 +117,10 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     public ProductExampleDto setFileToProductExample(MultipartFile multipartFile, BigInteger productExampleId) throws RuntimeException, IOException {
         Optional<ProductExample> productExample = productExampleRepository.findById(productExampleId);
         if (multipartFile != null && productExample.isPresent()) {
-            String dir = BASE_DIR + "/" + productExample.get().getProductTypeId();
-            Path path = saveFile(dir, multipartFile.getOriginalFilename(), multipartFile);
-            productExample.get().setImgSource(path.toString());
+            String dir = FILE_BASE_DIR + "/" + productExample.get().getProductTypeId();
+            String urlDir = URL_BASE_DIR + "/" + productExample.get().getProductTypeId() + "/" + multipartFile.getOriginalFilename();
+            saveFile(dir, multipartFile.getOriginalFilename(), multipartFile);
+            productExample.get().setImgSource(urlDir);
             productExampleRepository.save(productExample.get());
             return productExampleMapper.map(productExample.get());
         }

@@ -12,7 +12,7 @@ export class ProductExample {
     this.productTypeId = dto.productTypeId;
     this.companyName = dto.companyName;
     this.displayOrder = dto.displayOrder;
-    this.formattedImage = 'data:image/jpg;base64,' + dto.image;
+    this.formattedImage = dto.image;
   }
 
 }
