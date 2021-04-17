@@ -81,6 +81,17 @@ public class ProductTypeServiceImpl implements ProductTypeService {
         }
     }
 
+    @Override
+    public ProductType updateTypeDescription(String typeDescription, BigInteger productTypeId) {
+        Optional<ProductType> productType = productTypeRepository.findById(productTypeId);
+        if (productType.isPresent()) {
+            productType.get().setTypeDescription(typeDescription);
+            productTypeRepository.save(productType.get());
+            return productType.get();
+        }
+        return null;
+    }
+
     @Autowired
     public void setProductTypeRepository(ProductTypeRepository productTypeRepository) {
         this.productTypeRepository = productTypeRepository;

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductExampleService} from "../../../services/ProductExampleService";
 import {ProductExample} from "../../../shared/ProductExample";
+import {ProductTypeService} from "../../../services/ProductTypeService";
 
 @Component({
   selector: 'app-subcategory-examples',
@@ -10,21 +11,24 @@ import {ProductExample} from "../../../shared/ProductExample";
 })
 export class SubcategoryExamplesComponent implements OnInit {
 
-  private categoryId: number;
-  public subcategoryId: number;
   public examples: ProductExample[];
+  public description: string;
 
   constructor(
     private route: ActivatedRoute,
-    private productExampleService: ProductExampleService
+    private productExampleService: ProductExampleService,
+    private productTypeService: ProductTypeService
   ) {
   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.categoryId = parseInt(params.get('categoryId'));
-      this.subcategoryId = parseInt(params.get('subcategoryId'));
-      this.productExampleService.getProductExamplesByTypeId(this.subcategoryId).subscribe(examples => {
+      let category = parseInt(params.get('subcategoryId'));
+      category = category ? category : parseInt(params.get('categoryId'));
+      this.productTypeService.getCategoryById(category).subscribe(subcategory =>
+        this.description = subcategory.typeDescription
+      );
+      this.productExampleService.getProductExamplesByTypeId(category).subscribe(examples => {
         this.examples = [];
         examples.forEach(example => {
           this.examples.push(new ProductExample(example));

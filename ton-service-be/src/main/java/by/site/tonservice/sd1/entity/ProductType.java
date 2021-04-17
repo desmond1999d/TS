@@ -27,6 +27,8 @@ public class ProductType {
     private boolean hideInTree;
     @Column(name = "display_order")
     private BigInteger displayOrder;
+    @Column(name = "type_description")
+    private String typeDescription;
 
     public ProductType() {
     }
@@ -113,5 +115,13 @@ public class ProductType {
 
     public void setDisplayOrder(BigInteger displayOrder) {
         this.displayOrder = displayOrder;
+    }
+
+    public String getTypeDescription() {
+        return typeDescription;
+    }
+
+    public void setTypeDescription(String typeDescription) {
+        this.typeDescription = typeDescription;
     }
 }

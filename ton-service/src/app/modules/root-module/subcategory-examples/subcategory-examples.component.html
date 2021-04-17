@@ -2,9 +2,15 @@
 <app-subcategory-navigator></app-subcategory-navigator>
 
 <div class="container-fluid container-mw pb-2">
+  <div *ngIf="description && description != null && description.length !== 0">
+    <div class="type-description">
+      {{description}}
+    </div>
+  </div>
   <div class="card-columns" data-toggle="modal" data-target="#exampleModal">
     <div *ngFor="let example of this.examples; let i = index" class="pb-2" data-toggle="modal">
-      <img [src]="example.formattedImage" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i" alt="Пример работ">
+      <img [src]="example.formattedImage" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i"
+           alt="Пример работ">
     </div>
   </div>
 </div>

@@ -19,4 +19,6 @@ public interface ProductTypeService {
     byte[] getImage(BigInteger id);
 
     ProductType getProductTypeById(BigInteger productTypeId);
+
+    ProductType updateTypeDescription(String typeDescription, BigInteger productTypeId);
 }

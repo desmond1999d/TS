@@ -1,7 +1,13 @@
 <div class="container pb-2">
-  <div class="card-columns" data-toggle="modal" data-target="#exampleModal">
-    <div *ngFor="let example of this.examples; let i = index" class="pb-2" data-toggle="modal">
-      <img [src]="example.formattedImage" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i" alt="">
+  <div class="description">
+    <label class="w-100">
+      <textarea id="description" class="w-100" (change)="changeDescription($event)" [value]="description">
+      </textarea>
+    </label>
+  </div>
+  <div class="card-columns">
+    <div *ngFor="let example of this.examples; let i = index" class="pb-2">
+      <img [src]="example.formattedImage" class="card-img" alt="">
       <div class="mt-2">
         <label>
           <input [id]="example.id" (change)="changeDisplayOrder($event, example)" [placeholder]="example.displayOrder">

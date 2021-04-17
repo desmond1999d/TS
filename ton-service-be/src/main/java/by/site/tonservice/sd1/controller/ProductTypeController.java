@@ -45,6 +45,11 @@ public class ProductTypeController {
         return productTypeService.getImage(id);
     }
 
+    @RequestMapping(value = "/update-description", method = RequestMethod.GET)
+    public ProductType getImage(@RequestParam BigInteger productTypeId, @RequestParam String typeDescription) {
+        return productTypeService.updateTypeDescription(typeDescription, productTypeId);
+    }
+
     @Autowired
     public void setProductTypeService(ProductTypeService productTypeService) {
         this.productTypeService = productTypeService;

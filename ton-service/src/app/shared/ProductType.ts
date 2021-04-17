@@ -11,6 +11,7 @@ export class ProductType {
   public hideInTree: boolean;
   public demesneId: number;
   public displayOrder: number;
+  public typeDescription: string;
 
   constructor(dto) {
     this.id = dto.id;
@@ -22,5 +23,6 @@ export class ProductType {
     this.hideInTree = dto.hideInTree;
     this.demesneId = dto.demesneId;
     this.displayOrder = dto.displayOrder;
+    this.typeDescription = dto.typeDescription;
   }
 }
