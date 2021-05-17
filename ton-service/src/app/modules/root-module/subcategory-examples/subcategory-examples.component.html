@@ -3,8 +3,7 @@
 
 <div class="container-fluid container-mw pb-2">
   <div *ngIf="description && description != null && description.length !== 0">
-    <div class="type-description">
-      {{description}}
+    <div class="type-description" [innerHTML]="description">
     </div>
   </div>
   <div class="card-columns" data-toggle="modal" data-target="#exampleModal">

@@ -45,7 +45,8 @@ export class ProductTypeService {
   }
 
   public updateCategoryById(productTypeId: number, typeDescription: string): Observable<ProductType> {
-    let params = new HttpParams().set('productTypeId', productTypeId.toString()).set('typeDescription',  typeDescription);
-    return this.http.get<ProductType>(HttpService.url + '/api/product-types/update-description', {params: params, headers: HttpService.httpOptions.headers});
+    let params = new HttpParams().set('productTypeId', productTypeId.toString());
+    return this.http.post<ProductType>(HttpService.url + '/api/product-types/update-description', typeDescription,
+      {params: params, headers: HttpService.httpOptions.headers});
   }
 }
