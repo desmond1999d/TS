@@ -2,3 +2,8 @@
 *.iml
 .idea
 out
+.jar
+ton-service/dist
+ton-service/tmp
+ton-service/out-tsc
+ton-service/node_modules
