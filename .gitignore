@@ -2,7 +2,8 @@
 *.iml
 .idea
 out
-.jar
+*.jar
+target
 ton-service/dist
 ton-service/tmp
 ton-service/out-tsc
