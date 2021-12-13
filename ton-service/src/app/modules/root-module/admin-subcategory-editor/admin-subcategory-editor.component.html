@@ -1,9 +1,10 @@
 <div class="container pb-2">
   <div class="description">
-    <label class="w-100">
-      <textarea id="description" class="w-100" (change)="changeDescription($event)" [value]="description">
-      </textarea>
-    </label>
+    <form [formGroup]="descriptionForm">
+      <div class="form-group">
+        <quill-editor formControlName="editor"></quill-editor>
+      </div>
+    </form>
   </div>
   <div class="card-columns">
     <div *ngFor="let example of this.examples; let i = index" class="pb-2">

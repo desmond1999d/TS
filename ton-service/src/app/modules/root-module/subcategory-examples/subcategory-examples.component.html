@@ -9,7 +9,7 @@
     </div>
   </div>
   <div *ngIf="description && description != null && description.length !== 0">
-    <div class="type-description" [innerHTML]="description">
+    <div class="type-description ql-editor" [innerHTML]="description | safeHtml">
     </div>
   </div>
 </div>

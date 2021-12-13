@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductExampleService} from "../../../services/ProductExampleService";
 import {ProductExample} from "../../../shared/ProductExample";
 import {ProductTypeService} from "../../../services/ProductTypeService";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-subcategory-examples',
@@ -38,4 +39,14 @@ export class SubcategoryExamplesComponent implements OnInit {
     });
   }
 
+}
+
+@Pipe({name: 'safeHtml'})
+export class SafeHtmlPipe implements PipeTransform {
+  constructor(private sanitized: DomSanitizer) {
+  }
+
+  transform(value) {
+    return this.sanitized.bypassSecurityTrustHtml(value);
+  }
 }

@@ -5,6 +5,7 @@ import {ProductExampleService} from "../../../services/ProductExampleService";
 import {AdminService} from "../../../services/AdminService";
 import {Meta, Title} from "@angular/platform-browser";
 import {ProductTypeService} from "../../../services/ProductTypeService";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-subcategory-editor',
@@ -16,7 +17,7 @@ export class AdminSubcategoryEditorComponent implements OnInit {
   public subcategoryId: number;
   public examples: ProductExample[];
   public file;
-  public description: string;
+  public descriptionForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,10 +35,13 @@ export class AdminSubcategoryEditorComponent implements OnInit {
       {name: 'robots', content: 'noindex, nofollow'}
     ]);
     this.examples = [];
+    this.descriptionForm = new FormGroup({
+      'editor': new FormControl(null)
+    });
     this.route.paramMap.subscribe(params => {
       this.subcategoryId = parseInt(params.get('subcategoryId'));
       this.productTypeService.getCategoryById(this.subcategoryId).subscribe(productType =>
-        this.description = productType.typeDescription
+        this.descriptionForm.get('editor').setValue(productType.typeDescription)
       );
       this.productExampleService.getProductExamplesByTypeId(this.subcategoryId).subscribe(examples => {
         this.examples = [];
@@ -114,15 +118,11 @@ export class AdminSubcategoryEditorComponent implements OnInit {
     this.adminService.updateProductExamplesDisplayOrder(this.examples)
       .subscribe(data => alert('success'),
         error => alert('updateProductExamplesDisplayOrder failed with error: ' + error.message));
-    this.productTypeService.updateCategoryById(this.subcategoryId, this.description).subscribe();
+    this.productTypeService.updateCategoryById(this.subcategoryId, this.descriptionForm.get('editor').value).subscribe();
   }
 
   public uploadFile($event) {
     this.file = $event.target.files[0];
-  }
-
-  public changeDescription($event) {
-    this.description = $event.target.value;
   }
 
 }

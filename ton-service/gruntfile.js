@@ -7,8 +7,8 @@ grunt.initConfig({
     options: {
       info: true,
       minify: true,
-      rejected: false, // Logs the CSS rules that were removed
-      whitelist: ['*transition*', '*dimmer*']
+      rejected: true, // Logs the CSS rules that were removed
+      whitelist: ['*transition*', '*dimmer*', '*ql-*']
     },
     target: {
       cwd: '.',
