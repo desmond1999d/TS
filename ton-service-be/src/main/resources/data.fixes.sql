@@ -152,3 +152,22 @@ UPDATE product_types SET DESCRIPTION = 'Зная, насколько важно 
 
 ALTER TABLE `ton_service`.`product_types`
 ADD COLUMN `type_description` MEDIUMTEXT NULL AFTER `display_order`;
+
+update demesne set name = 'Тонировка и защита стекол' where demesne_id = (select x.demesne_id from (select demesne_id from demesne where name = 'Тонировка') x);
+
+update product_types set name = 'Штендеры, пилоны, указатели' where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Штендеры, стеллы') x);
+
+update product_types set name = 'Тонирование и бронирование стекол' where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Тонировка стёкол. Защитные пленки А1, А2, А3' and parent_id is null) x);
+
+insert into product_types(parent_id, name, hide_in_tree, display_order) values((select x.product_type_id from (select product_type_id from product_types where name = 'Тонирование и бронирование стекол' and parent_id is null) x), 'Защитные пленки А1, А2, А3', 0, 2);
+
+update product_types set name = 'Тонировачные и декоративные пленки', hide_in_tree = 0 where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Тонировка стёкол. Защитные пленки А1, А2, А3' and parent_id is not null) x);
+
+delete from product_type_examples where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Тонировка офисных перегородок, лоджий и др.' and parent_id is not null) x);
+delete from product_types where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Тонировка офисных перегородок, лоджий и др.' and parent_id is not null) x);
+
+delete from product_type_examples where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Тонировка офисных перегородок, лоджий и др.' and parent_id is null) x);
+delete from product_types where product_type_id = (select x.product_type_id from (select product_type_id from product_types where name = 'Тонировка офисных перегородок, лоджий и др.' and parent_id is null) x);
+
+insert into product_types(parent_id, name, display_order) values((select x.product_type_id from (select product_type_id from product_types where name = 'Наружная реклама') x), 'Режимы работы', (select x.display_order + 1 from (select max(display_order) display_order from product_types where parent_id = (select product_type_id from product_types where name = 'Наружная реклама')) x));
+insert into product_types(parent_id, name, display_order) values((select x.product_type_id from (select product_type_id from product_types where name = 'Наружная реклама') x), 'Шильды (административные доски)', (select x.display_order + 1 from (select max(display_order) display_order from product_types where parent_id = (select product_type_id from product_types where name = 'Наружная реклама')) x));
