@@ -27,4 +27,4 @@ jobs:
       run: |
         cd ./ton-service
         npm i
-        NODE_OPTIONS=--openssl-legacy-provider npm run build
+        npm run build
