@@ -22,6 +22,7 @@ jobs:
       uses: actions/cache@v2
       env:
         cache-name: cache-node-modules
+        path: ./
       with:
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
