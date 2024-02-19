@@ -18,17 +18,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file ./ton-service-be/pom.xml
 
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
+    - name: Use Node 12.x
+      uses: actions/setup-node@v1
       with:
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        path: ./
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+        node-version: '12.x'
+
     - name: npm install and npm run CI commands 
       run: |
         cd ./ton-service
