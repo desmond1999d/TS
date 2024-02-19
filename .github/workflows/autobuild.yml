@@ -19,7 +19,7 @@ jobs:
       run: mvn -B package --file ./ton-service-be/pom.xml
 
     - name: Cache node modules
-    - uses: actions/cache@v2
+      uses: actions/cache@v2
       env:
         cache-name: cache-node-modules
       with:
