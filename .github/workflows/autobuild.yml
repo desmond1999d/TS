@@ -42,3 +42,11 @@ jobs:
         cd ./ton-service
         npm i
         npm run build
+    - name: Build a container image from our Angular App
+      run: docker build ./ton-service -t $IMAGE_NAME_FE
+    - name: Tag & publish to GitHub Container Registry
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_FE
+        VERSION=latest
+        docker tag $IMAGE_NAME_FE $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
