@@ -24,7 +24,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file ./ton-service-be/pom.xml
     - name: Build a container image from our Spring Boot app
-      run: docker build ./ton-service-be
+      run: docker build ./ton-service-be -t $IMAGE_NAME_BE
     - name: Tag & publish to GitHub Container Registry
       run: |
         IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_BE
