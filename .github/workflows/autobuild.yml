@@ -5,6 +5,7 @@ on: [push]
 env:
   IMAGE_NAME_BE: ton-service-be
   IMAGE_NAME_FE: ton-service
+  IMAGE_NAME_DB: ton-service-db
 
 jobs:
   build:
@@ -49,4 +50,13 @@ jobs:
         IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_FE
         VERSION=latest
         docker tag $IMAGE_NAME_FE $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+
+    - name: Build a container image for our DB
+      run: docker build -f ./Dockerfile_DB_Dev -t $IMAGE_NAME_DB
+    - name: Tag & publish to GitHub Container Registry
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_DB
+        VERSION=latest
+        docker tag $IMAGE_NAME_DB $IMAGE_ID:$VERSION
         docker push $IMAGE_ID:$VERSION
