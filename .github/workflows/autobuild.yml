@@ -2,6 +2,11 @@ name: Java CI with Maven
 
 on: [push]
 
+env:
+  IMAGE_NAME_BE: ton-service-be
+  IMAGE_NAME_FE: ton-service
+  IMAGE_NAME_DB: ton-service-db
+
 jobs:
   build:
 
@@ -15,8 +20,18 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
+    - name: Login to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Build with Maven
       run: mvn -B package --file ./ton-service-be/pom.xml
+    - name: Build a container image from our Spring Boot app
+      run: docker build ./ton-service-be -t $IMAGE_NAME_BE
+    - name: Tag & publish to GitHub Container Registry
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_BE
+        VERSION=latest
+        docker tag $IMAGE_NAME_BE $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
 
     - name: Use Node 16.x
       uses: actions/setup-node@v1
@@ -28,3 +43,20 @@ jobs:
         cd ./ton-service
         npm i
         npm run build
+    - name: Build a container image from our Angular App
+      run: docker build ./ton-service -t $IMAGE_NAME_FE
+    - name: Tag & publish to GitHub Container Registry
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_FE
+        VERSION=latest
+        docker tag $IMAGE_NAME_FE $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+
+    - name: Build a container image for our DB
+      run: docker build -f Dockerfile_DB_Dev -t $IMAGE_NAME_DB .
+    - name: Tag & publish to GitHub Container Registry
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME_DB
+        VERSION=latest
+        docker tag $IMAGE_NAME_DB $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
