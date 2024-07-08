@@ -1,5 +1,5 @@
 # Allow all URLs (see https://www.robotstxt.org/robotstxt.html)
-Host: http://www.ton-service.by
+Host: https://ton-service.by
 User-agent: *
 Disallow: /admin/*
-Sitemap: http://www.ton-service.by/sitemap.xml
+Sitemap: https://ton-service.by/sitemap.xml
