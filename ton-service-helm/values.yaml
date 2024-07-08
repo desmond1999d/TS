@@ -1,0 +1,8 @@
+ton-service-be:
+  image:
+    repository: ghcr.io/desmond1999d/ton-service-be:latest
+    tag: latest
+    pullPolicy: Always
+  enabled: true
+  service:
+    port: 1739
