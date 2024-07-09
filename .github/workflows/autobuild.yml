@@ -23,7 +23,7 @@ jobs:
     - name: Login to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Build with Maven
-      run: mvn -B package --file ./ton-service-be/pom.xml
+      run: mvn -B package --file ./ton-service-be/pom.xml -Dspring.profiles.active=dev
     - name: Build a container image from our Spring Boot app
       run: docker build ./ton-service-be -t $IMAGE_NAME_BE
     - name: Tag & publish to GitHub Container Registry
