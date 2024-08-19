@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductTypeServiceImpl implements ProductTypeService {
@@ -25,12 +26,12 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     public List<ProductType> getAllTopLevelProductTypes() {
         LOGGER.info("getAllTopLevelProductTypes start");
-        return productTypeRepository.findAllByParentIdIsNull();
+        return productTypeRepository.findAllByParentIdIsNull().stream().filter(ProductType::isEnabled).collect(Collectors.toList());
     }
 
     @Override
     public List<ProductType> getAllTopLevelProductTypesWithThumbnails() {
-        List<ProductType> productTypes = productTypeRepository.findAllByParentIdIsNull();
+        List<ProductType> productTypes = productTypeRepository.findAllByParentIdIsNull().stream().filter(ProductType::isEnabled).collect(Collectors.toList());
         for (ProductType productType : productTypes) {
             productType.setThumbnail("/api/product-types/image?id=" + productType.getId());
         }
@@ -39,7 +40,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     @Override
     public List<ProductType> getAllTopLevelProductTypesWithExamples() {
-        List<ProductType> topLevelOfferings = productTypeRepository.findAllByParentIdIsNull();
+        List<ProductType> topLevelOfferings = productTypeRepository.findAllByParentIdIsNull().stream().filter(ProductType::isEnabled).collect(Collectors.toList());
         for (ProductType topLevelOffering : topLevelOfferings) {
             topLevelOffering.setThumbnail(null);
             BigInteger productTypeId = topLevelOffering.getChildren().iterator().next().getId();
@@ -54,12 +55,12 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     public List<ProductType> getAllHorizontalRefs(final BigInteger parentProductTypeId) {
         LOGGER.info("getAllHorizontalRefs start");
-        return productTypeRepository.findAllByParentId(parentProductTypeId);
+        return productTypeRepository.findAllByParentId(parentProductTypeId).stream().filter(ProductType::isEnabled).collect(Collectors.toList());
     }
 
     @Override
     public byte[] getImage(BigInteger id) {
-        Optional<ProductType> productTypeOptional = productTypeRepository.findById(id);
+        Optional<ProductType> productTypeOptional = productTypeRepository.findById(id).filter(ProductType::isEnabled);
         if (productTypeOptional.isPresent() && productTypeOptional.get().getThumbnail() != null) {
             try {
                 return FileUtils.readFileToByteArray(new File(productTypeOptional.get().getThumbnail()));
@@ -73,7 +74,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     @Override
     public ProductType getProductTypeById(BigInteger productTypeId) {
         LOGGER.info("getProductTypeById start");
-        Optional<ProductType> byId = productTypeRepository.findById(productTypeId);
+        Optional<ProductType> byId = productTypeRepository.findById(productTypeId).filter(ProductType::isEnabled);
         if (byId.isPresent()) {
             return byId.get();
         } else {

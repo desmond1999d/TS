@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DemesneServiceImpl implements DemesneService {
@@ -18,7 +19,7 @@ public class DemesneServiceImpl implements DemesneService {
     public List<Demesne> getAll() {
         List<Demesne> demesnes = new ArrayList<>();
         demesneRepository.findAll().forEach(demesnes::add);
-        return demesnes;
+        return demesnes.stream().filter(Demesne::isEnabled).collect(Collectors.toList());
     }
 
     @Autowired

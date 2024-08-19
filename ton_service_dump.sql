@@ -143,3 +143,9 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-02-18  9:11:29
+
+ALTER TABLE `demesne` ADD COLUMN `enabled` TinyInt(1) NOT NULL DEFAULT 1;
+ALTER TABLE `product_types` ADD COLUMN `enabled` TinyInt(1) NOT NULL DEFAULT 1;
+
+UPDATE demesne set demesne.enabled = 0 where demesne_id = 2;
+UPDATE product_types set product_types.enabled = 0 where DEMESNE_ID = 2;

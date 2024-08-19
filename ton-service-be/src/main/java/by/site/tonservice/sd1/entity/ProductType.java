@@ -29,12 +29,16 @@ public class ProductType {
     private BigInteger displayOrder;
     @Column(name = "type_description")
     private String typeDescription;
+    private boolean enabled;
 
     public ProductType() {
     }
 
-    public ProductType(String name, String description, List<ProductType> children,
-                       BigInteger parentId, String thumbnail, BigInteger demesneId, boolean hideInTree, BigInteger displayOrder) {
+    public ProductType(String name, String description,
+                       List<ProductType> children, BigInteger parentId,
+                       String thumbnail, BigInteger demesneId,
+                       boolean hideInTree, BigInteger displayOrder,
+                       String typeDescription, boolean enabled) {
         this.name = name;
         this.description = description;
         this.children = children;
@@ -43,6 +47,8 @@ public class ProductType {
         this.demesneId = demesneId;
         this.hideInTree = hideInTree;
         this.displayOrder = displayOrder;
+        this.typeDescription = typeDescription;
+        this.enabled = enabled;
     }
 
     public BigInteger getId() {
@@ -123,5 +129,13 @@ public class ProductType {
 
     public void setTypeDescription(String typeDescription) {
         this.typeDescription = typeDescription;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean status) {
+        this.enabled = status;
     }
 }

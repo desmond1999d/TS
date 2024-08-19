@@ -17,13 +17,15 @@ public class Demesne {
             cascade = CascadeType.ALL,
             targetEntity = ProductType.class)
     private List<ProductType> productTypes;
+    private boolean enabled;
 
     public Demesne() {
     }
 
-    public Demesne(String name, List<ProductType> productTypes) {
+    public Demesne(String name, List<ProductType> productTypes, boolean enabled) {
         this.name = name;
         this.productTypes = productTypes;
+        this.enabled = enabled;
     }
 
     public BigInteger getId() {
@@ -48,5 +50,13 @@ public class Demesne {
 
     public void setProductTypes(List<ProductType> productTypes) {
         this.productTypes = productTypes;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean status) {
+        this.enabled = status;
     }
 }
