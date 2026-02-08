@@ -22,11 +22,11 @@ public class TonServiceBeApplication {
                 registry
                         .addMapping("/**")
                         .allowedOrigins("*")
-//                        .allowedOrigins("http://165.22.16.238", "http://ton-service.by", "http://www.ton-service.by"
-//                        , "http://10.230.68.58", "http://localhost")
-                        .allowedMethods("*")
-                        .allowCredentials(true)
-                        .allowedHeaders("*");
+                        .allowedOrigins("https://165.22.16.238", "https://ton-service.by", "https://www.ton-service.by",
+                                "http://165.22.16.238", "http://ton-service.by", "http://www.ton-service.by", "http://localhost:8080")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }

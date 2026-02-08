@@ -33,6 +33,7 @@ services:
       command: java -jar ton-service-be-1.0-SNAPSHOT.jar &
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+      - $SPRING_LOCAL_DEBUG_PORT:$SPRING_DOCKER_DEBUG_PORT
 
   fe:
     depends_on:

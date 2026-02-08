@@ -1,5 +1,7 @@
 package by.site.tonservice.sd1.entity;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Demesne {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             targetEntity = ProductType.class)
+    @Where(clause = "enabled = true")
     private List<ProductType> productTypes;
     private boolean enabled;
 

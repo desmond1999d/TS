@@ -19,6 +19,7 @@
 .card-description {
   font-size: 15px;
   padding-top: 30px;
+  padding-bottom: 15px;
   color: white;
 }
 
@@ -165,4 +166,14 @@ img {
 
 .col-md-4, .col-md-6 {
   height: 100%;
+}
+
+@media (max-width: 991px) {
+  .card-small {
+    height: auto;
+  }
+
+  .card-big {
+    height: auto;
+  }
 }

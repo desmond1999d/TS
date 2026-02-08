@@ -11,7 +11,7 @@
   border-radius: 0;
   background-color: #ece9ec;
   margin: 0;
-  font-size: 11px;
+  font-size: 1rem;
 }
 
 .navbar {
@@ -77,6 +77,8 @@
   .dropdown-item.dropdown-item-child {
     padding-left: 5%;
     padding-right: 5%;
+    padding-top: 5px;
+    padding-bottom: 5px;
     white-space: initial;
     overflow: hidden;
   }
@@ -263,11 +265,14 @@ a.dropdown-item {
   align-items: center;
   padding-left: 5%;
   padding-right: 5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin: auto 0;
   min-height: inherit;
   color: #212529;
   background-color: #ece9ec;
   text-decoration: none;
+  white-space: normal;
 }
 
 .navbar-dropdown-child:hover {
