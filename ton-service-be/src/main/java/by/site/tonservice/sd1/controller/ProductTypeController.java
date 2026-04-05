@@ -20,11 +20,6 @@ public class ProductTypeController {
         return productTypeService.getAllTopLevelProductTypes();
     }
 
-    @RequestMapping(value = "/thumbnails", method = RequestMethod.GET)
-    public List<ProductType> getAllWithThumbnails() {
-        return productTypeService.getAllTopLevelProductTypesWithThumbnails();
-    }
-
     @RequestMapping(value = "/with-example", method = RequestMethod.GET)
     public List<ProductType> getAllWithExamples() {
         return productTypeService.getAllTopLevelProductTypesWithExamples();

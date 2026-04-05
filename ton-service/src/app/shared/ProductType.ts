@@ -19,7 +19,7 @@ export class ProductType {
     this.children = dto.children;
     this.description = dto.description;
     this.parentId = dto.parentId;
-    this.thumbnail = HttpService.url + dto.thumbnail;
+    this.thumbnail = dto.thumbnail;
     this.hideInTree = dto.hideInTree;
     this.demesneId = dto.demesneId;
     this.displayOrder = dto.displayOrder;

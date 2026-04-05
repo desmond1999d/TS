@@ -30,15 +30,6 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
-    public List<ProductType> getAllTopLevelProductTypesWithThumbnails() {
-        List<ProductType> productTypes = productTypeRepository.findAllByParentIdIsNull().stream().filter(ProductType::isEnabled).collect(Collectors.toList());
-        for (ProductType productType : productTypes) {
-            productType.setThumbnail("/api/product-types/image?id=" + productType.getId());
-        }
-        return productTypes;
-    }
-
-    @Override
     public List<ProductType> getAllTopLevelProductTypesWithExamples() {
         List<ProductType> topLevelOfferings = productTypeRepository.findAllByParentIdIsNull().stream().filter(ProductType::isEnabled).collect(Collectors.toList());
         for (ProductType topLevelOffering : topLevelOfferings) {
@@ -47,7 +38,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
             List<ProductExample> productTypeExamples = productExampleRepository.getAllByProductTypeIdAndDisplayOrderLessThan(productTypeId, 1);
             if (!productTypeExamples.isEmpty()) {
                 ProductExample preferredExample = productTypeExamples.iterator().next();
-                topLevelOffering.setThumbnail("/api/product-examples/image?id=" + preferredExample.getId());
+                topLevelOffering.setThumbnail(preferredExample.getImgSource());
             }
         }
         return topLevelOfferings;

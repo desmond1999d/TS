@@ -10,8 +10,6 @@ public interface ProductTypeService {
 
     List<ProductType> getAllTopLevelProductTypes();
 
-    List<ProductType> getAllTopLevelProductTypesWithThumbnails();
-
     List<ProductType> getAllTopLevelProductTypesWithExamples();
 
     List<ProductType> getAllHorizontalRefs(BigInteger parentProductTypeId);

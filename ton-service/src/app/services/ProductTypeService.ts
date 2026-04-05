@@ -26,10 +26,6 @@ export class ProductTypeService {
     return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/', {headers: HttpService.httpOptions.headers});
   }
 
-  public getTopServiceHierarchyWithThumbnails(): Observable<ProductType[]> {
-    return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/thumbnails', {headers: HttpService.httpOptions.headers});
-  }
-
   public getTopServiceHierarchyWithExamples(): Observable<ProductType[]> {
     return this.http.get<ProductType[]>(HttpService.url + '/api/product-types/with-example', {headers: HttpService.httpOptions.headers});
   }
