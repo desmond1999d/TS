@@ -13,7 +13,7 @@ import { MailContactComponent } from './mail-contact/mail-contact.component';
 import { ContactsPageComponent } from './contacts-page/contacts-page.component';
 import { TopProductOfferingsComponent } from './top-product-offerings/top-product-offerings.component';
 import { MainPagePortfolioComponent } from './main-page-portfolio/main-page-portfolio.component';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SubcategoryNavigatorComponent } from './subcategoy-navigator/subcategory-navigator.component';
 import {SafeHtmlPipe, SubcategoryExamplesComponent} from './subcategory-examples/subcategory-examples.component';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
@@ -25,50 +25,44 @@ import { CategoriesOverviewComponent } from './categories-overview/categories-ov
 import { AboutUsComponent } from './about-us/about-us.component';
 import {QuillModule} from "ngx-quill";
 
-@NgModule({
-  declarations: [HeaderComponent,
-    ContactsHeaderComponent,
-    MainPageCarouselComponent,
-    FooterComponent,
-    MainPageProsComponent,
-    MapComponent,
-    MainPageComponent,
-    MailContactComponent,
-    ContactsPageComponent,
-    TopProductOfferingsComponent,
-    MainPagePortfolioComponent,
-    SubcategoryNavigatorComponent,
-    SubcategoryExamplesComponent,
-    LeaveRequestComponent,
-    CategoryComponent,
-    RouterComponent,
-    AdminSubcategoryEditorComponent,
-    CategoriesOverviewComponent,
-    AboutUsComponent,
-    SafeHtmlPipe],
-  imports: [
-    CommonModule,
-    BrowserAnimationsModule,
-    RouterModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    QuillModule.forRoot()
-  ],
-  exports: [
-    HeaderComponent,
-    ContactsHeaderComponent,
-    MainPageCarouselComponent,
-    FooterComponent,
-    MainPageProsComponent,
-    MapComponent,
-    MainPageComponent,
-    MailContactComponent,
-    ContactsPageComponent,
-    MainPagePortfolioComponent,
-    RouterComponent
-  ]
-})
+@NgModule({ declarations: [HeaderComponent,
+        ContactsHeaderComponent,
+        MainPageCarouselComponent,
+        FooterComponent,
+        MainPageProsComponent,
+        MapComponent,
+        MainPageComponent,
+        MailContactComponent,
+        ContactsPageComponent,
+        TopProductOfferingsComponent,
+        MainPagePortfolioComponent,
+        SubcategoryNavigatorComponent,
+        SubcategoryExamplesComponent,
+        LeaveRequestComponent,
+        CategoryComponent,
+        RouterComponent,
+        AdminSubcategoryEditorComponent,
+        CategoriesOverviewComponent,
+        AboutUsComponent,
+        SafeHtmlPipe],
+    exports: [
+        HeaderComponent,
+        ContactsHeaderComponent,
+        MainPageCarouselComponent,
+        FooterComponent,
+        MainPageProsComponent,
+        MapComponent,
+        MainPageComponent,
+        MailContactComponent,
+        ContactsPageComponent,
+        MainPagePortfolioComponent,
+        RouterComponent
+    ], imports: [CommonModule,
+        BrowserAnimationsModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        QuillModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class RootModule {
 
   public isCollapsed = false;

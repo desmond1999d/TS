@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {ProductType} from '../../../shared/ProductType';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import * as $ from "jquery";
 
 @Component({
   selector: 'app-header',
@@ -84,7 +83,10 @@ export class HeaderComponent implements OnInit {
   }
 
   public closeNavbar(event) {
-    $('.navbar-collapse').collapse('hide');
+    const navbar = document.querySelector('.navbar-collapse');
+    if (navbar) {
+      navbar.classList.remove('show');
+    }
   }
 
   public hasDisplayedChildren(productType: ProductType) {

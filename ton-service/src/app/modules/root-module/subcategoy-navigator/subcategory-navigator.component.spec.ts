@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SubcategoryNavigatorComponent } from './subcategory-navigator.component';
 
@@ -6,7 +6,7 @@ describe('SubcategoyNavigatorComponent', () => {
   let component: SubcategoryNavigatorComponent;
   let fixture: ComponentFixture<SubcategoryNavigatorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SubcategoryNavigatorComponent ]
     })

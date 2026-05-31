@@ -5,7 +5,7 @@ import {ProductExampleService} from "../../../services/ProductExampleService";
 import {AdminService} from "../../../services/AdminService";
 import {Meta, Title} from "@angular/platform-browser";
 import {ProductTypeService} from "../../../services/ProductTypeService";
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-subcategory-editor',
@@ -17,7 +17,7 @@ export class AdminSubcategoryEditorComponent implements OnInit {
   public subcategoryId: number;
   public examples: ProductExample[];
   public file;
-  public descriptionForm: FormGroup;
+  public descriptionForm: UntypedFormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,8 +35,8 @@ export class AdminSubcategoryEditorComponent implements OnInit {
       {name: 'robots', content: 'noindex, nofollow'}
     ]);
     this.examples = [];
-    this.descriptionForm = new FormGroup({
-      'editor': new FormControl(null)
+    this.descriptionForm = new UntypedFormGroup({
+      'editor': new UntypedFormControl(null)
     });
     this.route.paramMap.subscribe(params => {
       this.subcategoryId = parseInt(params.get('subcategoryId'));

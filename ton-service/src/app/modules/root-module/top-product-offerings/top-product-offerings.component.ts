@@ -2,7 +2,8 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import * as $ from "jquery";
-import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
+import {tns} from 'tiny-slider';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-top-product-offerings',
@@ -21,7 +22,7 @@ export class TopProductOfferingsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     $(".hide-btn").hide();
-    this.productTypeService.getTopServiceHierarchy().toPromise().then(productTypeHierarchy => {
+    firstValueFrom(this.productTypeService.getTopServiceHierarchy()).then(productTypeHierarchy => {
       this.productTypeHierarchy = productTypeHierarchy
         .filter(productType => productType.thumbnail != null && productType.hideInTree !== true)
         .map(productType => new ProductType(productType))

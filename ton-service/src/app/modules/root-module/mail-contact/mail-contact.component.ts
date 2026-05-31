@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {ContactUsService} from "../../../services/ContactUsService";
 
 @Component({
@@ -10,11 +10,11 @@ import {ContactUsService} from "../../../services/ContactUsService";
 // TODO: change custom file input outline color
 export class MailContactComponent implements OnInit {
 
-  contactForm: FormGroup;
+  contactForm: UntypedFormGroup;
   fileLabel = 'Приложите файл';
   file = null;
 
-  constructor(private formBuilder: FormBuilder, private contactUsService: ContactUsService) {
+  constructor(private formBuilder: UntypedFormBuilder, private contactUsService: ContactUsService) {
     this.contactForm = this.formBuilder.group({
       name: '',
       email: '',

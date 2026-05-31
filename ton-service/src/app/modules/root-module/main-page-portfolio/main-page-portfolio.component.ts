@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ProductType} from '../../../shared/ProductType';
 import {ProductTypeService} from '../../../services/ProductTypeService';
-import {tns} from '../../../../../node_modules/tiny-slider/src/tiny-slider';
+import {tns} from 'tiny-slider';
 
 @Component({
   selector: 'app-main-page-portfolio',

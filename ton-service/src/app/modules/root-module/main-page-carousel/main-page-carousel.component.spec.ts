@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MainPageCarouselComponent } from './main-page-carousel.component';
 
@@ -6,7 +6,7 @@ describe('MainPageCarouselComponent', () => {
   let component: MainPageCarouselComponent;
   let fixture: ComponentFixture<MainPageCarouselComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MainPageCarouselComponent ]
     })

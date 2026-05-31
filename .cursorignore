@@ -1,0 +1,47 @@
+# Third Party Packages
+ton-service/node_modules/
+
+# Angular Build Outputs
+ton-service/dist/
+ton-service/.angular/
+ton-service/tmp/
+ton-service/out-tsc/
+ton-service/bazel-out/
+ton-service/e2e/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local Environment & Secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Build Directories
+ton-service-be/target/
+ton-service-be/build/
+ton-service-be/out/
+
+# IDE and System Files
+.idea/
+*.iml
+*.iws
+.settings/
+.classpath
+.project
+.factorypath
+.DS_Store
+
+# Version Control
+.git/
+.github/
+
+package-lock.json
+ton_service_dump.sql
