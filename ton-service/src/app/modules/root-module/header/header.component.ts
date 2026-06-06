@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductTypeService} from '../../../services/ProductTypeService';
 import {ProductType} from '../../../shared/ProductType';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 @Component({
   selector: 'app-header',
@@ -24,65 +23,68 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public openSideBar(event) {
-    if (document.documentElement.clientWidth > 991) {
-      document.getElementById(event.target.id + '_sub').classList.add('show');
+  public openSideBar(event: MouseEvent) {
+    if (typeof document === 'undefined' || document.documentElement.clientWidth <= 991) {
+      return;
     }
+    this.getSubMenuFromDropright(event.currentTarget as HTMLElement)?.classList.add('show');
   }
 
-  public closeSideBar(event) {
-    if (document.documentElement.clientWidth > 991) {
-      document.getElementById(event.target.id + '_sub').classList.remove('show');
+  public closeSideBar(event: MouseEvent) {
+    if (typeof document === 'undefined' || document.documentElement.clientWidth <= 991) {
+      return;
     }
+    this.getSubMenuFromDropright(event.currentTarget as HTMLElement)?.classList.remove('show');
   }
 
   public openDropDown(event) {
-    if (document.documentElement.clientWidth > 991) {
-      event.stopPropagation();
-      document.getElementById('product-types-dropdown').classList.add('show');
+    if (typeof document === 'undefined' || document.documentElement.clientWidth <= 991) {
+      return;
     }
+    event.stopPropagation();
+    document.getElementById('product-types-dropdown').classList.add('show');
   }
 
   public closeDropDown(event) {
-    if (document.documentElement.clientWidth > 991) {
-      event.stopPropagation();
-      document.getElementById('product-types-dropdown').classList.remove('show');
+    if (typeof document === 'undefined' || document.documentElement.clientWidth <= 991) {
+      return;
     }
-  }
-
-  public selfShow(event) {
-    if (document.documentElement.clientWidth > 991) {
-      event.target.classList.add('show');
-    }
-  }
-
-  public selfHide(event) {
-    if (document.documentElement.clientWidth > 991) {
-      event.target.classList.remove('show');
-    }
-  }
-
-  public sideBarClickEventHandler(event) {
     event.stopPropagation();
-    let element = document.getElementById(event.target.id + '_sub');
+    document.getElementById('product-types-dropdown').classList.remove('show');
+  }
+
+  public sideBarClickEventHandler(event: MouseEvent) {
+    if (typeof document === 'undefined' || document.documentElement.clientWidth > 991) {
+      return;
+    }
+    event.stopPropagation();
+    const dropright = (event.currentTarget as HTMLElement).closest('.dropright');
+    const element = this.getSubMenuFromDropright(dropright as HTMLElement);
+    if (!element) {
+      return;
+    }
     if (element.classList.contains('show')) {
       element.classList.remove('show');
       this.closeAllHierarchy(event);
     } else {
-      document.getElementById(event.target.id + '_sub').classList.add('show');
+      element.classList.add('show');
     }
   }
 
   public closeAllHierarchy(event) {
-    if (document.documentElement.clientWidth <= 991) {
-      let elements = document.getElementsByClassName("dropdown-menu-child");
-      Array.from(elements).forEach(function (element) {
-        element.classList.remove('show');
-      });
+    if (typeof document === 'undefined' || document.documentElement.clientWidth > 991) {
+      return;
     }
+    const elements = document.getElementsByClassName('dropdown-menu-child');
+    Array.from(elements).forEach(element => {
+      element.classList.remove('show');
+    });
   }
 
   public closeNavbar(event) {
+    if (typeof document === 'undefined') {
+      return;
+    }
     const navbar = document.querySelector('.navbar-collapse');
     if (navbar) {
       navbar.classList.remove('show');
@@ -90,6 +92,10 @@ export class HeaderComponent implements OnInit {
   }
 
   public hasDisplayedChildren(productType: ProductType) {
-    return productType.children.filter(a => !a.hideInTree).length > 0;
+    return (productType.children ?? []).filter(a => !a.hideInTree).length > 0;
+  }
+
+  private getSubMenuFromDropright(dropright: HTMLElement | null): HTMLElement | null {
+    return dropright?.querySelector('.dropdown-menu-child') ?? null;
   }
 }

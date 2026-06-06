@@ -1,34 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductExample} from "../../../shared/ProductExample";
-import {ActivatedRoute} from "@angular/router";
-import {ProductExampleService} from "../../../services/ProductExampleService";
+import {AfterViewInit, ChangeDetectorRef, Component, DestroyRef, inject, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ProductExample} from '../../../shared/ProductExample';
+import {GalleryModalState} from '../../../shared/gallery-modal.mixin';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit, AfterViewInit {
 
-  private categoryId: number;
   public examples: ProductExample[];
+  readonly galleryModal = new GalleryModalState();
 
-  constructor(
-    private route: ActivatedRoute,
-    private productExampleService: ProductExampleService
-  ) { }
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly cdr = inject(ChangeDetectorRef);
+
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.categoryId = parseInt(params.get('categoryId'));
-      this.productExampleService.getProductCategoryPreview(this.categoryId).subscribe(examples => {
-        this.examples = [];
-        examples.forEach(example => {
-          this.examples.push(new ProductExample(example));
-        });
-        this.examples.sort((example1, example2) => example1.displayOrder - example2.displayOrder);
-      });
+    this.route.data.subscribe(data => {
+      this.examples = data['examples'];
     });
+  }
+
+  ngAfterViewInit() {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    const carousel = document.getElementById('carouselExample');
+    if (!carousel) {
+      return;
+    }
+    const onSlid = () => {
+      this.galleryModal.syncActiveSlideFromCarousel(carousel);
+      this.cdr.markForCheck();
+    };
+    carousel.addEventListener('slid.bs.carousel', onSlid);
+    this.destroyRef.onDestroy(() => carousel.removeEventListener('slid.bs.carousel', onSlid));
+  }
+
+  openExampleModal(index: number): void {
+    this.galleryModal.openModal(index);
+    this.cdr.markForCheck();
+  }
+
+  activeModalImage(): string | null {
+    return this.galleryModal.activeModalImage(this.examples);
   }
 
 }

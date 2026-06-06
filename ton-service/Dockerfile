@@ -4,8 +4,18 @@ WORKDIR /app
 COPY package*.json .
 RUN npm ci
 COPY . .
-RUN npx ng build --configuration production --source-map=false
+RUN npm run build:ssr:docker
 
-FROM nginx
+FROM node:20-alpine AS run
 
-COPY --from=build ./app/dist/ton-service ./usr/share/nginx/html
+WORKDIR /app
+
+COPY --from=build /app/dist/ton-service ./dist/ton-service
+
+ENV NODE_ENV=production
+ENV PORT=80
+ENV API_URL=http://be:1739
+
+EXPOSE 80
+
+CMD ["node", "dist/ton-service/server/main.js"]

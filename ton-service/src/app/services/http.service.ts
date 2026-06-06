@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import {Inject, Injectable} from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import {API_BASE_URL} from './api-url';
 
 @Injectable()
 export class HttpService {
@@ -10,9 +10,13 @@ export class HttpService {
       'Content-Type':  'application/json'
     })
   };
-  public static readonly url = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(@Inject(API_BASE_URL) private readonly baseUrl: string) {}
 
+  /** Builds a request URL; uses a relative /api path when base is empty (Docker / SSR transfer cache). */
+  apiUrl(path: string): string {
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+    return this.baseUrl ? this.baseUrl + normalizedPath : normalizedPath;
+  }
 
 }

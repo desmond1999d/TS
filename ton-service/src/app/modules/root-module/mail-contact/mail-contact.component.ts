@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {ContactUsService} from "../../../services/ContactUsService";
 
@@ -10,6 +10,7 @@ import {ContactUsService} from "../../../services/ContactUsService";
 // TODO: change custom file input outline color
 export class MailContactComponent implements OnInit {
 
+  @Input() hideCloseButton = false;
   contactForm: UntypedFormGroup;
   fileLabel = 'Приложите файл';
   file = null;

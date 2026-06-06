@@ -3,8 +3,17 @@
 
 <div class="container-fluid container-mw pb-2">
   <div class="card-columns" data-toggle="modal" data-target="#exampleModal">
-    <div *ngFor="let example of this.examples; let i = index" class="pb-2" data-toggle="modal">
-      <img [src]="example.formattedImage" class="card-img" data-target="#carouselExample" [attr.data-slide-to]="i" alt="Пример">
+    <div *ngFor="let example of this.examples; let i = index"
+         class="pb-2"
+         data-toggle="modal"
+         (click)="openExampleModal(i)">
+      <img [src]="example.formattedImage"
+           class="card-img"
+           data-target="#carouselExample"
+           [attr.data-slide-to]="i"
+           alt="Пример"
+           loading="lazy"
+           decoding="async">
     </div>
   </div>
 </div>
@@ -16,9 +25,15 @@
 
         <div id="carouselExample" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <div *ngFor="let example of this.examples; let i = index" class="carousel-item"
-                 [ngClass]="{'active': i === 0}">
-              <img [src]="example.formattedImage" class="d-block w-100 active-image" alt="Пример">
+            <div *ngFor="let example of this.examples; let i = index"
+                 class="carousel-item"
+                 [class.active]="i === galleryModal.activeSlideIndex">
+              <img *ngIf="galleryModal.modalImagesEnabled && i === galleryModal.activeSlideIndex"
+                   [src]="activeModalImage()"
+                   class="d-block w-100 active-image"
+                   alt="Пример"
+                   loading="lazy"
+                   decoding="async">
             </div>
 
             <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">

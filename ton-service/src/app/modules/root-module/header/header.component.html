@@ -23,31 +23,39 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown" data-animations="fadeInDown"
                id="product-types-dropdown">
             <div *ngFor="let productType of productTypeHierarchy">
-              <a *ngIf="!productType.hideInTree" class="dropdown-item d-flex align-items-center">
+              <div *ngIf="!productType.hideInTree"
+                   class="dropdown-item d-flex align-items-center">
                 <a *ngIf="!hasDisplayedChildren(productType)"
                    class="navbar-dropdown-child sub-nav-link"
                    [routerLink]="['/category', productType.id, 'subcategory', productType.children[0].id]">
                   {{productType.name}}
                 </a>
-                <div *ngIf="hasDisplayedChildren(productType)" class="dropright sub-nav-link">
-                  <a id="{{productType.id}}" class="navbar-dropdown-child dropdown-toggle" role="button"
+                <div *ngIf="hasDisplayedChildren(productType)"
+                     class="dropright sub-nav-link"
+                     (mouseenter)="openSideBar($event)"
+                     (mouseleave)="closeSideBar($event)">
+                  <a [attr.id]="productType.id"
+                     class="navbar-dropdown-child dropdown-toggle"
+                     role="button"
                      data-toggle="dropdown"
-                     aria-haspopup="true" aria-expanded="false" (mouseenter)="openSideBar($event)"
-                     (mouseleave)="closeSideBar($event)" (click)="sideBarClickEventHandler($event)"
+                     aria-haspopup="true"
+                     aria-expanded="false"
+                     (click)="sideBarClickEventHandler($event)"
                      [routerLink]="['/category', productType.id]">
                     {{productType.name}}
                   </a>
-                  <div class="dropdown-menu dropdown-menu-child" (mouseenter)="selfShow($event)"
-                       (mouseleave)="selfHide($event)" id="{{productType.id + '_sub'}}"
+                  <div class="dropdown-menu dropdown-menu-child"
+                       [attr.id]="productType.id + '_sub'"
                        aria-labelledby="navbarDropdownChild">
                     <div class="li-container-child">
-                      <a *ngFor="let productTypeChild of productType.children" (click)="closeNavbar($event)"
+                      <a *ngFor="let productTypeChild of productType.children"
+                         (click)="closeNavbar($event)"
                          class="dropdown-item dropdown-item-child d-flex align-items-center"
                          [routerLink]="['/category', productType.id, 'subcategory', productTypeChild.id]">{{productTypeChild.name}}</a>
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </li>

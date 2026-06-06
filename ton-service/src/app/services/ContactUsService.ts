@@ -5,7 +5,7 @@ import {HttpService} from "./http.service";
 @Injectable()
 export class ContactUsService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private httpService: HttpService) {
   }
 
   public sendContactUsRequest(name: string, email: string, content: string, file: File) {
@@ -16,6 +16,6 @@ export class ContactUsService {
     formData.append('name', name);
     formData.append('email', email);
     formData.append('content', content);
-    return this.http.post(HttpService.url + '/api/contact-us', formData, {});
+    return this.http.post(this.httpService.apiUrl('/api/contact-us'), formData, {});
   }
 }

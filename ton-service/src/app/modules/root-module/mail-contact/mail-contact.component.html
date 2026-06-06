@@ -1,7 +1,8 @@
 <div class="mt-3 mb-3">
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
     <div class="form-row">
-      <button type="button" class="close ml-auto" data-dismiss="modal" aria-label="Close" id="close-popup">
+      <button type="button" class="close ml-auto" data-dismiss="modal" aria-label="Close" id="close-popup"
+              [hidden]="hideCloseButton">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>

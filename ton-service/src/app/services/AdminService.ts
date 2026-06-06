@@ -6,12 +6,15 @@ import {ProductExample} from "../shared/ProductExample";
 @Injectable()
 export class AdminService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private httpService: HttpService) {
   }
 
   public createProductExample(productExampleDto: ProductExample) {
-    return this.http.post<ProductExample>(HttpService.url + '/api/admin/create', productExampleDto,
-      {params: {}, headers: HttpService.httpOptions.headers});
+    return this.http.post<ProductExample>(
+      this.httpService.apiUrl('/api/admin/create'),
+      productExampleDto,
+      {params: {}, headers: HttpService.httpOptions.headers}
+    );
   }
 
   public setFileToProductExample(productExampleDto: ProductExample, file: File) {
@@ -20,17 +23,26 @@ export class AdminService {
       formData.append('file', file, file.name);
     }
     formData.append('productExampleId', productExampleDto.id.toString());
-    return this.http.post<ProductExample>(HttpService.url + '/api/admin/set-file', formData,{});
+    return this.http.post<ProductExample>(
+      this.httpService.apiUrl('/api/admin/set-file'),
+      formData,
+      {}
+    );
   }
 
   public updateProductExamplesDisplayOrder(productExamples: ProductExample[]) {
-    return this.http.post<ProductExample>(HttpService.url + '/api/admin/display-order', productExamples,
-      {params: {}, headers: HttpService.httpOptions.headers});
+    return this.http.post<ProductExample>(
+      this.httpService.apiUrl('/api/admin/display-order'),
+      productExamples,
+      {params: {}, headers: HttpService.httpOptions.headers}
+    );
   }
 
   public deleteProductExample(productExampleDto: ProductExample) {
     let params = new HttpParams().set('productExampleId', productExampleDto.id.toString());
-    return this.http.delete<ProductExample>(HttpService.url + '/api/admin/delete',
-      {params: params, headers: HttpService.httpOptions.headers});
+    return this.http.delete<ProductExample>(
+      this.httpService.apiUrl('/api/admin/delete'),
+      {params: params, headers: HttpService.httpOptions.headers}
+    );
   }
 }

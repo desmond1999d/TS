@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductType} from "../../../shared/ProductType";
-import {ProductTypeService} from "../../../services/ProductTypeService";
 
 @Component({
   selector: 'app-subcategory-navigator',
@@ -16,26 +15,27 @@ export class SubcategoryNavigatorComponent implements OnInit {
   public selectedSubcategory: ProductType;
   public selectedCategory: ProductType;
 
-  constructor(
-    private route: ActivatedRoute,
-    private productTypeService: ProductTypeService
-  ) {
-    this.route.paramMap.subscribe(params => {
-      this.categoryId = parseInt(params.get('categoryId'));
-      this.subcategoryId = parseInt(params.get('subcategoryId'));
-      this.productTypeService.getCategoryById(this.categoryId).subscribe(
-        category => {
-          this.selectedCategory = category;
-          this.horizontalReferenceSubcategories = this.selectedCategory.children;
-          if (this.horizontalReferenceSubcategories.length > 1) {
-            this.selectedSubcategory = this.horizontalReferenceSubcategories.find(subcategory => subcategory.id === this.subcategoryId);
-          }
-        }
-      );
-    });
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.categoryId = parseInt(params.get('categoryId'), 10);
+      this.subcategoryId = parseInt(params.get('subcategoryId'), 10);
+    });
+
+    this.route.data.subscribe(data => {
+      const category = data['category'] as ProductType | undefined;
+      if (!category) {
+        return;
+      }
+      this.selectedCategory = category;
+      this.horizontalReferenceSubcategories = this.selectedCategory.children ?? [];
+      if (this.horizontalReferenceSubcategories.length > 1 && this.subcategoryId) {
+        this.selectedSubcategory = this.horizontalReferenceSubcategories
+          .find(subcategory => subcategory.id === this.subcategoryId);
+      }
+    });
   }
 
 }

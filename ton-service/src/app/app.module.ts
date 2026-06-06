@@ -1,5 +1,6 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, provideClientHydration} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -11,6 +12,9 @@ import {ContactUsService} from "./services/ContactUsService";
 import {AdminService} from "./services/AdminService";
 import {DemesneService} from "./services/DemesneService";
 import {ContactsConstants} from "./shared/ContactsConstants";
+import {HttpTimeoutInterceptor} from './services/http-timeout.interceptor';
+import {SsrOriginInterceptor} from './services/ssr-origin.interceptor';
+import {provideApiBaseUrl} from './services/api-url';
 
 @NgModule({
   declarations: [
@@ -22,13 +26,27 @@ import {ContactsConstants} from "./shared/ContactsConstants";
     RootModule,
   ],
   providers: [
+    provideClientHydration(),
+    provideHttpClient(withInterceptorsFromDi()),
+    provideApiBaseUrl(),
     ProductTypeService,
     ProductExampleService,
     ContactUsService,
     HttpService,
     AdminService,
     DemesneService,
-    ContactsConstants
+    ContactsConstants,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SsrOriginInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTimeoutInterceptor,
+      multi: true,
+    },
+    provideClientHydration()
   ],
   bootstrap: [AppComponent]
 })

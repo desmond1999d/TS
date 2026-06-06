@@ -43,5 +43,9 @@ services:
       context: ./ton-service
       dockerfile: ./Dockerfile
     container_name: ton-service
+    environment:
+      # Backend target for /api proxy only (not used as HttpClient base URL)
+      API_URL: http://be:1739
+      PORT: 80
     ports:
       - 8080:80
