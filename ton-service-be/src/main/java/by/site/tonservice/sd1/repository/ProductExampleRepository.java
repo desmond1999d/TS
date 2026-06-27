@@ -1,6 +1,7 @@
 package by.site.tonservice.sd1.repository;
 
 import by.site.tonservice.sd1.entity.ProductExample;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +18,10 @@ public interface ProductExampleRepository extends CrudRepository<ProductExample,
     List<ProductExample> getAllByProductTypeIdInAndDisplayOrderLessThan(List<BigInteger> subcategoryIds, int maxDisplayPriority);
 
     List<ProductExample> findByIdIn(List<BigInteger> ids);
+
+    @Query("SELECT e FROM ProductExample e WHERE e.imgSource IS NOT NULL AND (" +
+            "LOWER(e.imgSource) LIKE '%.jpg' OR " +
+            "LOWER(e.imgSource) LIKE '%.jpeg' OR " +
+            "LOWER(e.imgSource) LIKE '%.png')")
+    List<ProductExample> findAllWithConvertibleImageSource();
 }

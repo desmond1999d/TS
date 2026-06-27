@@ -7,6 +7,7 @@ import by.site.tonservice.sd1.mapper.Mapper;
 import by.site.tonservice.sd1.repository.ProductExampleRepository;
 import by.site.tonservice.sd1.repository.ProductTypeRepository;
 import by.site.tonservice.sd1.service.ProductExampleService;
+import by.site.tonservice.sd1.util.WebpImageConverter;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     private ProductExampleRepository productExampleRepository;
     private ProductTypeRepository productTypeRepository;
     private Mapper<ProductExample, ProductExampleDto> productExampleMapper;
+    private WebpImageConverter webpImageConverter;
     private static final Logger LOGGER = Logger.getLogger(ProductExampleServiceImpl.class);
 
     private static final int MAX_PREVIEW_PRIORITY = 5;
@@ -116,15 +118,44 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     @Override
     public ProductExampleDto setFileToProductExample(MultipartFile multipartFile, BigInteger productExampleId) throws RuntimeException, IOException {
         Optional<ProductExample> productExample = productExampleRepository.findById(productExampleId);
-        if (multipartFile != null && productExample.isPresent()) {
-            String dir = FILE_BASE_DIR + "/" + productExample.get().getProductTypeId();
-            String urlDir = URL_BASE_DIR + "/" + productExample.get().getProductTypeId() + "/" + multipartFile.getOriginalFilename();
-            saveFile(dir, multipartFile.getOriginalFilename(), multipartFile);
-            productExample.get().setImgSource(urlDir);
-            productExampleRepository.save(productExample.get());
-            return productExampleMapper.map(productExample.get());
+        if (multipartFile == null || multipartFile.isEmpty() || !productExample.isPresent()) {
+            throw new RuntimeException("File is null or empty or product example not found");
         }
-        throw new RuntimeException();
+        if (!webpImageConverter.isConvertibleImage(multipartFile)) {
+            throw new IOException("Unsupported image format. Only JPG, PNG and WebP are allowed.");
+        }
+
+        String dir = FILE_BASE_DIR + "/" + productExample.get().getProductTypeId();
+        String fileName;
+        if (webpImageConverter.isWebp(multipartFile)) {
+            fileName = multipartFile.getOriginalFilename();
+            saveFile(dir, fileName, multipartFile);
+        } else {
+            fileName = WebpImageConverter.toWebpFileName(multipartFile.getOriginalFilename());
+            byte[] webpContent = webpImageConverter.toWebp(multipartFile.getInputStream());
+            saveFile(dir, fileName, webpContent);
+        }
+
+        String urlDir = URL_BASE_DIR + "/" + productExample.get().getProductTypeId() + "/" + fileName;
+        productExample.get().setImgSource(urlDir);
+        productExampleRepository.save(productExample.get());
+        return productExampleMapper.map(productExample.get());
+    }
+
+    private Path saveFile(String uploadDir, String fileName, byte[] content) throws IOException {
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try {
+            Path filePath = uploadPath.resolve(fileName);
+            Files.write(filePath, content);
+            return filePath;
+        } catch (IOException ioe) {
+            throw new IOException("Could not save image file: " + fileName, ioe);
+        }
     }
 
     private Path saveFile(String uploadDir, String fileName,
@@ -180,5 +211,10 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     @Autowired
     public void setProductTypeRepository(ProductTypeRepository productTypeRepository) {
         this.productTypeRepository = productTypeRepository;
+    }
+
+    @Autowired
+    public void setWebpImageConverter(WebpImageConverter webpImageConverter) {
+        this.webpImageConverter = webpImageConverter;
     }
 }
