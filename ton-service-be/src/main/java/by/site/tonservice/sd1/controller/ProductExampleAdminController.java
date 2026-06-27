@@ -1,8 +1,11 @@
 package by.site.tonservice.sd1.controller;
 
 import by.site.tonservice.sd1.dto.ProductExampleDto;
+import by.site.tonservice.sd1.dto.ImageMigrationReport;
+import by.site.tonservice.sd1.service.ProductExampleImageMigrationService;
 import by.site.tonservice.sd1.service.ProductExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +19,20 @@ import java.util.List;
 public class ProductExampleAdminController {
 
     private ProductExampleService productExampleService;
+    private ProductExampleImageMigrationService productExampleImageMigrationService;
+    private boolean imageMigrationEnabled;
+
+    @RequestMapping(value = "/migrate-images-to-webp", method = RequestMethod.POST)
+    public ResponseEntity migrateImagesToWebp(@RequestParam("dryRun") Boolean dryRun) {
+        if (!imageMigrationEnabled) {
+            return ResponseEntity.status(403).build();
+        }
+        if (dryRun == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        ImageMigrationReport report = productExampleImageMigrationService.migrateToWebp(dryRun);
+        return ResponseEntity.ok(report);
+    }
 
     @RequestMapping(value = "/display-order", method = RequestMethod.POST)
     public ResponseEntity updateProductExamplesDisplayOrder(@RequestBody List<ProductExampleDto> productExampleDtos) {
@@ -50,5 +67,15 @@ public class ProductExampleAdminController {
     @Autowired
     public void setProductExampleService(ProductExampleService productExampleService) {
         this.productExampleService = productExampleService;
+    }
+
+    @Autowired
+    public void setProductExampleImageMigrationService(ProductExampleImageMigrationService productExampleImageMigrationService) {
+        this.productExampleImageMigrationService = productExampleImageMigrationService;
+    }
+
+    @Value("${app.image.migration.enabled:false}")
+    public void setImageMigrationEnabled(boolean imageMigrationEnabled) {
+        this.imageMigrationEnabled = imageMigrationEnabled;
     }
 }
