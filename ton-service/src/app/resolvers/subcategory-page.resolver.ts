@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
+import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { ProductExampleService } from '../services/ProductExampleService';
 import { ProductTypeService } from '../services/ProductTypeService';
 import { ProductExample } from '../shared/ProductExample';
@@ -14,15 +14,16 @@ export interface SubcategoryPageData {
 }
 
 @Injectable({ providedIn: 'root' })
-export class SubcategoryPageResolver implements Resolve<SubcategoryPageData> {
+export class SubcategoryPageResolver implements Resolve<SubcategoryPageData | null> {
 
   constructor(
     private productExampleService: ProductExampleService,
-    private productTypeService: ProductTypeService
+    private productTypeService: ProductTypeService,
+    private router: Router,
   ) {
   }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<SubcategoryPageData> {
+  resolve(route: ActivatedRouteSnapshot): Observable<SubcategoryPageData | null> {
     let categoryId = parseInt(route.paramMap.get('subcategoryId'), 10);
     if (!categoryId) {
       categoryId = parseInt(route.paramMap.get('categoryId'), 10);
@@ -38,7 +39,11 @@ export class SubcategoryPageResolver implements Resolve<SubcategoryPageData> {
         examples: examples
           .map(example => new ProductExample(example))
           .sort((example1, example2) => example1.displayOrder - example2.displayOrder),
-      }))
+      })),
+      catchError(() => {
+        void this.router.navigateByUrl('/404', { replaceUrl: true });
+        return of(null);
+      }),
     );
   }
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:1739'
+  // Relative /api paths — proxied by ng serve (proxy.conf.json) and the SSR Express server (API_URL).
+  apiUrl: ''
 };
 
 /*

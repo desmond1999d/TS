@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
+import { CanonicalService } from '../../../services/canonical.service';
 
 export interface CarouselSlide {
   fullSrc: string;
@@ -36,7 +37,11 @@ export class MainPageCarouselComponent implements OnInit {
     },
   ];
 
-  constructor(private titleService: Title, private metaService: Meta) {
+  constructor(
+    private titleService: Title,
+    private metaService: Meta,
+    private canonicalService: CanonicalService,
+  ) {
   }
 
   ngOnInit() {
@@ -46,6 +51,7 @@ export class MainPageCarouselComponent implements OnInit {
       {name: 'description', content: 'Реклама, антикоррозийная обработка и тонировка стекол Гродно'},
       {name: 'robots', content: 'index, follow'}
     ]);
+    this.canonicalService.setCanonical('/');
   }
 
 }

@@ -21,7 +21,7 @@ export class CategoryComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.examples = data['examples'];
+      this.examples = data['examples'] ?? [];
     });
   }
 

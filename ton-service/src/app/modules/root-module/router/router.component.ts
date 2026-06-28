@@ -6,6 +6,7 @@ import {CategoriesOverviewComponent} from "../categories-overview/categories-ove
 import {AboutUsComponent} from "../about-us/about-us.component";
 import {SubcategoryPageData} from "../../../resolvers/subcategory-page.resolver";
 import {Meta, Title} from "@angular/platform-browser";
+import { CanonicalService } from "../../../services/canonical.service";
 
 @Component({
   selector: 'app-router',
@@ -23,7 +24,8 @@ export class RouterComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private canonicalService: CanonicalService,
   ) { }
 
   ngOnInit() {
@@ -47,10 +49,13 @@ export class RouterComponent implements OnInit {
       if (!this.route.snapshot.paramMap.get('categoryId')) {
         if (this.isContacts) {
           this.titleService.setTitle('Контакты');
+          this.canonicalService.setCanonical('/contacts');
         } else if (this.isAboutUs) {
           this.titleService.setTitle('О нас');
+          this.canonicalService.setCanonical('/about-us');
         } else if (this.isDemesnes) {
           this.titleService.setTitle('Услуги');
+          this.canonicalService.setCanonical('/demesnes');
         }
       }
     });

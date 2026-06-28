@@ -6,6 +6,7 @@ import {SubcategoryExamplesComponent} from "./modules/root-module/subcategory-ex
 import {CategoryComponent} from "./modules/root-module/category/category.component";
 import {CategoriesOverviewComponent} from "./modules/root-module/categories-overview/categories-overview.component";
 import {AboutUsComponent} from "./modules/root-module/about-us/about-us.component";
+import {NotFoundComponent} from "./modules/root-module/not-found/not-found.component";
 import {CategoryExamplesResolver} from './resolvers/category-examples.resolver';
 import {SubcategoryPageResolver} from './resolvers/subcategory-page.resolver';
 import {CategoryMetaResolver} from './resolvers/category-meta.resolver';
@@ -35,9 +36,9 @@ const routes: Routes = [
     },
   },
   { path: 'demesnes', component: CategoriesOverviewComponent },
-  { path: 'about-us', component: AboutUsComponent }
-  // { path: '**', component: 404PageComponent }
-  // TODO: add 404 page component
+  { path: 'about-us', component: AboutUsComponent },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

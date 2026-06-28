@@ -1,5 +1,8 @@
 RewriteEngine on
 
+# Legacy index files
+RewriteRule ^index\.(html|php)$ / [R=301,L]
+
 # Don't rewrite files or directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

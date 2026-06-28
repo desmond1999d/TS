@@ -7,7 +7,14 @@ import { existsSync } from 'node:fs';
 import * as http from 'node:http';
 import * as https from 'node:https';
 import { join } from 'node:path';
-import { REQUEST_ORIGIN } from './src/app/services/api-url';
+import {
+  REQUEST_ORIGIN,
+  REQUEST_PUBLIC_ORIGIN,
+  SSR_REQUEST,
+  SSR_RESPONSE,
+} from './src/app/services/api-url';
+import { buildSitemapPaths } from './sitemap-builder.server';
+import { renderSitemapXml } from './sitemap-builder';
 import AppServerModule from './src/main.server';
 
 function createApiProxy(backendUrl: string): express.RequestHandler {
@@ -40,6 +47,67 @@ function createApiProxy(backendUrl: string): express.RequestHandler {
   };
 }
 
+function getPublicOrigin(req: express.Request): string {
+  const protocol = (req.get('x-forwarded-proto') || req.protocol || 'http').split(',')[0].trim();
+  const host = (req.get('x-forwarded-host') || req.get('host') || '').split(',')[0].trim();
+  return `${protocol}://${host}`;
+}
+
+function splitPathAndQuery(url: string): { path: string; query: string } {
+  const queryIndex = url.indexOf('?');
+  if (queryIndex === -1) {
+    return { path: url, query: '' };
+  }
+  return {
+    path: url.slice(0, queryIndex),
+    query: url.slice(queryIndex),
+  };
+}
+
+function createSeoRedirectMiddleware(): express.RequestHandler {
+  return (req, res, next) => {
+    const host = (req.get('x-forwarded-host') || req.get('host') || '').split(',')[0].trim();
+    const { path, query } = splitPathAndQuery(req.originalUrl);
+    const origin = getPublicOrigin(req);
+
+    if (/^\/index\.(html|php)$/i.test(path)) {
+      res.redirect(301, `${origin}/${query}`);
+      return;
+    }
+
+    if (host.toLowerCase().startsWith('www.')) {
+      const bareHost = host.slice(4);
+      const protocol = (req.get('x-forwarded-proto') || req.protocol || 'https').split(',')[0].trim();
+      res.redirect(301, `${protocol}://${bareHost}${path}${query}`);
+      return;
+    }
+
+    if (/[A-Z]/.test(path) && !/\.[a-zA-Z0-9]+$/.test(path) && !path.startsWith('/api')) {
+      res.redirect(301, `${origin}${path.toLowerCase()}${query}`);
+      return;
+    }
+
+    if (path.length > 1 && path.endsWith('/')) {
+      res.redirect(301, `${origin}${path.slice(0, -1)}${query}`);
+      return;
+    }
+
+    next();
+  };
+}
+
+function renderRobots(publicOrigin: string): string {
+  const origin = publicOrigin.replace(/\/$/, '');
+  return [
+    '# Allow all URLs (see https://www.robotstxt.org/robotstxt.html)',
+    `Host: ${origin}`,
+    'User-agent: *',
+    'Disallow: /admin/*',
+    `Sitemap: ${origin}/sitemap.xml`,
+    '',
+  ].join('\n');
+}
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
@@ -49,13 +117,29 @@ export function app(): express.Express {
     : join(distFolder, 'index.html');
 
   const commonEngine = new CommonEngine();
-  const apiBackend = process.env['API_URL'] || 'http://be:1739';
+  const apiBackend = process.env['API_URL'] || 'http://localhost:1739';
   const listenPort = Number(process.env['PORT'] || 4000);
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
   server.use('/api', createApiProxy(apiBackend));
+  server.use(createSeoRedirectMiddleware());
+
+  server.get('/sitemap.xml', async (req, res, next) => {
+    try {
+      const paths = await buildSitemapPaths(apiBackend);
+      res.type('application/xml');
+      res.send(renderSitemapXml(getPublicOrigin(req), paths));
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  server.get('/robots.txt', (req, res) => {
+    res.type('text/plain');
+    res.send(renderRobots(getPublicOrigin(req)));
+  });
 
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
@@ -72,6 +156,7 @@ export function app(): express.Express {
     }
 
     const internalOrigin = `http://127.0.0.1:${listenPort}`;
+    const publicOrigin = getPublicOrigin(req);
 
     commonEngine
       .render({
@@ -82,6 +167,9 @@ export function app(): express.Express {
         providers: [
           { provide: APP_BASE_HREF, useValue: baseUrl },
           { provide: REQUEST_ORIGIN, useValue: internalOrigin },
+          { provide: REQUEST_PUBLIC_ORIGIN, useValue: publicOrigin },
+          { provide: SSR_REQUEST, useValue: req },
+          { provide: SSR_RESPONSE, useValue: res },
         ],
       })
       .then((html) => res.send(html))

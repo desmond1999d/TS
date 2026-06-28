@@ -24,7 +24,10 @@ export class SubcategoryExamplesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      const pageData = data['pageData'] as SubcategoryPageData;
+      const pageData = data['pageData'] as SubcategoryPageData | null;
+      if (!pageData) {
+        return;
+      }
       this.description = pageData.description;
       this.examples = pageData.examples;
     });

@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "dev:ssr": "ng run ton-service:serve-ssr",
     "serve:ssr": "node dist/ton-service/server/main.js",
-    "build:ssr": "ng build && ng run ton-service:server",
+    "build:ssr": "ng build --configuration production && ng run ton-service:server:production",
     "build:ssr:docker": "ng build --configuration docker && ng run ton-service:server:docker",
     "prerender": "ng run ton-service:prerender"
   },
