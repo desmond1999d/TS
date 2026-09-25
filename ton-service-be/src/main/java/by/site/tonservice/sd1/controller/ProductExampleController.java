@@ -3,7 +3,10 @@ package by.site.tonservice.sd1.controller;
 import by.site.tonservice.sd1.dto.ProductExampleDto;
 import by.site.tonservice.sd1.service.ProductExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
@@ -41,9 +44,15 @@ public class ProductExampleController {
     }
 
     @RequestMapping(value = "/image", method = RequestMethod.GET, produces = "image/webp")
-    public @ResponseBody
-    byte[] getImage(@RequestParam BigInteger id) {
-        return productExampleService.getImage(id);
+    @Deprecated
+    public ResponseEntity<Resource> getImage(@RequestParam BigInteger id) {
+        Resource imageResource = productExampleService.getImage(id);
+        if (imageResource == null || !imageResource.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("image/webp"))
+                .body(imageResource);
     }
 
     @Autowired

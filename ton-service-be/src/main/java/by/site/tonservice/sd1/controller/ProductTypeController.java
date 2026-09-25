@@ -3,7 +3,9 @@ package by.site.tonservice.sd1.controller;
 import by.site.tonservice.sd1.entity.ProductType;
 import by.site.tonservice.sd1.service.ProductTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
@@ -36,8 +38,15 @@ public class ProductTypeController {
     }
 
     @RequestMapping(value = "/image", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getImage(@RequestParam BigInteger id) {
-        return productTypeService.getImage(id);
+    @Deprecated
+    public ResponseEntity<Resource> getImage(@RequestParam BigInteger id) {
+        Resource imageResource = productTypeService.getImage(id);
+        if (imageResource == null || !imageResource.exists()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(imageResource);
     }
 
     @RequestMapping(value = "/update-description", method = RequestMethod.POST)

@@ -1,6 +1,7 @@
 package by.site.tonservice.sd1.service;
 
 import by.site.tonservice.sd1.entity.ProductType;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -14,7 +15,7 @@ public interface ProductTypeService {
 
     List<ProductType> getAllHorizontalRefs(BigInteger parentProductTypeId);
 
-    byte[] getImage(BigInteger id);
+    Resource getImage(BigInteger id);
 
     ProductType getProductTypeById(BigInteger productTypeId);
 

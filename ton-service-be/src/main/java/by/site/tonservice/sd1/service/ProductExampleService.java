@@ -1,6 +1,7 @@
 package by.site.tonservice.sd1.service;
 
 import by.site.tonservice.sd1.dto.ProductExampleDto;
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -27,5 +28,5 @@ public interface ProductExampleService {
 
     void deleteProductExample(BigInteger productExampleId);
 
-    byte[] getImage(BigInteger id);
+    Resource getImage(BigInteger id);
 }

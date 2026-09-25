@@ -8,9 +8,10 @@ import by.site.tonservice.sd1.repository.ProductExampleRepository;
 import by.site.tonservice.sd1.repository.ProductTypeRepository;
 import by.site.tonservice.sd1.service.ProductExampleService;
 import by.site.tonservice.sd1.util.WebpImageConverter;
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -186,13 +187,12 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     }
 
     @Override
-    public byte[] getImage(BigInteger id) {
+    public Resource getImage(BigInteger id) {
         Optional<ProductExample> productExampleOptional = productExampleRepository.findById(id);
         if (productExampleOptional.isPresent()) {
-            try {
-                return FileUtils.readFileToByteArray(new File(productExampleOptional.get().getImgSource()));
-            } catch (IOException e) {
-                return null;
+            File imageFile = new File(productExampleOptional.get().getImgSource());
+            if (imageFile.exists()) {
+                return new FileSystemResource(imageFile);
             }
         }
         return null;

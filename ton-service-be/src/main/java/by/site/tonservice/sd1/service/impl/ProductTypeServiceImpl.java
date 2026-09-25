@@ -5,13 +5,13 @@ import by.site.tonservice.sd1.entity.ProductType;
 import by.site.tonservice.sd1.repository.ProductExampleRepository;
 import by.site.tonservice.sd1.repository.ProductTypeRepository;
 import by.site.tonservice.sd1.service.ProductTypeService;
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
@@ -50,13 +50,12 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     }
 
     @Override
-    public byte[] getImage(BigInteger id) {
+    public Resource getImage(BigInteger id) {
         Optional<ProductType> productTypeOptional = productTypeRepository.findById(id).filter(ProductType::isEnabled);
         if (productTypeOptional.isPresent() && productTypeOptional.get().getThumbnail() != null) {
-            try {
-                return FileUtils.readFileToByteArray(new File(productTypeOptional.get().getThumbnail()));
-            } catch (IOException e) {
-                return null;
+            File imageFile = new File(productTypeOptional.get().getThumbnail());
+            if (imageFile.exists()) {
+                return new FileSystemResource(imageFile);
             }
         }
         return null;
