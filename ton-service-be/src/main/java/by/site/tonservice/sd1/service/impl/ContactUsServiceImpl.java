@@ -1,7 +1,8 @@
 package by.site.tonservice.sd1.service.impl;
 
 import by.site.tonservice.sd1.service.ContactUsService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,7 +20,7 @@ import java.io.IOException;
 public class ContactUsServiceImpl implements ContactUsService {
 
     private JavaMailSender emailSender;
-    private static final Logger LOGGER = Logger.getLogger(ContactUsServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContactUsServiceImpl.class);
 
     private static final String EMAIL_FROM = "desmond1999d@mail.ru";
     private static final String EMAIL_TO = "desmond1999d@mail.ru";
@@ -33,8 +34,7 @@ public class ContactUsServiceImpl implements ContactUsService {
         LOGGER.info("contactUs start");
         LOGGER.info("name = " + name + " email = " + email + " content = " + content + " multipartFile = " + multipartFile);
         MimeMessage message = emailSender.createMimeMessage();
-        MimeMessageHelper helper = null;
-        helper = new MimeMessageHelper(message, true);
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setFrom(EMAIL_FROM);
         helper.setTo(EMAIL_TO);
         helper.setSubject(EMAIL_SUBJECT + name);

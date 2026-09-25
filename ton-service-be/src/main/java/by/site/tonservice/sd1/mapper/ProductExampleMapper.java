@@ -2,20 +2,17 @@ package by.site.tonservice.sd1.mapper;
 
 import by.site.tonservice.sd1.dto.ProductExampleDto;
 import by.site.tonservice.sd1.entity.ProductExample;
-import by.site.tonservice.sd1.service.impl.ProductExampleServiceImpl;
-import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductExampleMapper implements Mapper<ProductExample, ProductExampleDto> {
 
-    private static final Logger LOGGER = Logger.getLogger(ProductExampleServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductExampleMapper.class);
 
     public ProductExampleDto map(ProductExample productExample) {
         ProductExampleDto productExampleDto = mapWithNoPayload(productExample);

@@ -5,7 +5,8 @@ import by.site.tonservice.sd1.entity.ProductType;
 import by.site.tonservice.sd1.repository.ProductExampleRepository;
 import by.site.tonservice.sd1.repository.ProductTypeRepository;
 import by.site.tonservice.sd1.service.ProductTypeService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -22,7 +23,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 
     private ProductTypeRepository productTypeRepository;
     private ProductExampleRepository productExampleRepository;
-    private static final Logger LOGGER = Logger.getLogger(ProductTypeServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductTypeServiceImpl.class);
 
     public List<ProductType> getAllTopLevelProductTypes() {
         LOGGER.info("getAllTopLevelProductTypes start");

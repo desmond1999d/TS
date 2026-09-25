@@ -8,7 +8,8 @@ import by.site.tonservice.sd1.repository.ProductExampleRepository;
 import by.site.tonservice.sd1.repository.ProductTypeRepository;
 import by.site.tonservice.sd1.service.ProductExampleService;
 import by.site.tonservice.sd1.util.WebpImageConverter;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -37,7 +38,7 @@ public class ProductExampleServiceImpl implements ProductExampleService {
     private ProductTypeRepository productTypeRepository;
     private Mapper<ProductExample, ProductExampleDto> productExampleMapper;
     private WebpImageConverter webpImageConverter;
-    private static final Logger LOGGER = Logger.getLogger(ProductExampleServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductExampleServiceImpl.class);
 
     private static final int MAX_PREVIEW_PRIORITY = 5;
 
@@ -79,7 +80,7 @@ public class ProductExampleServiceImpl implements ProductExampleService {
                 .stream()
                 .map(ProductType::getId)
                 .collect(Collectors.toList());
-        List<ProductExample> categoryExamplesPreview = null;
+        List<ProductExample> categoryExamplesPreview;
         if (!subcategories.isEmpty()) {
             categoryExamplesPreview =
                     productExampleRepository.getAllByProductTypeIdInAndDisplayOrderLessThan(subcategories, MAX_PREVIEW_PRIORITY);
