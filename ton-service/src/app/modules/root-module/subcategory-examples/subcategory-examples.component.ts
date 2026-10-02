@@ -1,9 +1,8 @@
-import {AfterViewInit, ChangeDetectorRef, Component, DestroyRef, inject, OnInit, Pipe, PipeTransform} from '@angular/core';
+import {AfterViewInit, Component, DestroyRef, inject, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ProductExample} from '../../../shared/ProductExample';
 import {SubcategoryPageData} from '../../../resolvers/subcategory-page.resolver';
-import {GalleryModalState} from '../../../shared/gallery-modal.mixin';
 
 @Component({
   selector: 'app-subcategory-examples',
@@ -12,12 +11,11 @@ import {GalleryModalState} from '../../../shared/gallery-modal.mixin';
 })
 export class SubcategoryExamplesComponent implements OnInit, AfterViewInit {
 
-  public examples: ProductExample[];
+  public examples: ProductExample[] = [];
   public description: string;
-  readonly galleryModal = new GalleryModalState();
+  selectedIndex = 0;
 
   private readonly destroyRef = inject(DestroyRef);
-  private readonly cdr = inject(ChangeDetectorRef);
 
   constructor(private route: ActivatedRoute) {
   }
@@ -37,25 +35,39 @@ export class SubcategoryExamplesComponent implements OnInit, AfterViewInit {
     if (typeof document === 'undefined') {
       return;
     }
-    const carousel = document.getElementById('carouselExample');
-    if (!carousel) {
+
+    const modal = document.getElementById('examplesModal');
+    const carousel = document.getElementById('examplesCarousel');
+    const $ = (window as any).$;
+
+    if (!modal || !carousel || !($ && $.fn && $.fn.carousel)) {
       return;
     }
-    const onSlid = () => {
-      this.galleryModal.syncActiveSlideFromCarousel(carousel);
-      this.cdr.markForCheck();
+
+    const firstItem = carousel.querySelector('.carousel-item');
+    if (firstItem) {
+      firstItem.classList.add('active');
+    }
+
+    const $modal = $(modal);
+    const $carousel = $(carousel);
+
+    const onShow = () => {
+      const items = carousel.querySelectorAll('.carousel-item');
+      items.forEach((item, idx) => {
+        item.classList.toggle('active', idx === this.selectedIndex);
+      });
+      $carousel.carousel(this.selectedIndex);
     };
-    carousel.addEventListener('slid.bs.carousel', onSlid);
-    this.destroyRef.onDestroy(() => carousel.removeEventListener('slid.bs.carousel', onSlid));
+
+    $modal.on('show.bs.modal', onShow);
+    this.destroyRef.onDestroy(() => {
+      $modal.off('show.bs.modal', onShow);
+    });
   }
 
   openExampleModal(index: number): void {
-    this.galleryModal.openModal(index);
-    this.cdr.markForCheck();
-  }
-
-  activeModalImage(): string | null {
-    return this.galleryModal.activeModalImage(this.examples);
+    this.selectedIndex = index;
   }
 
 }
