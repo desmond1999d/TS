@@ -25,8 +25,8 @@
 </div>
 
 <div id="m-portfolio-slider">
-  <div class="col" *ngFor="let productOffering of productTypeHierarchy">
-    <div class="thumbnail mb-3 mt-3" [routerLink]="['/category', productOffering.id]">
+  <div class="col p-0" *ngFor="let productOffering of productTypeHierarchy">
+    <div class="thumbnail" [routerLink]="['/category', productOffering.id]">
       <div class="thumbnail-content position-relative">
         <img class="img-thumbnail"
              [src]="productOffering.thumbnail"
